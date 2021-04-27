@@ -1,164 +1,174 @@
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<title>Our Funky HTML Page</title>
-<meta name="description" content="Our first page">
-<meta name="keywords" content="html tutorial template">
-     <link rel="stylesheet" href="style.css">
-</head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/w3images/coffeehouse.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
 <body>
-<nav id="navbar">
-  <header>GDPR - Documentation </header>
-  <ul>
-    <a class="nav-link" href="#Introduction" rel="internal">
-      <li>Introduction</li>
-    </a>
 
-    <a class="nav-link" href="#What_is_GDPR">
-      <li>What is GDPR</li>
-    </a>
-    
-    <a class="nav-link" href="#Data_protection_principles" rel="internal">
-      <li>Data protection principles</li>
-    </a>
-    
-    <a class="nav-link" href="#Things_to_start_with" rel="internal">
-      <li>Things to start with</li>
-    </a>
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+    </div>
+  </div>
+</div>
 
-    <a class="nav-link" href="#Pros_Cons_and_Examples" rel="internal">
-      <li>Pros Cons and Examples</li>
-    </a>
-
-    <a class="nav-link" href="#Three_great_tips" rel="internal">
-      <li>Three great tips</li>
-    </a>
-    
-  </ul>
-</nav>
-
-<main id="main-doc">
-  <section class="main-section" id="Introduction">
-    <header>Introduction</header>
-    <article>
-      <p>Even if your website is located outside of the countries-members of the European Union, it is important to know the policies that might apply to your website in case you have users from the EU.</p>
-    </article>
-    <br />
-    <img src="https://tr4.cbsistatic.com/hub/i/r/2018/02/28/0053e7d5-bb7a-4116-890a-991945769534/resize/1200x/66d688c1859b88e0c2e718b8eafc80ad/istock-875666576.jpg" alt="gdpr logo" class="center"/>
-  </section>
-  <section class="main-section" id="What_is_GDPR">
-    <header>What is GDPR</header>
-    <article>
-      <br>
-      <h4>EU's General Data Protection Regulation (GDPR)</h4> <br>
-      <p>The EU General Data Protection Regulation (“GDPR”) is a comprehensive data protection law that took effect on May 25, 2018 updating existing European Union laws to strengthen the protection of user’s personal data (any information that can be related to an identifiable individual) in light of rapid technological developments, the increasingly global nature of business and more complex international flows of personal data. It replaces the current patchwork of national data protection laws with a single set of rules, directly enforceable in each EU member state. 
-</p>
-      <br>
-      <p>The EU General Data Protection Regulation is applied towards all websites outside of the European Union that process data of people that are located inside the EU.</p>
-      <p>For example, if you have a website in the United States and you have someone who visited your website from a country that is a part of the European Union, then you are obligated to comply with GDPR policies. If that is the case, then the website needs to meet the GDPR requirements and conditions for processing data. 
-</p>
-      <br>
-    </article>
-  <section class="main-section" id="Data_protection_principles">
-    <header>Data protection principles
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">Open from 6am to 5pm</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">the<br>Cafe</span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white">15 Adr street, 5015</span>
+  </div>
 </header>
-    <article>
-      <img src="https://www.sentor.se/en/wp-content/uploads/2017/02/processen_gdpr2.png" alt="gdpr lock logo" class="center" />
-      <p>
-There is a list of principles that website administrators should follow in case their servers are processing EU users’ data. It is outlined in Article 5.1-2 of GDPR:
-        </p>
-        <br>
-       <code> <ol>
-<li>Lawfulness, fairness and transparency — Processing must be lawful, fair, and transparent to the data subject.</li>
-<li>Purpose limitation — You must process data for the legitimate purposes specified explicitly to the data subject when you collected it.</li>
-<li>Data minimization — You should collect and process only as much data as absolutely necessary for the purposes specified.</li>
-<li>Accuracy — You must keep personal data accurate and up to date.</li>
-<li>Storage limitation — You may only store personally identifying data for as long as necessary for the specified purpose.</li>
-<li>Integrity and confidentiality — Processing must be done in such a way as to ensure appropriate security, integrity, and confidentiality (e.g. by using encryption).</li>
-<li>Accountability — The data controller is responsible for being able to demonstrate GDPR compliance with all of these principles.</li>
-         </ol> </code>
-     <br>
-      
-   <section class="main-section" id="Things_to_start_with">
-    <header>Things to start with</header>
-   
 
-    <br> <h4>Accountability</h4> <br>
-     <p>According to GDPR, data controllers have to be able to prove and demonstrate they are compliant with GDPR policies. And this isn’t something you can do after the fact: If you think you are compliant with the GDPR but can’t show how, then you’re not GDPR compliant. Among the ways you can do this:
-</p>
-     <br>
-<ol>
-  <li>Designate data protection responsibilities to your team.</li>
-  <li>Maintain detailed documentation of the data you’re collecting, how it’s used, where it’s stored, which employee is responsible for it, etc.
-</li>
-  <li>Train your staff and implement technical and organizational security measures.</li>
-  <li>Have Data Processing Agreement contracts in place with third parties you contract to process data for you.</li>
-  <li>Appoint a Data Protection Officer (though not all organizations need one)
-</li>
-</ol>
-     <br>
-     <br> <h4>Data security</h4> <br>
-     <p>It is important to handle data securely by implementing “appropriate technical and organizational measures.”
- Technical measures can mean anything from requiring  employees to use two-factor authentication on accounts where personal data are stored to contracting with cloud services that use end-to-end encryption.
- Organizational measures can include adding a data privacy policy to the employee handbook, or limiting access to personal data to only those employees in your organization who need it.
-</p>
-     <br>
-   </section>
-      
-      
-     
-    <section class="main-section" id="Pros_Cons_and_Examples"><header>Pros Cons and Examples</header>
-        
-<img src="https://www.webster.edu/images/information-security/gdpr-locks350.jpg" alt="gdpr imge" class="center" />
-    <article>
-      <br>
-      <h4>Pros</h4>
-        <br>
-      <code>
-        <ul>
-<li>The passing of GDPR has directly impacted data privacy and security standards while also indirectly encouraging organizations to develop and improve their cybersecurity measures, limiting the risks of any potential data breach.
-</li>
-<li>Users and customers value their privacy and their confidence can be hurt if a breach of data will occur and their personal information will become available on a dark web. Customer is more willing to share their private information on GDPR compliant websites, as they believe their data is being stored and used in line with European law. 
-</li></ul>
-      </code>
-      <br>
-<h4>Cons</h4> <br>
-      <code>
-<ul><li>Unfortunately, the regulation itself contains 88 pages and that doesn’t include accompanying directives. The information presented on this page is optimized to highlight the most important aspects of the law. 
-</li>
-<li>If the organization is affected by the GDPR and required to be compliant with its policy, it is highly recommended that someone in the organization reads it and that every employee is able to consult an attorney to ensure they stay compliant with GDPR requirements. This can lead to some extra spending, and it is definitely not going to be budget-friendly. 
-  </li> </ul> </code> <br>
-          <h4>Website Examples</h4>
-      <img src="https://www.privacypolicies.com/public/uploads/2019/07/sainsburys-register-form-checkboxes-consent-terms-conditions-marketing-messages.jpg" alt="sainsburys page gdpr example" class="center" />
-      <br>
-      
-<p><code>The online retailer <a href="https://www.asos.com/privacy-policy/
-" rel="external" target="_blank"> ASOS</a> has great pages on its website, including their updated privacy policy, featuring educational video content, clear headlines that are written using their brand tone, and a policy which is easy to digest for most web users.
-      </code>  </p>  <br>
-<code> <p><a href="https://www.loreal.com/loreal-group-privacy-policy" rel="external" target="_blank"> L’Oréal</a> describes in detail the list of data that they would potentially collect, which is obviously a subject to the user’s consent. In addition to that, the information is provided in question-answer format which makes it easier for users to learn about their privacy policies.
-  </p> </code> <br>
-<code> <p>British grocery store chain’s <a href="https://www.sainsburys.co.uk/" rel="external" target="_blank"> Sainsbury’s</a> sign-up form experience is very straightforward and clear; in places where the form asks for extra personal details, such as their phone number and club card number, explanations are provided as to why the company needs them.
-  </p></code><br>
-     <br>
-      
-      
-   <section class="main-section" id="Three_great_tips">
-    <header>Three great tips</header>
-     <br>
-     <ul>
-There are 3 main rules we should follow while making our website GDPR compliant:
-       <br>
-<li>Lawful means all processing should be based on a legitimate purpose.</li> 
-<li>Fair means do not process data for any purpose other than the legitimate purposes. </li>
-<li>Transparent means that we need to inform about the processing activities on user’s personal data.</li>
-       </ul>
-     <br><br><br><br>
-     </section>
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE CAFE</span></h5>
+    <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"Use products from nature for what it's worth - but never too early, nor too late." Fresh is the new sweet.</i></p>
+      <p>Chef, Coffeeist and Owner: Liam Brown</p>
+    </div>
+    <img src="/w3images/coffeeshop.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
+    <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
+  </div>
+</div>
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
   
-</main>
-<footer> <p id="infoProject-bottom"><i class="fa fa-barcode" aria-hidden="true"></i> BTS 289</p></footer>
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">Eat</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">Drink</div>
+      </a>
+    </div>
+
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Bread Basket</h5>
+      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+    
+      <h5>Honey Almond Granola with Fruits</h5>
+      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+    
+      <h5>Belgian Waffle</h5>
+      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+    
+      <h5>Scrambled eggs</h5>
+      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+    
+      <h5>Blueberry Pancakes</h5>
+      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+    </div>
+
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Coffee</h5>
+      <p class="w3-text-grey">Regular coffee 2.50</p><br>
+    
+      <h5>Chocolato</h5>
+      <p class="w3-text-grey">Chocolate espresso with milk 4.50</p><br>
+    
+      <h5>Corretto</h5>
+      <p class="w3-text-grey">Whiskey and coffee 5.00</p><br>
+    
+      <h5>Iced tea</h5>
+      <p class="w3-text-grey">Hot tea, except not hot 3.00</p><br>
+    
+      <h5>Soda</h5>
+      <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
+    </div>  
+    <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
+  </div>
+</div>
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND US</span></h5>
+    <p>Find us at some address at some place.</p>
+    <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+    <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
+    <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+      <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
 </body>
 </html>
-
