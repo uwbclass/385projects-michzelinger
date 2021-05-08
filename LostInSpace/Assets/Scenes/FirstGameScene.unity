@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 817413838}
   - component: {fileID: 817413837}
   m_Layer: 0
-  m_Name: wormhole2
+  m_Name: Wormhole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

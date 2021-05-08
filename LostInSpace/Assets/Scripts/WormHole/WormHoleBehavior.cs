@@ -9,14 +9,18 @@ public class WormHoleBehavior : MonoBehaviour
    private float wormHoleCd = 2f;
    private float lastTriggered = -2f;
 
-   void OnTriggerEnter2D()
+   void OnTriggerEnter2D(Collider2D collision)
    {
-      if (Time.time > lastTriggered + wormHoleCd)
+      if (Time.time > lastTriggered + wormHoleCd && collision.gameObject.name == "placeHolderHero")
       {
          lastTriggered = Time.time;
          Debug.Log("active?");
          buttonCanvas.SetActive(true);
          Time.timeScale = 0;
       }
+   }
+   void Update()
+   {
+      transform.Rotate(0,0,50*Time.deltaTime);
    }
 }

@@ -32,7 +32,7 @@ public class HeroBehavior : MonoBehaviour
 
     void Fire()
     {
-        if(cooldown == 0 && Input.GetKey(KeyCode.Mouse0))
+        if(Time.timeScale != 0 && cooldown == 0 && Input.GetKey(KeyCode.Mouse0))
         {
             GameObject laser = Instantiate(laserPrefab, firePoint.position, transform.rotation);
             cooldown = projectileFiringPeriod;
