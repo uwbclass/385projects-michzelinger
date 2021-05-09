@@ -21,4 +21,9 @@ public class LaserBehavior : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D()
+    {
+        Destroy(gameObject);
+    }
 }
