@@ -11,7 +11,7 @@ public class WormHoleBehavior : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D collision)
    {
-      if (Time.time > lastTriggered + wormHoleCd && collision.gameObject.name == "placeHolderHero")
+      if (Time.time > lastTriggered + wormHoleCd && collision.gameObject.name == "Hero")
       {
          lastTriggered = Time.time;
          Debug.Log("active?");

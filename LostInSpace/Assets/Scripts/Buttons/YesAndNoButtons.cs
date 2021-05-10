@@ -10,6 +10,12 @@ public class YesAndNoButtons : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void PreviousScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Time.timeScale = 1;
+    }
+
     public void StayHere()
     {
         gameObject.SetActive(false);
