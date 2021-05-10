@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Regular_Enemy : MonoBehaviour
+public class Enemy_Prototype : MonoBehaviour
 {
     //FSM commands
-    private enum EnemyState
+    protected enum EnemyState
     {
         patrolState,
         attackState
@@ -16,20 +16,16 @@ public class Regular_Enemy : MonoBehaviour
     public GameObject pathPrefab;
     public float moveSpeed = 30f;
     public float aggroDistance = 40f;
-    private List<Transform> waypoints;
-    private int waypointIndex = 0;
-    private EnemyState state = EnemyState.patrolState;
-    private HeroBehavior player;
-    private float bulletTimeStamp;
-    public float bulletRate = 2.0f;
-    public GameObject Laser;
-
-    Vector2 currPos;
-    Vector2 playerPos;
-
     
+    protected List<Transform> waypoints;
+    protected int waypointIndex = 0;
+    protected EnemyState state = EnemyState.patrolState;
+    protected HeroBehavior player;
+    protected Vector2 currPos;
+    protected Vector2 playerPos;
 
-    private void UpdateFSM()
+
+    protected virtual void UpdateFSM()
     {
         switch (state)
         {
@@ -39,11 +35,10 @@ public class Regular_Enemy : MonoBehaviour
             case EnemyState.patrolState:
                 ServicePatrolState();
                 break;
-                
         }
     }
 
-    private void ServicePatrolState()
+    protected virtual void ServicePatrolState()
     {
         proximity();
 
@@ -66,22 +61,13 @@ public class Regular_Enemy : MonoBehaviour
 
     }
 
-    private void ServiceAttackState()
-    {   
-        proximity();
-
-        transform.up = Vector3.Normalize(playerPos - currPos);
-
-        if(Time.time >= bulletTimeStamp && state == EnemyState.attackState)
-        {
-            //Debug.Log("Bullet Time" + bulletTimeStamp);
-
-            GameObject b = Instantiate(Laser, transform.position, transform.rotation);
-
-            bulletTimeStamp = Time.time + bulletRate;
-        }
+    protected virtual void ServiceAttackState()
+    {
+        proximity();   
+        Debug.Log("Attack state not implemented");
     }
-    private void proximity()
+
+    protected virtual void proximity()
     {
         currPos = new Vector2(transform.position.x, transform.position.y);
         playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
@@ -97,7 +83,7 @@ public class Regular_Enemy : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         player = FindObjectOfType<HeroBehavior>();
         waypoints = new List<Transform>();
@@ -110,12 +96,12 @@ public class Regular_Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         UpdateFSM();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
             Destroy(gameObject);
