@@ -13,4 +13,14 @@ public class Suicide_Bomber : Enemy_Prototype
 
         transform.position = currPos;
     }
+
+    protected override void ServicePatrolState()
+    {
+        if(proximity(aggroDistance))
+        {
+            state = EnemyState.attackState;
+            return;
+        }
+        base.ServicePatrolState();
+    }
 }

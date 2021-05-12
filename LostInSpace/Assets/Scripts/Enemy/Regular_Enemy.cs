@@ -11,7 +11,11 @@ public class Regular_Enemy : Enemy_Prototype
 
     protected override void ServiceAttackState()
     {   
-        proximity();
+        if(!proximity(2 * aggroDistance))
+        {
+            state = EnemyState.patrolState;
+            return;
+        }
         transform.up = Vector3.Normalize(playerPos - currPos);
 
         if(Time.time >= bulletTimeStamp && state == EnemyState.attackState)
@@ -23,4 +27,16 @@ public class Regular_Enemy : Enemy_Prototype
             bulletTimeStamp = Time.time + bulletRate;
         }
     }
+
+    protected override void ServicePatrolState()
+    {
+        if(proximity(aggroDistance))
+        {
+            state = EnemyState.attackState;
+            return;
+        }
+        base.ServicePatrolState();
+    }
+
+
 }
