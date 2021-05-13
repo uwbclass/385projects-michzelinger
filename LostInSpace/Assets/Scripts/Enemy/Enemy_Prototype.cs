@@ -8,33 +8,33 @@ public class Enemy_Prototype : MonoBehaviour
     //FSM commands
     protected enum EnemyState
     {
-        aimingState,
         attackState,
         escapeState,      
         patrolState
     };
 
-    // The parent that contains all the waypoints
-    public GameObject pathPrefab;
-    protected float moveSpeed = 3.0f;
-    protected float aggroDistance = 4.0f;
-    // 
+    //----------------movement----------------
+    public GameObject pathPrefab; // The parent that contains all the waypoints
     protected List<Transform> waypoints;
-    protected int waypointIndex = 0;
-    protected EnemyState state = EnemyState.patrolState;
+    protected int waypointIndex = 0;    
+    protected float moveSpeed = 3.0f;
+    protected Rigidbody2D rb2d;    
+
+    //----------------player tracking----------------
     protected HeroBehavior player;
     protected Vector2 currPos;
     protected Vector2 playerPos;
-    protected Rigidbody2D rb2d;
+
+    //----------------state variables----------------
+    protected EnemyState state = EnemyState.patrolState;
+    protected float aggroDistance = 4.0f;
 
 
+    // FSM Core
     protected virtual void UpdateFSM()
     {
         switch (state)
         {
-            case EnemyState.aimingState:
-                ServiceAimingState();
-                break;
             case EnemyState.attackState:
                 ServiceAttackState();
                 break;
@@ -47,9 +47,9 @@ public class Enemy_Prototype : MonoBehaviour
         }
     }
 
-    // General functions
     protected virtual void ServicePatrolState()
     {
+        // Incomplete, need to implement state change logic in child class
         if (waypointIndex < waypoints.Count)
         {
             var targetPosition = waypoints[waypointIndex].position;
@@ -66,7 +66,6 @@ public class Enemy_Prototype : MonoBehaviour
         {
             waypointIndex = 0;
         }
-
     }
 
     protected virtual void ServiceAttackState()
@@ -74,38 +73,45 @@ public class Enemy_Prototype : MonoBehaviour
         Debug.Log("Attack state not implemented");
     }
 
-    // Sniper specific functions
+    // Sniper specific state function
     protected virtual void ServiceEscapeState() {}
-
-    protected virtual void ServiceAimingState() {}
 
     //If player is within "distance" from enemy
     protected virtual bool proximity(float distance)
     {
-        currPos = new Vector2(transform.position.x, transform.position.y);
-        playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-
         //Debug.Log(Vector2.Distance(playerPos, currPos));
         return (Vector2.Distance(playerPos, currPos) <= distance);
+    }
+
+    // Updates the currPos and playerPos for easy tracking
+    protected virtual void UpdatePositions()
+    {
+        currPos.Set(transform.position.x, transform.position.y);
+        playerPos.Set(player.transform.position.x, player.transform.position.y);
     }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        // Setting up state variables
         player = FindObjectOfType<HeroBehavior>();
         waypoints = new List<Transform>();
         rb2d = GetComponent<Rigidbody2D>();
+        currPos = new Vector2();
+        playerPos = new Vector2();
         foreach(Transform child in pathPrefab.transform)
         {
             waypoints.Add(child);
         }
 
+        // Start at initial waypoint
         transform.position = waypoints[0].position;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        UpdatePositions();
         UpdateFSM();
     }
 

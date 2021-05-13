@@ -10,23 +10,14 @@ public class Sniper : Enemy_Prototype
     
     private float timer = 0;
     protected float escapeDistance = 2f;
-    
-    // private float bulletTimeStamp;
-    // public float bulletRate = 3.0f;
     public LineRenderer lineRenderer;
-    LayerMask layerMask;
-
-    protected override void Start()
-    {
-        base.Start();
-        layerMask = LayerMask.GetMask("Player");
-    }
+    bool started = false;
 
     protected override void ServicePatrolState()
     {
         if(proximity(aggroDistance))
         {
-            state = EnemyState.aimingState;
+            state = EnemyState.attackState;
         }
         base.ServicePatrolState();
     }
@@ -36,18 +27,20 @@ public class Sniper : Enemy_Prototype
         if(proximity(aggroDistance * 1.5f))
         {
             rb2d.velocity = (currPos - playerPos).normalized * 5.0f;
+            transform.up = rb2d.velocity.normalized;
         }
         else
         {
             rb2d.velocity = Vector2.zero;
-            state = EnemyState.aimingState;
+            state = EnemyState.attackState;
         }
     }
 
-    protected override void ServiceAimingState()
+    protected override void ServiceAttackState()
     {
         if(proximity(escapeDistance))
         {
+            lineRenderer.enabled = false;
             timer = 0;
             state = EnemyState.escapeState;
             return;   
@@ -55,30 +48,40 @@ public class Sniper : Enemy_Prototype
 
         if(timer < aimTime)
         {
-            proximity(aggroDistance);
+            lineRenderer.enabled = true;
+            lineRenderer.endColor = new Color(1, 1 - timer / aimTime, 1 - timer / aimTime, 1);
+            lineRenderer.startColor = new Color(1, 1 - timer / aimTime, 1 - timer / aimTime, 1);
+            //Debug.Log(lineRenderer.endColor);
+            lineRenderer.SetPosition(0, currPos);
+            lineRenderer.SetPosition(1, playerPos);
             transform.up = (playerPos - currPos).normalized;
             timer += Time.deltaTime;
         }
         else
         {
-            StartCoroutine(FireRay());
-            timer = 0;
-            state = EnemyState.aimingState;
+            if(!started)
+                StartCoroutine(FireRay());
         }
     }
 
     IEnumerator FireRay()
     {
-    
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, player.transform.position);
-
-
-        lineRenderer.enabled = true;
-
-        yield return new WaitForSeconds(0.05f);
-
+        started = true;
+        // lineRenderer.endColor = Color.white;
         lineRenderer.enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
+        lineRenderer.SetPosition(1, transform.up * 1000);
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        lineRenderer.enabled = false;
+        lineRenderer.endWidth = 0.05f;
+        lineRenderer.startWidth = 0.05f;
+        yield return new WaitForSeconds(0.5f);
+        timer = 0;
+        started = false;
     }
 }
 
