@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8655037894510619113}
   - component: {fileID: 8655037894510619112}
   - component: {fileID: 8655037894510619126}
+  - component: {fileID: 7581862093089483320}
   m_Layer: 6
   m_Name: Hero
   m_TagString: Player
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77c686babdcf6a49abf490870a83624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   laserPrefab: {fileID: 8578718705816374981, guid: 3c40ce5651b847f4e8ebf4632306f90e, type: 3}
   projectileFiringPeriod: 0.1
   firePoint: {fileID: 8655037894577662747}
@@ -168,6 +169,20 @@ PolygonCollider2D:
       - {x: 0.19, y: -0.325}
       - {x: 0.32, y: -0.355}
       - {x: 0.39, y: -0.36499998}
+--- !u!114 &7581862093089483320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655037894510619117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6463c94dd8d4bf44a7aeecf9897931c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 500
+  healthIncrement: 10
 --- !u!1 &8655037894577662746
 GameObject:
   m_ObjectHideFlags: 0

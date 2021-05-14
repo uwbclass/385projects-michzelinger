@@ -28,6 +28,9 @@ public class Enemy_Prototype : MonoBehaviour
     //----------------state variables----------------
     protected EnemyState state = EnemyState.patrolState;
     protected float aggroDistance = 4.0f;
+    protected Health myHealth;
+
+    //LayerMask layerMask;
 
 
     // FSM Core
@@ -94,6 +97,7 @@ public class Enemy_Prototype : MonoBehaviour
     protected virtual void Start()
     {
         // Setting up state variables
+        myHealth = GetComponent<Health>();
         player = FindObjectOfType<HeroBehavior>();
         waypoints = new List<Transform>();
         rb2d = GetComponent<Rigidbody2D>();
@@ -115,9 +119,21 @@ public class Enemy_Prototype : MonoBehaviour
         UpdateFSM();
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.tag == "Player")
-            Destroy(gameObject);
+        if(collider.gameObject.layer == 7)
+        {
+            
+            myHealth.decreaseHealth();
+            if(myHealth.isDead())
+            {
+                Destroy(gameObject);
+            }
+        }
     }
+
+    // protected virtual void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     Debug.Log("Collision");
+    // }
 }

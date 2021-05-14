@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Game/MainMenu.unity
     guid: 73559abe54cbe2749b3e1a6548cd97aa
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
+    path: Assets/Scenes/ConceptualPrototype/RegularEnemy.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/FirstLevel.unity
+    path: Assets/Scenes/Game/FirstLevel.unity
     guid: 722a774fb84b5b143ba2371cff937ccf
   - enabled: 1
-    path: Assets/Scenes/SecondLevel.unity
+    path: Assets/Scenes/Game/SecondLevel.unity
     guid: e8d5c486a9a90d54787e965fc2f53c19
   m_configObjects: {}
