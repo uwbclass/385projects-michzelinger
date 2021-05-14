@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WormholesController : MonoBehaviour
 {
+    //public GameObject followObject;
+    //public Vector2 followOffset;
+    //private Vector2 threshold;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +19,5 @@ public class WormholesController : MonoBehaviour
     {
         
     }
+
 }

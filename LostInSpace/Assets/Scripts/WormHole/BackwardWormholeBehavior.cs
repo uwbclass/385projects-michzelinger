@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class WormHoleBehavior : MonoBehaviour
+public class BackwardWormholeBehavior : MonoBehaviour
 {
-   void OnTriggerEnter2D(Collider2D collision)
+     void OnTriggerEnter2D(Collider2D collision)
    {
       if (collision.gameObject.name == "Hero")
       {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
       }
    }
    void Update()
