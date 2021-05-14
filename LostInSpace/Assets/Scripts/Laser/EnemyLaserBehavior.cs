@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBehavior : MonoBehaviour
+public class EnemyLaserBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public float laserSpeed;
@@ -23,10 +23,7 @@ public class LaserBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D  collider)
-    {
-        if(collider.tag != "Shield")
-        {
-            Destroy(gameObject);
-        }
+    { 
+        Destroy(gameObject);
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8578718705816374978}
   - component: {fileID: 8578718705816374979}
-  - component: {fileID: -2972579009945898362}
   - component: {fileID: 7543315582802628643}
+  - component: {fileID: -2176361007493051709}
   m_Layer: 9
   m_Name: 1laserRed01 1
   m_TagString: Untagged
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2972579009945898362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8578718705816374981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11362e5d669ddbf4b905a73a08d6cc9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserSpeed: 4
 --- !u!70 &7543315582802628643
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -113,3 +100,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.09, y: 0.54}
   m_Direction: 0
+--- !u!114 &-2176361007493051709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578718705816374981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fed62ffd1d2984b9af08736cfaa4c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserSpeed: 4

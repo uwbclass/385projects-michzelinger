@@ -18,6 +18,7 @@ public class HeroBehavior : MonoBehaviour
     
     [Header("UI")]
     Vector3 mouse;
+    public GameObject shield;
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +65,13 @@ public class HeroBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.layer == 9)
+        if(shield.activeInHierarchy == true && (collider.gameObject.layer == 9 || collider.gameObject.layer == 8))
         {
+            shield.SetActive(false);
+        }
+        else if(collider.gameObject.layer == 9)
+        {
+            Debug.Log("Health reduced");
             myHealth.decreaseHealth();
             // if(myHealth.isDead())
             // {
