@@ -7,6 +7,7 @@ public class HeroBehavior : MonoBehaviour
     [Header("Player")]
     [SerializeField] float moveSpeed = 5f;
     Rigidbody2D rb2d;
+    Health myHealth;
 
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
@@ -22,6 +23,7 @@ public class HeroBehavior : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        myHealth = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -58,5 +60,17 @@ public class HeroBehavior : MonoBehaviour
     {
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         rb2d.MovePosition(rb2d.position + input * Time.fixedDeltaTime * moveSpeed);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.layer == 9)
+        {
+            myHealth.decreaseHealth();
+            // if(myHealth.isDead())
+            // {
+            //     Destroy(gameObject);
+            // }
+        }
     }
 }
