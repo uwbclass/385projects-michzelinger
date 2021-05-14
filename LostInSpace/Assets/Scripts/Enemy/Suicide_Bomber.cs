@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Suicide_Bomber : Enemy_Prototype
 {
+    
     protected override void ServiceAttackState()
     {
         playerPos = new Vector2(player.transform.position.x, player.transform.position.y);

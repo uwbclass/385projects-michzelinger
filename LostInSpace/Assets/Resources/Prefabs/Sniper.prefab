@@ -137,6 +137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPrefab: {fileID: 0}
+  Shield: {fileID: 4238982182298553341, guid: 22fa4e5747a638e4db3ece819b91734c, type: 3}
+  spawnOdds: 0
+  randomOdds: 0
   lineRenderer: {fileID: 9052980586995222831}
 --- !u!114 &304931302
 MonoBehaviour:

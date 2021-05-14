@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random=UnityEngine.Random;
 public class Enemy_Prototype : MonoBehaviour
 {
     //FSM commands
@@ -29,6 +29,11 @@ public class Enemy_Prototype : MonoBehaviour
     protected EnemyState state = EnemyState.patrolState;
     protected float aggroDistance = 4.0f;
     protected Health myHealth;
+    
+    //----------------powerup drops----------------
+    [SerializeField] GameObject Shield;
+    public int spawnOdds;
+    public int randomOdds;
 
     //LayerMask layerMask;
 
@@ -103,6 +108,8 @@ public class Enemy_Prototype : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         currPos = new Vector2();
         playerPos = new Vector2();
+        spawnOdds = 5;
+        randomOdds = Random.Range(1,6);
         foreach(Transform child in pathPrefab.transform)
         {
             waypoints.Add(child);
@@ -127,6 +134,11 @@ public class Enemy_Prototype : MonoBehaviour
             myHealth.decreaseHealth();
             if(myHealth.isDead())
             {
+                if(randomOdds == spawnOdds)
+                {
+                    GameObject shield = Instantiate(Shield, transform.position, new Quaternion(0f, 0f, 0f, 0f));
+                   // shield.transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y); //doesn't work right now.
+                }
                 Destroy(gameObject);
             }
         }

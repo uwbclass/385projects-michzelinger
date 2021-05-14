@@ -73,10 +73,6 @@ public class HeroBehavior : MonoBehaviour
         {
             Debug.Log("Health reduced");
             myHealth.decreaseHealth();
-            // if(myHealth.isDead())
-            // {
-            //     Destroy(gameObject);
-            // }
         }
     }
 }

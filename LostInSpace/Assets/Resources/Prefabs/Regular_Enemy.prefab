@@ -136,6 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPrefab: {fileID: 0}
+  Shield: {fileID: 4238982182298553341, guid: 22fa4e5747a638e4db3ece819b91734c, type: 3}
+  spawnOdds: 0
+  randomOdds: 0
   bulletRate: 0.5
   Laser: {fileID: 8578718705816374981, guid: 98f2a506dc33d6749ab2c0f2ec35a638, type: 3}
 --- !u!114 &1280380029

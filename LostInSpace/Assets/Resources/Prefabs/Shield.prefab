@@ -113,3 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShield: 1
+  animPos: 1
+  posAmplitude: {x: 1, y: 0.2, z: 1}
+  posSpeed: {x: 1, y: 1, z: 1}
