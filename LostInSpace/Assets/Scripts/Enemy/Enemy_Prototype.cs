@@ -33,6 +33,7 @@ public class Enemy_Prototype : MonoBehaviour
     //----------------powerup drops----------------
     [SerializeField] GameObject Shield;
     [SerializeField] GameObject Speed;
+    [SerializeField] GameObject Health;
     public int whatItem;
     public int spawnOdds;
     public int randomOdds;
@@ -112,7 +113,7 @@ public class Enemy_Prototype : MonoBehaviour
         playerPos = new Vector2();
         spawnOdds = 3;
         randomOdds = Random.Range(1,4);
-        whatItem = Random.Range(0,2);
+        whatItem = Random.Range(0,3);
         foreach(Transform child in pathPrefab.transform)
         {
             waypoints.Add(child);
@@ -146,6 +147,10 @@ public class Enemy_Prototype : MonoBehaviour
                     else if(whatItem == 1)
                     {
                         GameObject speed = Instantiate(Speed, transform.position, new Quaternion(0f, 0f, 0f, 0f));
+                    }
+                    else if(whatItem == 2)
+                    {
+                        GameObject health = Instantiate(Health, transform.position, new Quaternion(0f, 0f, 0f, 0f));
                     }
                     
                 }

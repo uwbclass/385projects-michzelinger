@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int health;
+    public int health;
     public int MaxHealth = 100;
     public int healthIncrement = 10;
     
@@ -23,6 +23,18 @@ public class Health : MonoBehaviour
     public void SetHealth(int health)
     {
         this.health = health < 0 ? 0 : (health > MaxHealth ? MaxHealth : health);
+    }
+
+    public void increaseHealth()
+    {
+        if(this.health + (healthIncrement * 2) > MaxHealth)
+        {
+            this.health = MaxHealth;
+        }
+        else
+        {
+            this.health += healthIncrement * 2;
+        }
     }
 
     public void decreaseHealth()

@@ -7,7 +7,8 @@ public class HeroBehavior : MonoBehaviour
     [Header("Player")]
     [SerializeField] float moveSpeed = 5f;
     Rigidbody2D rb2d;
-    Health myHealth;
+    public Health myHealth;
+    public HealthBar healthBar;
 
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
@@ -28,6 +29,7 @@ public class HeroBehavior : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         myHealth = GetComponent<Health>();
+        healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
         isSpeed = false;
     }
 
@@ -89,6 +91,7 @@ public class HeroBehavior : MonoBehaviour
         {
             Debug.Log("Health reduced");
             myHealth.decreaseHealth();
+            healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
         }
     }
 }

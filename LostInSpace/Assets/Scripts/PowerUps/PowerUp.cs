@@ -6,6 +6,7 @@ public class PowerUp : MonoBehaviour
 {
    public bool isShield;
    public bool isSpeed;
+   public bool isHealth;
    public bool animPos = true;
    public Vector3 posAmplitude = Vector3.one;
    public Vector3 posSpeed = Vector3.one;
@@ -57,6 +58,11 @@ public class PowerUp : MonoBehaviour
          {
              collider.GetComponent<HeroBehavior>().EnableSpeedBoost();
              Destroy(gameObject);
+         }
+         else if(isHealth)
+         {
+            collider.GetComponent<HeroBehavior>().myHealth.increaseHealth();
+            Destroy(gameObject);
          }
       }
    }
