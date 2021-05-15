@@ -19,18 +19,34 @@ public class HeroBehavior : MonoBehaviour
     [Header("UI")]
     Vector3 mouse;
     public GameObject shield;
+    public bool isSpeed;
+    public float speedBoostDuration = 3f;
+    public float speedBoostStopTime;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         myHealth = GetComponent<Health>();
+        isSpeed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isSpeed && Time.time >= speedBoostStopTime)
+        {  
+            moveSpeed = 3f;
+            isSpeed = false;
+        }
         Fire();
+    }
+
+    public void EnableSpeedBoost()
+    {
+        speedBoostStopTime = Time.time + speedBoostDuration;
+        moveSpeed++;
+        isSpeed = true;
     }
 
     void Fire()
