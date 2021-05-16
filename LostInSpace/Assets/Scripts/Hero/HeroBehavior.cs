@@ -90,8 +90,13 @@ public class HeroBehavior : MonoBehaviour
         else if(collider.gameObject.layer == 9)
         {
             Debug.Log("Health reduced");
-            myHealth.decreaseHealth();
-            healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+            loseHealth();
         }
+    }
+
+    public void loseHealth()
+    {
+        myHealth.decreaseHealth();
+        healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
     }
 }

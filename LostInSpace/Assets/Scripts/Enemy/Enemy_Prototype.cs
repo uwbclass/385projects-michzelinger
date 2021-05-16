@@ -128,11 +128,12 @@ public class Enemy_Prototype : MonoBehaviour
     {
         UpdatePositions();
         UpdateFSM();
+        rb2d.angularVelocity = 0f;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collider.gameObject.layer == 7)
+        if(collision.gameObject.layer == 7)
         {
             
             myHealth.decreaseHealth();
@@ -156,11 +157,10 @@ public class Enemy_Prototype : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
+        }   
+        else if(collision.gameObject.layer == 6)
+        {
+            Destroy(gameObject);
         }
     }
-
-    // protected virtual void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     Debug.Log("Collision");
-    // }
 }

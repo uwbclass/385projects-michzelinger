@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  MaxHealth: 500
+  MaxHealth: 100
   healthIncrement: 10
 --- !u!1 &499600684699789356
 GameObject:
