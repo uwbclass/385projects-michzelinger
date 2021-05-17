@@ -94,9 +94,28 @@ public class HeroBehavior : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 11)
+        {
+            if(shield.activeInHierarchy == true)
+            {
+                shield.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Health reduced");
+                loseHealth();
+            }
+        }
+    }
+
+
     public void loseHealth()
     {
         myHealth.decreaseHealth();
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
     }
+
+    
 }

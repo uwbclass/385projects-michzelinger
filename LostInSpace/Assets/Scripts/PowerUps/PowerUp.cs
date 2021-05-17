@@ -49,19 +49,21 @@ public class PowerUp : MonoBehaviour
    {
       if (collider.tag == "Player")
       {
+         HeroBehavior player = collider.GetComponent<HeroBehavior>();
          if (isShield)
          {
-            collider.GetComponent<HeroBehavior>().shield.SetActive(true);
+            player.shield.SetActive(true);
             Destroy(gameObject);
          }
          else if(isSpeed)
          {
-             collider.GetComponent<HeroBehavior>().EnableSpeedBoost();
+             player.EnableSpeedBoost();
              Destroy(gameObject);
          }
          else if(isHealth)
          {
-            collider.GetComponent<HeroBehavior>().myHealth.increaseHealth();
+            player.myHealth.increaseHealth();
+            player.healthBar.SetHealth(player.myHealth.health, player.myHealth.MaxHealth);
             Destroy(gameObject);
          }
       }
