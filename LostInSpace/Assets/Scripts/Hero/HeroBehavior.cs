@@ -9,6 +9,9 @@ public class HeroBehavior : MonoBehaviour
     Rigidbody2D rb2d;
     public Health myHealth;
     public HealthBar healthBar;
+    public float invulnerableTime = 3f;
+    SpriteRenderer spriteRenderer;
+    public GameObject trailEffect;
 
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
@@ -31,6 +34,8 @@ public class HeroBehavior : MonoBehaviour
         myHealth = GetComponent<Health>();
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
         isSpeed = false;
+
+        StartCoroutine(Invulnerable());
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class HeroBehavior : MonoBehaviour
         {  
             moveSpeed = 3f;
             isSpeed = false;
+            trailEffect.SetActive(false);
         }
         Fire();
     }
@@ -48,6 +54,7 @@ public class HeroBehavior : MonoBehaviour
     {
         speedBoostStopTime = Time.time + speedBoostDuration;
         moveSpeed++;
+        trailEffect.SetActive(true);
         isSpeed = true;
     }
 
@@ -106,15 +113,32 @@ public class HeroBehavior : MonoBehaviour
             {
                 Debug.Log("Health reduced");
                 loseHealth();
+                StartCoroutine(Invulnerable());
             }
         }
     }
-
 
     public void loseHealth()
     {
         myHealth.decreaseHealth();
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+    }
+
+    IEnumerator Invulnerable()
+    {
+        float endTime = Time.time + invulnerableTime;
+
+        gameObject.GetComponent<Collider2D>().enabled = false;
+
+        while(Time.time < endTime)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+            yield return new WaitForSeconds(0.05f);
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        gameObject.GetComponent<Collider2D>().enabled = true;
     }
 
     

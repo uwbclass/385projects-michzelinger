@@ -5,10 +5,9 @@ using UnityEngine;
 public class AsteroidController : MonoBehaviour
 {
     public GameObject asteroidPrefab;
-    int asteroidCount;
-    public float maxVerticalSpread = 5.0f;
-    public float leftEdge = -50.0f;
-    public int maxAsteroids = 100;
+    public float maxVerticalSpread = 7.0f;
+    public float leftEdge = -35.0f;
+    public int maxAsteroids = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -19,22 +18,15 @@ public class AsteroidController : MonoBehaviour
         }   
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDrawGizmos()
     {
-        if(asteroidCount < maxAsteroids)
-        {
-            Instantiate(asteroidPrefab, transform.TransformPoint(0.0f, Random.Range(-maxVerticalSpread, maxVerticalSpread), 0.0f), Quaternion.identity);
-        }
-    }
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(
+            new Vector2(transform.position.x, transform.position.y - maxVerticalSpread), 
+            new Vector2(transform.position.x, transform.position.y + maxVerticalSpread));
 
-    public void IncrementAsteroidCount()
-    {
-        asteroidCount++;
-    }
-
-    public void DecrementAsteroidCount()
-    {
-        asteroidCount--;
+        Gizmos.DrawLine(
+            new Vector2(transform.position.x + leftEdge, transform.position.y - maxVerticalSpread), 
+            new Vector2(transform.position.x + leftEdge, transform.position.y + maxVerticalSpread));
     }
 }
