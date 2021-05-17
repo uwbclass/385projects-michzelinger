@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 1361357264}
-  followOffset: {x: 5, y: 2}
+  followOffset: {x: 0, y: 0}
   speed: 3
 --- !u!20 &519420031
 Camera:
@@ -961,7 +961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3696368540110581236, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3696368540110581236, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1140,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5994887838001862267, guid: 319f539d4894dc8478e380265a751601, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5994887838001862267, guid: 319f539d4894dc8478e380265a751601, type: 3}
       propertyPath: m_LocalPosition.y
