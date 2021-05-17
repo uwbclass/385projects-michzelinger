@@ -902,7 +902,7 @@ MonoBehaviour:
   moveSpeed: 3
   myHealth: {fileID: 0}
   healthBar: {fileID: 624954388}
-  invulnerableTime: 3
+  invulnerableTime: 1.5
   trailEffect: {fileID: 1364310881}
   collider2d: {fileID: 499600684273203250}
   rb2d: {fileID: 499600684273203248}
