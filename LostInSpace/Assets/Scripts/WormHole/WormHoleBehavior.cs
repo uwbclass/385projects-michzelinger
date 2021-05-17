@@ -21,8 +21,8 @@ public class WormHoleBehavior : MonoBehaviour
 
    IEnumerator LoadScene()
    {
-      transitionAnim.SetTrigger("end");
-      yield return new WaitForSeconds(0.75f);
+       transitionAnim.SetTrigger("end");
+      yield return new WaitForSeconds(1.5f);
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
 }
