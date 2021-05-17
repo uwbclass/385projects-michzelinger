@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 5819666612040124169, guid: bd7e7ffeb59ac164fa9febb98452469b, type: 3}
+  maxVerticalSpread: 5
+  leftEdge: -35
+  maxAsteroids: 20

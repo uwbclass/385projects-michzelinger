@@ -5,16 +5,24 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class WormHoleBehavior : MonoBehaviour
 {
-   
+   public Animator transitionAnim;
+
    void OnTriggerEnter2D(Collider2D collision)
    {
       if (collision.gameObject.name == "Hero")
       {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+         StartCoroutine(LoadScene());
       }
    }
-   void Update()
+   // void Update()
+   // {
+   //    transform.Rotate(0,0,50*Time.deltaTime);
+   // }
+
+   IEnumerator LoadScene()
    {
-      transform.Rotate(0,0,50*Time.deltaTime);
+       transitionAnim.SetTrigger("end");
+      yield return new WaitForSeconds(1.5f);
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
 }
