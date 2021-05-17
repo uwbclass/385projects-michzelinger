@@ -6,6 +6,7 @@ public class LaserBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public float laserSpeed;
+    public GameObject hitParticle;
     void Start()
     {
         Destroy(gameObject, 5);
@@ -26,6 +27,8 @@ public class LaserBehavior : MonoBehaviour
     {
         if(collider.tag != "Shield")
         {
+            GameObject effect = Instantiate(hitParticle, transform.position, Quaternion.identity);
+            Destroy(effect, 0.1f);
             Destroy(gameObject);
         }
     }
