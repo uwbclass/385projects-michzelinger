@@ -8,15 +8,6 @@ public class HealthBar : MonoBehaviour
    public Slider Slider;
    public Vector3 Offset;
 
-   Quaternion rotation;
-   void Awake()
-   {
-      rotation = transform.rotation;
-   }
-   void LateUpdate()
-   {
-      transform.rotation = rotation;
-   }
    public void SetHealth(float health, float maxHealth)
    {
       Slider.gameObject.SetActive(health < maxHealth);
@@ -26,7 +17,7 @@ public class HealthBar : MonoBehaviour
    }
 
    // Update is called once per frame
-   void Update()
+   void FixedUpdate()
    {
       Slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
    }

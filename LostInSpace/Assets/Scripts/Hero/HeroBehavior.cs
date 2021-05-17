@@ -6,12 +6,15 @@ public class HeroBehavior : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] float moveSpeed = 5f;
-    Rigidbody2D rb2d;
     public Health myHealth;
     public HealthBar healthBar;
-    public float invulnerableTime = 3f;
+    public float invulnerableTime = 1f;
     SpriteRenderer spriteRenderer;
     public GameObject trailEffect;
+
+    public Collider2D collider2d;
+    public Rigidbody2D rb2d;
+
 
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
@@ -30,10 +33,11 @@ public class HeroBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
         myHealth = GetComponent<Health>();
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
         isSpeed = false;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(Invulnerable());
     }
@@ -128,17 +132,17 @@ public class HeroBehavior : MonoBehaviour
     {
         float endTime = Time.time + invulnerableTime;
 
-        gameObject.GetComponent<Collider2D>().enabled = false;
+        collider2d.enabled = false;
 
         while(Time.time < endTime)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+            spriteRenderer.color = new Color(1f, 1f, 1f, 0.2f);
             yield return new WaitForSeconds(0.05f);
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            spriteRenderer.color = Color.white;
             yield return new WaitForSeconds(0.05f);
         }
 
-        gameObject.GetComponent<Collider2D>().enabled = true;
+        collider2d.enabled = true;
     }
 
     

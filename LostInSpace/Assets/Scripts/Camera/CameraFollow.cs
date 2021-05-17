@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
    public GameObject followObject;
-    public Vector2 followOffset;
+    private Vector2 followOffset;
     public float speed = 3f;
     private Vector2 threshold;
     private Rigidbody2D rb;
@@ -41,9 +41,9 @@ public class CameraFollow : MonoBehaviour
         t.y -= followOffset.y;
         return t;
     }
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.blue;
-        Vector2 border = calculateThreshold();
-        Gizmos.DrawWireCube(transform.position, new Vector3(border.x * 2, border.y * 2, 1));
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.color = Color.blue;
+    //     Vector2 border = calculateThreshold();
+    //     Gizmos.DrawWireCube(transform.position, new Vector3(border.x * 2, border.y * 2, 1));
+    // }
 }

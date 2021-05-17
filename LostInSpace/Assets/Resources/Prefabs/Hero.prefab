@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 624954386}
   - component: {fileID: 624954385}
   - component: {fileID: 624954388}
-  - component: {fileID: 624954389}
   m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
@@ -116,27 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slider: {fileID: 1346268407}
   Offset: {x: 0.07, y: 0.75, z: 0}
---- !u!50 &624954389
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624954383}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1332314045
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +904,8 @@ MonoBehaviour:
   healthBar: {fileID: 624954388}
   invulnerableTime: 3
   trailEffect: {fileID: 1364310881}
+  collider2d: {fileID: 499600684273203250}
+  rb2d: {fileID: 499600684273203248}
   laserPrefab: {fileID: 8578718705816374981, guid: 3c40ce5651b847f4e8ebf4632306f90e, type: 3}
   projectileFiringPeriod: 0.1
   firePoint: {fileID: 499600683803204599}
