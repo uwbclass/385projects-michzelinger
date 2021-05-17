@@ -83,7 +83,7 @@ public class HeroBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(shield.activeInHierarchy == true && (collider.gameObject.layer == 9 || collider.gameObject.layer == 8))
+        if(shield.activeInHierarchy == true && collider.gameObject.layer == 9)
         {
             shield.SetActive(false);
         }
@@ -96,7 +96,7 @@ public class HeroBehavior : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 11)
+        if(collision.gameObject.layer == 11|| collision.gameObject.layer == 8)
         {
             if(shield.activeInHierarchy == true)
             {
