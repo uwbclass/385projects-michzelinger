@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 1292071692}
-  followOffset: {x: 0, y: 0}
   speed: 3
 --- !u!81 &4753984
 AudioListener:
@@ -424,11 +423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1456541160203443061, guid: ce5584aaf9af89f49b40020456716b64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6314273
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1456541160203443061, guid: ce5584aaf9af89f49b40020456716b64, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1486197
+      value: 1.93
       objectReference: {fileID: 0}
     - target: {fileID: 1456541160203443061, guid: ce5584aaf9af89f49b40020456716b64, type: 3}
       propertyPath: m_LocalPosition.z
@@ -856,11 +855,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4238982182298553337, guid: 22fa4e5747a638e4db3ece819b91734c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31226122
+      value: -4.02
       objectReference: {fileID: 0}
     - target: {fileID: 4238982182298553337, guid: 22fa4e5747a638e4db3ece819b91734c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8192053
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: 4238982182298553337, guid: 22fa4e5747a638e4db3ece819b91734c, type: 3}
       propertyPath: m_LocalPosition.z
