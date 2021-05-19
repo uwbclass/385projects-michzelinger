@@ -141,10 +141,9 @@ public class Enemy_Prototype : MonoBehaviour
 
    private void Die()
    {
-      
-
       GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-      Destroy(effect, 0.4f); 
+      Destroy(effect, 0.4f);
+      SpwanItem(); 
       Destroy(gameObject);
    }
 
