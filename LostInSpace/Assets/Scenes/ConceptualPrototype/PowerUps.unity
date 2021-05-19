@@ -532,14 +532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1755434160, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755434160, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 499600684273203252, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
       propertyPath: m_Name
       value: Hero
