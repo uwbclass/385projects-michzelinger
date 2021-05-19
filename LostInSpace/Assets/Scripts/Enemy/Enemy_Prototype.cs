@@ -28,6 +28,9 @@ public class Enemy_Prototype : MonoBehaviour
    //----------------state variables----------------
    protected EnemyState state = EnemyState.patrolState;
    protected float aggroDistance = 4.0f;
+   protected const float aggroTime = 3.0f;
+   protected float deAggroTime;
+   protected bool timeAggroed = false;
    protected Health myHealth;
 
    //----------------powerup drops----------------
@@ -78,6 +81,8 @@ public class Enemy_Prototype : MonoBehaviour
       {
          waypointIndex = 0;
       }
+
+
    }
 
    protected virtual void ServiceAttackState()
@@ -115,9 +120,6 @@ public class Enemy_Prototype : MonoBehaviour
 
       spriteRenderer = GetComponent<SpriteRenderer>();
       cachedMaterial = spriteRenderer.material;
-
-      // Initializing odds for item drops
-
 
       // Adding each waypoints into the list of destinations
       foreach (Transform child in pathPrefab.transform)
@@ -188,6 +190,14 @@ public class Enemy_Prototype : MonoBehaviour
       if (collider.gameObject.layer == 7) // Player laser
       {
          StartCoroutine(TurnWhiteWhenHit());
+
+         if(state == EnemyState.patrolState)
+         {
+            timeAggroed = true;
+            state = EnemyState.attackState;
+            deAggroTime = Time.time + aggroTime;
+         }
+
          myHealth.decreaseHealth();
          if (myHealth.isDead())
          {

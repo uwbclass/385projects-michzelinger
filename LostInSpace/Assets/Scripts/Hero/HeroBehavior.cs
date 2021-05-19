@@ -124,6 +124,7 @@ public class HeroBehavior : MonoBehaviour
 
     public void loseHealth()
     {
+        Camera.main.gameObject.GetComponent<CameraShake>().CallShake();
         myHealth.decreaseHealth();
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
     }

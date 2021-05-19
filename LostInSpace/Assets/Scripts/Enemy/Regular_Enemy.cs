@@ -11,11 +11,13 @@ public class Regular_Enemy : Enemy_Prototype
 
     protected override void ServiceAttackState()
     {   
-        if(!proximity(2 * aggroDistance))
+        if(!proximity(2 * aggroDistance) && Time.time > deAggroTime)
         {
+            timeAggroed = false;
             state = EnemyState.patrolState;
             return;
         }
+        
         transform.up = Vector3.Normalize(playerPos - currPos);
 
         if(Time.time >= bulletTimeStamp && state == EnemyState.attackState)

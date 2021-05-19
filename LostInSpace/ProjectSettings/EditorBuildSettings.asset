@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/MainMenu.unity
     guid: 73559abe54cbe2749b3e1a6548cd97aa
   - enabled: 1
-    path: Assets/Scenes/ConceptualPrototype/RegularEnemy.unity
-    guid: d2c1aa5c17c38ea439b7cb78dc58d55e
+    path: Assets/Scenes/Game/TutorialScene 1.unity
+    guid: 52b3329623890154cba3e9cf627630c8
   - enabled: 1
-    path: Assets/Scenes/ConceptualPrototype/Bomber.unity
-    guid: 3abf4bb454715614aaf8b3fe8cdaef64
+    path: Assets/Scenes/Game/FirstLevel.unity
+    guid: 722a774fb84b5b143ba2371cff937ccf
   - enabled: 1
-    path: Assets/Scenes/ConceptualPrototype/Sniper.unity
-    guid: 59c0270018aef884e84ba3f5bea45eb5
+    path: Assets/Scenes/Game/SecondLevel.unity
+    guid: e8d5c486a9a90d54787e965fc2f53c19
   - enabled: 1
-    path: Assets/Scenes/ConceptualPrototype/Asteroid.unity
-    guid: b0e5d3566b098f6458743832f92fb293
+    path: Assets/Scenes/Game/ThirdLevel.unity
+    guid: 71d6845fbdaa0774796912807d266991
   - enabled: 1
-    path: Assets/Scenes/ConceptualPrototype/PowerUps.unity
-    guid: df1ec9f4ea066fa45ba0b421301178e5
+    path: Assets/Scenes/Game/ForthLevel.unity
+    guid: 791caf3924afa6f46b93331b4c787134
   m_configObjects: {}

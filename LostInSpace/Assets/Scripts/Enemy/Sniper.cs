@@ -44,6 +44,15 @@ public class Sniper : Enemy_Prototype
 
     protected override void ServiceAttackState()
     {
+        if(timeAggroed && Time.time > deAggroTime)
+        {
+            timeAggroed = false;
+            lineRenderer.enabled = false;
+            timer = 0;
+            state = EnemyState.patrolState;
+            return;
+        }
+
         if(proximity(escapeDistance))
         {
             lineRenderer.enabled = false;
