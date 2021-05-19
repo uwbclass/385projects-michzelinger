@@ -391,7 +391,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -4.944, y: 0}
   m_SizeDelta: {x: 0.112, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 499600684699789354}
   - component: {fileID: 499600684699789357}
   - component: {fileID: 499600684699789352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shield
   m_TagString: Shield
   m_Icon: {fileID: 0}

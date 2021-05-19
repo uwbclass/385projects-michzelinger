@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4238982182298553338}
   - component: {fileID: 4238982182298553339}
   - component: {fileID: 4238982182298553340}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4234f95bf4464b914dcdc0961e18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isShield: 1
+  type: 0
   animPos: 1
   posAmplitude: {x: 1, y: 0.2, z: 1}
   posSpeed: {x: 1, y: 1, z: 1}

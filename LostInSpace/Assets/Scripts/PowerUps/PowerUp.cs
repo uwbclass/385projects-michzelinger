@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-   public bool isShield;
-   public bool isSpeed;
-   public bool isHealth;
+   public enum powerUpType
+   {
+      shield,
+      speed,
+      health
+   }
+
+   public powerUpType type;
    public bool animPos = true;
    public Vector3 posAmplitude = Vector3.one;
    public Vector3 posSpeed = Vector3.one;
@@ -47,25 +52,26 @@ public class PowerUp : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D collider)
    {
-      if (collider.tag == "Player")
+      if(collider.gameObject.layer == 6) // player layer
       {
          HeroBehavior player = collider.GetComponent<HeroBehavior>();
-         if (isShield)
+         switch(type)
          {
-            player.shield.SetActive(true);
-            Destroy(gameObject);
+            case powerUpType.shield:
+               player.shield.SetActive(true);
+               break;
+            case powerUpType.speed:
+               player.EnableSpeedBoost();
+               break;
+            case powerUpType.health:
+               player.myHealth.increaseHealth();
+               player.healthBar.SetHealth(player.myHealth.health, player.myHealth.MaxHealth);
+               break;
+            default:
+               break;
          }
-         else if(isSpeed)
-         {
-             player.EnableSpeedBoost();
-             Destroy(gameObject);
-         }
-         else if(isHealth)
-         {
-            player.myHealth.increaseHealth();
-            player.healthBar.SetHealth(player.myHealth.health, player.myHealth.MaxHealth);
-            Destroy(gameObject);
-         }
+
+         Destroy(gameObject);
       }
    }
 }

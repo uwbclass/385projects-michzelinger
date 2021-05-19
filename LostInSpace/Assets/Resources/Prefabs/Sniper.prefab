@@ -144,6 +144,7 @@ MonoBehaviour:
   spawnOdds: 0
   randomOdds: 0
   hitEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
+  whiteMaterial: {fileID: 2100000, guid: 6a0fbf6a6bd009a479e62982992426df, type: 3}
   lineRenderer: {fileID: 9052980586995222831}
 --- !u!114 &304931302
 MonoBehaviour:

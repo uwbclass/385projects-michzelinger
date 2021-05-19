@@ -34,12 +34,12 @@ public class Enemy_Prototype : MonoBehaviour
    [SerializeField] GameObject Shield;
    [SerializeField] GameObject Speed;
    [SerializeField] GameObject Health;
-   public int whatItem;
-   public int spawnOdds;
-   public int randomOdds;
 
-   //----------------death animation----------------
+   //----------------animation----------------
    [SerializeField] GameObject hitEffect;
+   public Material whiteMaterial;
+   protected SpriteRenderer spriteRenderer;
+   protected Material cachedMaterial;
 
 
    // FSM Core
@@ -112,9 +112,14 @@ public class Enemy_Prototype : MonoBehaviour
       rb2d = GetComponent<Rigidbody2D>();
       currPos = new Vector2();
       playerPos = new Vector2();
-      spawnOdds = 3;
-      randomOdds = Random.Range(1, 4);
-      whatItem = Random.Range(0, 3);
+
+      spriteRenderer = GetComponent<SpriteRenderer>();
+      cachedMaterial = spriteRenderer.material;
+
+      // Initializing odds for item drops
+
+
+      // Adding each waypoints into the list of destinations
       foreach (Transform child in pathPrefab.transform)
       {
          waypoints.Add(child);
@@ -134,6 +139,23 @@ public class Enemy_Prototype : MonoBehaviour
 
    private void Die()
    {
+      
+
+      GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+      Destroy(effect, 0.4f); 
+      Destroy(gameObject);
+   }
+
+   private void SpwanItem()
+   {
+      int whatItem;
+      int spawnOdds;
+      int randomOdds;
+
+      spawnOdds = 3;
+      randomOdds = Random.Range(1, 4);
+      whatItem = Random.Range(0, 3);
+
       if (randomOdds == spawnOdds)
       {
          switch (whatItem)
@@ -151,10 +173,6 @@ public class Enemy_Prototype : MonoBehaviour
                break;
          }
       }
-
-      GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-      Destroy(effect, 0.4f); 
-      Destroy(gameObject);
    }
 
    protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -169,11 +187,19 @@ public class Enemy_Prototype : MonoBehaviour
    {
       if (collider.gameObject.layer == 7) // Player laser
       {
+         StartCoroutine(TurnWhiteWhenHit());
          myHealth.decreaseHealth();
          if (myHealth.isDead())
          {
             Die();
          }
       }
+   }
+
+   IEnumerator TurnWhiteWhenHit()
+   {
+      spriteRenderer.material = whiteMaterial;
+      yield return new WaitForSeconds(0.05f);
+      spriteRenderer.material = cachedMaterial;
    }
 }

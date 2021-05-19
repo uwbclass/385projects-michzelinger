@@ -109,7 +109,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8578718705816374981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11fed62ffd1d2984b9af08736cfaa4c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 11362e5d669ddbf4b905a73a08d6cc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserSpeed: 4
+  laserSpeed: 5
+  hitParticle: {fileID: 1645132671843687249, guid: e1b66b5f60945c34d9acf1cd67649189, type: 3}

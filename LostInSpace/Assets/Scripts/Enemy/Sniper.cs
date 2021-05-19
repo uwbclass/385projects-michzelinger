@@ -95,11 +95,11 @@ public class Sniper : Enemy_Prototype
         lineRenderer.endWidth = 0.1f;
         lineRenderer.startWidth = 0.1f;
         lineRenderer.enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f); // Length of the actual shooting
         lineRenderer.enabled = false;
         lineRenderer.endWidth = 0.02f;
         lineRenderer.startWidth = 0.02f;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); // Cooldown between shooting and aiming again
         timer = 0;
         started = false;
     }
