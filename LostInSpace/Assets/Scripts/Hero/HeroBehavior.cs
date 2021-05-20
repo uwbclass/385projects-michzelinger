@@ -26,6 +26,7 @@ public class HeroBehavior : MonoBehaviour
     [Header("UI")]
     Vector3 mouse;
     public GameObject shield;
+    public PowerupDisplay speedIcon;
     public bool isSpeed;
     public float speedBoostDuration = 3f;
     public float speedBoostStopTime;
@@ -36,7 +37,6 @@ public class HeroBehavior : MonoBehaviour
         myHealth = GetComponent<Health>();
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
         isSpeed = false;
-
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         StartCoroutine(Invulnerable());
@@ -48,6 +48,7 @@ public class HeroBehavior : MonoBehaviour
         if(isSpeed && Time.time >= speedBoostStopTime)
         {  
             moveSpeed = 3f;
+            speedIcon.SpeedDisplay(false);
             isSpeed = false;
             trailEffect.SetActive(false);
         }
@@ -59,6 +60,7 @@ public class HeroBehavior : MonoBehaviour
         speedBoostStopTime = Time.time + speedBoostDuration;
         moveSpeed++;
         trailEffect.SetActive(true);
+        speedIcon.SpeedDisplay(true);
         isSpeed = true;
     }
 
