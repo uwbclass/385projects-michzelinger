@@ -21,8 +21,8 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate(){
         Vector2 follow = followObject.transform.position;
-        float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * follow.x);
-        float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * follow.y);
+        float xDifference = follow.x - transform.position.x;
+        float yDifference = follow.y - transform.position.y;
 
         Vector3 newPosition = transform.position;
         if(Mathf.Abs(xDifference) >= threshold.x){
@@ -32,7 +32,7 @@ public class CameraFollow : MonoBehaviour
             newPosition.y = follow.y;
         }
         float moveSpeed = rb.velocity.magnitude > speed ? rb.velocity.magnitude : speed;
-        transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed * Time.fixedDeltaTime);
     }
     private Vector3 calculateThreshold(){
         Rect aspect = Camera.main.pixelRect;

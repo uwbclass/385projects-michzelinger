@@ -11,6 +11,7 @@ public class HeroBehavior : MonoBehaviour
     public float invulnerableTime = 1f;
     SpriteRenderer spriteRenderer;
     public GameObject trailEffect;
+    public GameObject smokeEffect;
 
     public Collider2D collider2d;
     public Rigidbody2D rb2d;
@@ -102,7 +103,6 @@ public class HeroBehavior : MonoBehaviour
         }
         else if(collider.gameObject.layer == 9)
         {
-            Debug.Log("Health reduced");
             loseHealth();
         }
     }
@@ -117,7 +117,6 @@ public class HeroBehavior : MonoBehaviour
             }
             else
             {
-                Debug.Log("Health reduced");
                 loseHealth();
                 StartCoroutine(Invulnerable());
             }
@@ -128,6 +127,10 @@ public class HeroBehavior : MonoBehaviour
     {
         Camera.main.gameObject.GetComponent<CameraShake>().CallShake();
         myHealth.decreaseHealth();
+        if((float)myHealth.health / myHealth.MaxHealth <= 0.3f)
+        {
+            smokeEffect.SetActive(true);
+        }
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
     }
 
@@ -147,6 +150,4 @@ public class HeroBehavior : MonoBehaviour
 
         collider2d.enabled = true;
     }
-
-    
 }

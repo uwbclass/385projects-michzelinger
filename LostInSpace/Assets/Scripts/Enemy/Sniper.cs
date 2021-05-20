@@ -55,7 +55,11 @@ public class Sniper : Enemy_Prototype
 
         if(proximity(escapeDistance))
         {
+            StopAllCoroutines();
             lineRenderer.enabled = false;
+            started = false;
+            lineRenderer.endWidth = 0.02f;
+            lineRenderer.startWidth = 0.02f;
             timer = 0;
             state = EnemyState.escapeState;
             return;   

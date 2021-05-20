@@ -113,6 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca1a2ac8f546134b89d8ce72aa3def6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteors:
+  - {fileID: 21300000, guid: 48cc83be729176740a61a6a55351fa6a, type: 3}
+  - {fileID: 21300000, guid: a8cbbf82f9169264680995707917ff25, type: 3}
+  - {fileID: 21300000, guid: 7407cf1b29b424742a801a6484eb0fbe, type: 3}
+  - {fileID: 21300000, guid: cdeae45783e4b2942bc978a19817032d, type: 3}
 --- !u!50 &2497836516643540027
 Rigidbody2D:
   serializedVersion: 4
