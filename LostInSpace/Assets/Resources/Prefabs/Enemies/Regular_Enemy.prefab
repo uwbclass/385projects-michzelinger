@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1280380029}
   m_Layer: 8
   m_Name: Regular_Enemy
-  m_TagString: Untagged
+  m_TagString: RegularEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,9 +139,6 @@ MonoBehaviour:
   Shield: {fileID: 4238982182298553341, guid: 22fa4e5747a638e4db3ece819b91734c, type: 3}
   Speed: {fileID: 1265418097117240896, guid: dc7732a6839cbfd45ad78154782d7846, type: 3}
   Health: {fileID: 1456541160203443057, guid: ce5584aaf9af89f49b40020456716b64, type: 3}
-  whatItem: 0
-  spawnOdds: 0
-  randomOdds: 0
   hitEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
   whiteMaterial: {fileID: 2100000, guid: 6a0fbf6a6bd009a479e62982992426df, type: 3}
   bulletRate: 0.5

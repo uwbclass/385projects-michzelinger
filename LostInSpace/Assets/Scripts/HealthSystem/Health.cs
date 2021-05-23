@@ -37,15 +37,15 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void decreaseHealth()
+    public void decreaseHealth(int multiplier)
     {
-        if(this.health - healthIncrement < 0)
+        if(this.health - healthIncrement * multiplier < 0)
         {
             this.health = 0;
         }
         else
         {
-            this.health -= healthIncrement;
+            this.health -= healthIncrement * multiplier;
         }
     }
 

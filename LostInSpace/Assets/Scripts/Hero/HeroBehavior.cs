@@ -103,13 +103,16 @@ public class HeroBehavior : MonoBehaviour
         }
         else if(collider.gameObject.layer == 9)
         {
-            loseHealth();
+            if(collider.gameObject.name == "1laserRed01 1(Clone)")
+            {
+                loseHealth(1);
+            }
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 11|| collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 11)
         {
             if(shield.activeInHierarchy == true)
             {
@@ -117,20 +120,44 @@ public class HeroBehavior : MonoBehaviour
             }
             else
             {
-                loseHealth();
+                switch(collision.gameObject.tag)
+                {
+                    case "RegularEnemy":
+                        loseHealth(1); break;
+                    case "SuicideBomber":
+                        loseHealth(2); break;
+                    case "Sniper":
+                        loseHealth(1); break;
+                    case "MidBoss":
+                        loseHealth(3); break;
+                    default:    // Handles asteroid
+                        loseHealth(1); break;
+                }
                 StartCoroutine(Invulnerable());
             }
         }
+        // else if(collision.gameObject.layer == 11)
+        // {
+        //     if(shield.activeInHierarchy == true)
+        //     {
+        //         shield.SetActive(false);
+        //     }
+        //     else
+        //     {
+        //         loseHealth(1);
+        //         StartCoroutine(Invulnerable());
+        //     }
+        // }
     }
 
-    public void loseHealth()
+    public void loseHealth(int multiplier)
     {
         Camera.main.gameObject.GetComponent<CameraShake>().CallShake();
-        myHealth.decreaseHealth();
         if((float)myHealth.health / myHealth.MaxHealth <= 0.3f)
         {
             smokeEffect.SetActive(true);
         }
+        myHealth.decreaseHealth(multiplier);
         healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
     }
 

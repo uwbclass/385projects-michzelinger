@@ -39,6 +39,4 @@ public class Regular_Enemy : Enemy_Prototype
         }
         base.ServicePatrolState();
     }
-
-
 }

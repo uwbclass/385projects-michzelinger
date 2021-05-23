@@ -40,9 +40,9 @@ public class Enemy_Prototype : MonoBehaviour
 
    //----------------animation----------------
    [SerializeField] GameObject hitEffect;
-   public Material whiteMaterial;
-   protected SpriteRenderer spriteRenderer;
-   protected Material cachedMaterial;
+   // public Material whiteMaterial;
+   // protected SpriteRenderer spriteRenderer;
+   // protected Material cachedMaterial;
 
 
    // FSM Core
@@ -118,8 +118,8 @@ public class Enemy_Prototype : MonoBehaviour
       currPos = new Vector2();
       playerPos = new Vector2();
 
-      spriteRenderer = GetComponent<SpriteRenderer>();
-      cachedMaterial = spriteRenderer.material;
+      // spriteRenderer = GetComponent<SpriteRenderer>();
+      // cachedMaterial = spriteRenderer.material;
 
       // Adding each waypoints into the list of destinations
       foreach (Transform child in pathPrefab.transform)
@@ -188,7 +188,7 @@ public class Enemy_Prototype : MonoBehaviour
    {
       if (collider.gameObject.layer == 7) // Player laser
       {
-         StartCoroutine(TurnWhiteWhenHit());
+         // StartCoroutine(TurnWhiteWhenHit());
 
          if(state == EnemyState.patrolState)
          {
@@ -197,7 +197,7 @@ public class Enemy_Prototype : MonoBehaviour
             deAggroTime = Time.time + aggroTime;
          }
 
-         myHealth.decreaseHealth();
+         myHealth.decreaseHealth(1);
          if (myHealth.isDead())
          {
             Die();
@@ -205,10 +205,10 @@ public class Enemy_Prototype : MonoBehaviour
       }
    }
 
-   IEnumerator TurnWhiteWhenHit()
-   {
-      spriteRenderer.material = whiteMaterial;
-      yield return new WaitForSeconds(0.05f);
-      spriteRenderer.material = cachedMaterial;
-   }
+   // IEnumerator TurnWhiteWhenHit()
+   // {
+   //    spriteRenderer.material = whiteMaterial;
+   //    yield return new WaitForSeconds(0.05f);
+   //    spriteRenderer.material = cachedMaterial;
+   // }
 }

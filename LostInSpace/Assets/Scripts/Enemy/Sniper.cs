@@ -96,7 +96,7 @@ public class Sniper : Enemy_Prototype
         {
             if(hitInfo.transform.gameObject.layer == 6)
             {
-                hitInfo.transform.gameObject.GetComponent<HeroBehavior>().loseHealth();
+                hitInfo.transform.gameObject.GetComponent<HeroBehavior>().loseHealth(2);
             }
             lineRenderer.SetPosition(1, hitInfo.point);
         }
