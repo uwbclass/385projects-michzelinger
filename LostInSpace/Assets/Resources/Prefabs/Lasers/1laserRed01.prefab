@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserSpeed: 4
   hitParticle: {fileID: 1645132671843687249, guid: e1b66b5f60945c34d9acf1cd67649189, type: 3}
+  damageMultiplier: 1
 --- !u!70 &7543315582802628643
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

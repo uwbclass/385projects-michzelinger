@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7543315582802628643}
   - component: {fileID: -2176361007493051709}
   m_Layer: 9
-  m_Name: 1laserRed01 3
+  m_Name: 1laserRed01 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8578718705816374981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.05, y: -0.83, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 38c4dda997e0ee142ad332792609cc69, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e7a8ff3d58dec2d40b6a66d354d4725e, type: 3}
+  m_Color: {r: 0.23743398, g: 0.030037377, b: 0.254717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,6 +112,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11362e5d669ddbf4b905a73a08d6cc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserSpeed: 3
+  laserSpeed: 8
   hitParticle: {fileID: 1645132671843687249, guid: e1b66b5f60945c34d9acf1cd67649189, type: 3}
-  damageMultiplier: 1

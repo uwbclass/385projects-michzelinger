@@ -102,11 +102,8 @@ public class HeroBehavior : MonoBehaviour
             shield.SetActive(false);
         }
         else if(collider.gameObject.layer == 9)
-        {
-            if(collider.gameObject.name == "1laserRed01 1(Clone)")
-            {
-                loseHealth(1);
-            }
+        {      
+            loseHealth(collider.gameObject.GetComponent<LaserBehavior>().damageMultiplier);
         }
     }
 

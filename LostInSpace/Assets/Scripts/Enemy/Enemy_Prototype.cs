@@ -34,6 +34,7 @@ public class Enemy_Prototype : MonoBehaviour
    protected Health myHealth;
 
    //----------------powerup drops----------------
+   protected bool isSpawn = true;
    [SerializeField] GameObject Shield;
    [SerializeField] GameObject Speed;
    [SerializeField] GameObject Health;
@@ -143,7 +144,8 @@ public class Enemy_Prototype : MonoBehaviour
    {
       GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
       Destroy(effect, 0.4f);
-      SpwanItem(); 
+      if(isSpawn)
+         SpwanItem(); 
       Destroy(gameObject);
    }
 

@@ -7,6 +7,7 @@ public class LaserBehavior : MonoBehaviour
     // Start is called before the first frame update
     public float laserSpeed;
     public GameObject hitParticle;
+    public int damageMultiplier;
     void Start()
     {
         Destroy(gameObject, 5);

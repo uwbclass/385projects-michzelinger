@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Shield
   - Speed
+  - RegularEnemy
+  - SuicideBomber
+  - Sniper
+  - MidBoss
   layers:
   - Default
   - TransparentFX
