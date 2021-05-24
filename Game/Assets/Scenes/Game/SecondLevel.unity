@@ -491,6 +491,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3866438722495466184, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: wormholes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866438722495466184, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: wormholes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1049479422}
     - target: {fileID: 3866438722495466185, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -544,6 +552,11 @@ PrefabInstance:
 --- !u!95 &1049479421 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 699441979, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+  m_PrefabInstance: {fileID: 1049479420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1049479422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 870628945375538364, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
   m_PrefabInstance: {fileID: 1049479420}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1067208074

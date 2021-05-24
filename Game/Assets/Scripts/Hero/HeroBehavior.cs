@@ -35,7 +35,7 @@ public class HeroBehavior : MonoBehaviour
    void Start()
    {
       myHealth = GetComponent<Health>();
-      healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+      //healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
       isSpeed = false;
       spriteRenderer = GetComponent<SpriteRenderer>();
 
