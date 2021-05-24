@@ -248,6 +248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 499600684273203251, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+      propertyPath: transitionAnim
+      value: 
+      objectReference: {fileID: 1499368297}
     - target: {fileID: 499600684273203252, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -298,6 +302,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+--- !u!1 &1057625287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499600684273203252, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+  m_PrefabInstance: {fileID: 1017069923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1499368296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,6 +364,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+--- !u!95 &1499368297 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 699441979, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+  m_PrefabInstance: {fileID: 1499368296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1761414087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,6 +376,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1982472863254761647, guid: 9970d2fbcba112143867b6c4a3ee5ac2, type: 3}
+      propertyPath: followObject
+      value: 
+      objectReference: {fileID: 1057625287}
     - target: {fileID: 2142650090247940813, guid: 9970d2fbcba112143867b6c4a3ee5ac2, type: 3}
       propertyPath: m_Name
       value: Main Camera Follow
