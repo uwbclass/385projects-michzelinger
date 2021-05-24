@@ -28,6 +28,7 @@ public class MidBoss_Enemy : Enemy_Prototype
     }
     protected override void ServiceAttackState()
     {
+
         verticalMovement();
         if(Time.time >= cooldown1)
         {
@@ -73,6 +74,7 @@ public class MidBoss_Enemy : Enemy_Prototype
         if(proximity(aggroDistance * 1.5f))
         {
             state = EnemyState.attackState;
+            GetComponent<Collider2D>().enabled = true;
         }
     }
     

@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        followOffset.x = 5;
+        followOffset.x = 7.5f;
 
         threshold = calculateThreshold();
         rb = followObject.GetComponent<Rigidbody2D>();

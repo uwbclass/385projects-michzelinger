@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class HeroBehavior : MonoBehaviour
 {
    [Header("Player")]
@@ -13,7 +12,6 @@ public class HeroBehavior : MonoBehaviour
    public GameObject trailEffect;
    public GameObject smokeEffect;
    [SerializeField] GameObject deathEffect;
-   public Animator transitionAnim;
    public Collider2D collider2d;
    public Rigidbody2D rb2d;
 
@@ -121,13 +119,13 @@ public class HeroBehavior : MonoBehaviour
             switch (collision.gameObject.tag)
             {
                case "RegularEnemy":
-                  loseHealth(1); break;
-               case "SuicideBomber":
                   loseHealth(2); break;
+               case "SuicideBomber":
+                  loseHealth(4); break;
                case "Sniper":
-                  loseHealth(1); break;
+                  loseHealth(2); break;
                case "MidBoss":
-                  loseHealth(3); break;
+                  loseHealth(4); break;
                default:    // Handles asteroid
                   loseHealth(1); break;
             }
@@ -153,16 +151,11 @@ public class HeroBehavior : MonoBehaviour
       collider2d.enabled = false;
       GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
       Destroy(effect, 0.4f);
-      spriteRenderer.color = new Color(1f, 1f, 1f, 0f);
-      StartCoroutine(LoadScene());
+      FindObjectOfType<WormholeController>().loadGameOver();
+      gameObject.SetActive(false);
    }
 
-   IEnumerator LoadScene()
-   {
-      transitionAnim.SetTrigger("end");
-      yield return new WaitForSeconds(1.5f);
-      SceneManager.LoadScene(7);
-   }
+
 
    public void loseHealth(int multiplier)
    {

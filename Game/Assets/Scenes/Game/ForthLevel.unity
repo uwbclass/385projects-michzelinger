@@ -231,8 +231,8 @@ MonoBehaviour:
   Speed: {fileID: 0}
   Health: {fileID: 0}
   hitEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
-  attack1: 2
-  attack2: 2.75
+  attack1: 1.5
+  attack2: 2.25
   middle: 10
   middleLaser: {fileID: 1580314276}
   Laser1: {fileID: 8578718705816374981, guid: 6bdf3a1b5981891429a848776f44e61a, type: 3}
@@ -248,7 +248,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266474245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  MaxHealth: 3000
+  MaxHealth: 2000
   healthIncrement: 10
 --- !u!95 &644353477 stripped
 Animator:
@@ -1138,21 +1138,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3866438722495466184, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: wormholes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866438722495466184, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: wormholes.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3866438722495466185, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3866438722495466185, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4567311
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3866438722495466185, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.38534564
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3866438722495466185, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -909.05664
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3866438722495466185, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1189,6 +1197,18 @@ PrefabInstance:
     - target: {fileID: 3866438722495466187, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704933136784418137, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704933136784418137, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704933136784418143, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}

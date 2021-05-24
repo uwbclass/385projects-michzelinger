@@ -1,245 +1,87 @@
 <!DOCTYPE html>
-<html>
-<title>GalacticWolves | CSS385</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
-
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("https://images.pexels.com/photos/733475/pexels-photo-733475.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  min-height: 75%;
-}
-
-.menu {
-  display: none;
-}
-</style>
-<body>
-
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="#" class="w3-button w3-block w3-black">HOME</a>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Game</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Game</div>
+      </div>
     </div>
-    <div class="w3-col s3">
-      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#menu" class="w3-button w3-block w3-black">DEVELOPMENT LOG</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="#where" class="w3-button w3-block w3-black">PLAY NOW</a>
-    </div>
-  </div>
-</div>
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/docs.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/docs.data",
+        frameworkUrl: buildUrl + "/docs.framework.js",
+        codeUrl: buildUrl + "/docs.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Game",
+        productVersion: "1.0",
+      };
 
-<!-- Header with image -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-    <span class="w3-tag">CSS385</span>
-  </div>
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-white" style="font-size:90px">Lost in Space<br><h6>by Galactic Wolves</h6></span>
-  </div>
-  <div class="w3-display-bottomright w3-center w3-padding-large">
-    <span class="w3-text-white">Edward Liao, Jerry Kidik, Keagan Leon, Michael Zelinger</span>
-  </div>
-</header>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
 
-<!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
 
-<!-- About Container -->
-<div class="w3-container" id="about">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE GAME</span></h5>
-    <p>Vinnie the wolf was on a space exploration when a worm hole appeared thrusting him to the unknown reaches of space. Vinnie must find his way back to earth dodging many scary obstacles and extraterrestrial beings. HELP HIM!
-    </p>
-    <p>Lost in Space is a deep, immersive game of survival and perseverance, with unexpected outcomes. Vinnie is relying on YOU. 
-      You would have a chance to go on a journey through several solar systems to get to the Vinnie’s final destination. 
-      But don’t expect this journey to be smooth: you would have to find a way to the right wormhole and get along with aliens that will be trying to attack outlander.</p>
-    <div class="w3-panel w3-leftbar w3-light-grey">
-      <p><i>"We were working hard on creating fun, yet unexpected game for our target users. We hope you will enjoy it"</i></p>
-      <p>Galactic Wolves Team</p>
-    </div>
-    <img src="https://i.ibb.co/hfx4cDX/wolves.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
-    <p><strong>ADD MORE INFO</strong> more text here </p>
-    <p><strong>MORE INFO</strong> more text here</p>
-  </div>
-</div>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        // Avoid draining fillrate performance on mobile devices,
+        // and default/override low DPI mode on mobile browsers.
+        config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
 
-<!-- DEVELOPMENT LOG Container -->
-<div class="w3-container" id="menu">
-  <div class="w3-content" style="max-width:700px">
- 
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">DEVELOPMENT LOG</span></h5>
-  
-    <div class="w3-row w3-center w3-card w3-padding">
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
-        <div class="w3-col s6 tablink">In Progress</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
-        <div class="w3-col s6 tablink">Completed</div>
-      </a>
-    </div>
-
-    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
-        <h5>Test Scene Creation</h5>
-        <p class="w3-text-grey"><strong>In Progress..</strong> | Currently Working: Michael and Jerry</p><br>
-
-    </div>
-
-    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/19/2021</strong> | By: Edward and Michael</p>
-        <p class="w3-text-grey">Camera shake on hero hit. Enemy aggro. Enemy turns white when hit </p>
-        <p class="w3-text-grey">Camera shake working. Sniper and Regular enemy get aggroed when hit. Enemies turn white on hit.
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/17/2021</strong> | By: Edward</p>
-        <p class="w3-text-grey">Transition between scenes </p>
-        <p class="w3-text-grey">Transitions working
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/16/2021</strong> | By: Edward and Keagan</p>
-        <p class="w3-text-grey">Have an Asteroid respawn system. Made background stars move. Updated sniper shooting </p>
-        <p class="w3-text-grey">Asteroid behavior works properly. Background star behavior works properly. Sniper shooting is more natural. Sniper gives damage to player when hit.
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/15/2021</strong> | By: Michael and Jerry</p>
-        <p class="w3-text-grey">Health powerup. Prototype scenes. Health bar. Wormhole controller
-</p>
-        <p class="w3-text-grey">The scenes are created for the prototype demonstration and 
-        function well. Health bar functions as intended. Wormholes spawn after all enemies are defeated</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/14/2021</strong> | By: Michael and Jerry</p>
-        <p class="w3-text-grey">Powerup scripts. Shield powerup	. Speed Powerup
- </p>
-        <p class="w3-text-grey">Shield power up fully working. Speed power up fully working. Random spawn mechanic on enemy death implemented
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/14/2021</strong> | By: Keagan</p>
-        <p class="w3-text-grey">Create sprite art. Work on game visuals
- </p>
-        <p class="w3-text-grey">Item sprites completed. Main menu art created
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/13/2021</strong> | By: Edward, Keagan, Michael, Jerry</p>
-        <p class="w3-text-grey">Adding Enemy Health. Adding Asteroids. Created layout of each level
- </p>
-        <p class="w3-text-grey">Obstacles: Asteroids will need to be spawned in with different sizes, speed and direction. Need to create visual for each level. Completed: Enemy Health complete
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/12/2021</strong> | By: Edward, Keagan, Michael, Jerry</p>
-        <p class="w3-text-grey">Team meeting. Discussed what needs to be accomplished on our website. Ground our ideas with our game. Create Moving Camera Function
-
- </p>
-        <p class="w3-text-grey">Obstacles: Debating whether we should have fixed or moving background as the camera moves. Thinking of creative ideas for levels. Completed: Came to a consensus on how our game should be implemented. Planned what will need to be added on the website. Completed moving Camera Script
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/12/2021</strong> | By: Edward</p>
-        <p class="w3-text-grey">Update Sniper Enemy shooting 
- </p>
-        <p class="w3-text-grey">Updated Sniper Enemy Bullets
-</p><br>
-
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/12/2021</strong> | By: Edward and Keagan</p>
-        <p class="w3-text-grey">Start Sniper Enemy Behavior 
- </p>
-        <p class="w3-text-grey">Obstacles: Sniper projectiles need to be different from the other enemies. Completed Sniper Enemy
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/11/2021</strong> | By: Edward</p>
-        <p class="w3-text-grey">Create Enemy Parent class. Rearranged Regular Enemy Script. Rearranged Bomber Enemy Script
- </p>
-        <p class="w3-text-grey">Completed Parent class. Reorganized Regular Enemy Script. Reorganized Bomber Enemy Script
-</p><br>
-
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/10/2021</strong> | By: Edward and Keagan</p>
-        <p class="w3-text-grey">Start Regular Enemy Behavior Start Bomber Enemy Behavior
- </p>
-        <p class="w3-text-grey">Obstacles: Code for each enemy is repetitive. Completed Regular Enemy. 
-Completed Bomber Enemy 
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/9/2021</strong> | By: Michael and Jerry</p>
-        <p class="w3-text-grey">Wormhole creation. Main menu tweaks
- </p>
-        <p class="w3-text-grey">Obstacles: Awaiting enemy creation for wormhole appearance function. Completed Wormhole functions and transitions to the next scene. Main menu works with music volume slider option, play option, and quit option.
-</p><br>
-        
-        <p class="w3-text-grey"><strong>COMPLETED: 5/8/2021</strong> | By: Michael</p>
-        <p class="w3-text-grey">Main menu creation. Music for main menu. Sound effects for main menu
- </p>
-        <p class="w3-text-grey">Main menu created with play option, and quit option. Music added to the main menu. Sound effects for buttons on menu working
-</p><br>
-
-    </div>  
-   <!-- <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;"> -->
-  </div>
-</div>
-
-
-    <!--WEBGL Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">EXPERIENCE THE UNKNOWN - NOW!</span></h5>
-   
-    <p><strong>WebGL HERE</strong></p>
-      
-      <center>
-<iframe 
-    src="https://uwbclass.github.io/385projects-michzelinger/docs/index.html" 
-    style="border:0px #000000 none;" 
-    name="HeroTNG" 
-    scrolling="no" 
-    frameborder="1" 
-    marginheight="px" 
-    marginwidth="320px" 
-    height="700px" 
-    width="1000px">
-</iframe>
-</center>
-    
-  </div>
-</div>
-
-<!-- End page content -->
-</div>
-
-<!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <p>Galactic Wolves, CSS385 - Spring 2021. All Rights Reserved.</p>
-</footer>
-
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-}
-document.getElementById("myLink").click();
-</script>
-
-</body>
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>

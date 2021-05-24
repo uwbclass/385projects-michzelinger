@@ -6,7 +6,7 @@ public class AsteroidController : MonoBehaviour
 {
     public GameObject asteroidPrefab;
     public float maxVerticalSpread = 7.0f;
-    public float leftEdge = -35.0f;
+    public float leftEdge = -50.0f;
     public int maxAsteroids = 20;
 
     // Start is called before the first frame update

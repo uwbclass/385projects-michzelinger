@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class WormholeController : MonoBehaviour
 {
     public GameObject[] wormholes;
     public GameObject[] enemies;
+    public Animator transitionAnim;
 
     // Update is called once per frame
     void Start()
@@ -27,21 +29,33 @@ public class WormholeController : MonoBehaviour
         }
     }
 
-    GameObject[] FindGameObjectsInLayer(int layer)
-{
-    var goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
-    var goList = new System.Collections.Generic.List<GameObject>();
-    for (int i = 0; i < goArray.Length; i++)
+    public void loadGameOver()
     {
-        if (goArray[i].layer == layer)
-        {
-            goList.Add(goArray[i]);
-        }
+        StartCoroutine(LoadScene());
     }
-    if (goList.Count == 0)
+
+    IEnumerator LoadScene()
     {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("DeathScene");
+    }
+
+    GameObject[] FindGameObjectsInLayer(int layer)
+    {
+        var goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        var goList = new System.Collections.Generic.List<GameObject>();
+        for (int i = 0; i < goArray.Length; i++)
+        {
+            if (goArray[i].layer == layer)
+            {
+                goList.Add(goArray[i]);
+            }
+        }
+        if (goList.Count == 0)
+        {
+            return goList.ToArray();
+        }
         return goList.ToArray();
     }
-    return goList.ToArray();
-}
 }

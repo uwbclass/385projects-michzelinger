@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class MusicControl : MonoBehaviour
 {
     public AudioSource audioSource;
-    private float musicVolume = 1f;
+    private float musicVolume = 0.4f;
     
     void Start()
     {

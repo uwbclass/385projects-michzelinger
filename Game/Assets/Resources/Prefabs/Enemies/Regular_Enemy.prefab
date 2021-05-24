@@ -140,7 +140,6 @@ MonoBehaviour:
   Speed: {fileID: 1265418097117240896, guid: dc7732a6839cbfd45ad78154782d7846, type: 3}
   Health: {fileID: 1456541160203443057, guid: ce5584aaf9af89f49b40020456716b64, type: 3}
   hitEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
-  whiteMaterial: {fileID: 2100000, guid: 6a0fbf6a6bd009a479e62982992426df, type: 3}
   bulletRate: 0.5
   Laser: {fileID: 8578718705816374981, guid: 98f2a506dc33d6749ab2c0f2ec35a638, type: 3}
 --- !u!114 &1280380029
@@ -156,5 +155,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  MaxHealth: 100
+  MaxHealth: 150
   healthIncrement: 10
