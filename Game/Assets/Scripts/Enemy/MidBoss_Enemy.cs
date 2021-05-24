@@ -64,7 +64,7 @@ public class MidBoss_Enemy : Enemy_Prototype
     IEnumerator MainLaser()
     {
         middleLaser.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         middleLaser.SetActive(false);
     }
 
