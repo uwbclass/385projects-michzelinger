@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Regular_Enemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8443775844355603800, guid: 1053c8e6fca066547b1737846f801194, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8443775844355603802, guid: 1053c8e6fca066547b1737846f801194, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1023,6 +1027,10 @@ PrefabInstance:
     - target: {fileID: 9052980586814546610, guid: b715744e3d39bfc4f919ad2fbc648396, type: 3}
       propertyPath: m_Name
       value: Sniper (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052980586814546610, guid: b715744e3d39bfc4f919ad2fbc648396, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b715744e3d39bfc4f919ad2fbc648396, type: 3}

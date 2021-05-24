@@ -121,7 +121,7 @@ public class HeroBehavior : MonoBehaviour
                case "RegularEnemy":
                   loseHealth(2); break;
                case "SuicideBomber":
-                  loseHealth(4); break;
+                  loseHealth(3); break;
                case "Sniper":
                   loseHealth(2); break;
                case "MidBoss":
