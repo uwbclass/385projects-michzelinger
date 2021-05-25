@@ -9,8 +9,9 @@ public class MidBoss_Enemy : Enemy_Prototype
     private float cooldownMiddle;
     public float attack1 = 4.0f;
     public float attack2 = 6.0f;
-    public float middle = 10.0f;
+    public float middle = 8.0f;
     public GameObject middleLaser;
+    public GameObject aimer;
     public GameObject Laser1;
     public GameObject Laser2;
     [SerializeField] Transform laser1top;
@@ -64,9 +65,12 @@ public class MidBoss_Enemy : Enemy_Prototype
 
     IEnumerator MainLaser()
     {
-        middleLaser.SetActive(true);
+        aimer.SetActive(true);
         yield return new WaitForSeconds(2f);
-        middleLaser.SetActive(false);
+        middleLaser.SetActive(true);
+        aimer.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        middleLaser.SetActive(false);    
     }
 
     protected override void ServicePatrolState()
