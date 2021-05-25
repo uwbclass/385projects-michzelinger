@@ -54,7 +54,6 @@ public class HeroBehavior : MonoBehaviour
       }
       Fire();
    }
-
    public void EnableSpeedBoost()
    {
       speedBoostStopTime = Time.time + speedBoostDuration;
