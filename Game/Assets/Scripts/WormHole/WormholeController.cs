@@ -29,16 +29,28 @@ public class WormholeController : MonoBehaviour
         }
     }
 
-    public void loadGameOver()
+    public void GameOver()
     {
-        StartCoroutine(LoadScene());
+        StartCoroutine(LoadGameOver());
     }
 
-    IEnumerator LoadScene()
+    IEnumerator LoadGameOver()
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("DeathScene");
+    }
+
+    public void NextScene()
+    {
+        StartCoroutine(LoadNext());
+    }
+
+    IEnumerator LoadNext()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     GameObject[] FindGameObjectsInLayer(int layer)

@@ -151,7 +151,7 @@ public class HeroBehavior : MonoBehaviour
       collider2d.enabled = false;
       GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
       Destroy(effect, 0.4f);
-      FindObjectOfType<WormholeController>().loadGameOver();
+      FindObjectOfType<WormholeController>().GameOver();
       gameObject.SetActive(false);
    }
 
@@ -159,7 +159,7 @@ public class HeroBehavior : MonoBehaviour
 
    public void loseHealth(int multiplier)
    {
-      Camera.main.gameObject.GetComponent<CameraShake>().CallShake();
+      Camera.main.gameObject.GetComponentInParent<CameraController>().CallShake();
       if ((float)myHealth.health / myHealth.MaxHealth <= 0.3f)
       {
          smokeEffect.SetActive(true);
