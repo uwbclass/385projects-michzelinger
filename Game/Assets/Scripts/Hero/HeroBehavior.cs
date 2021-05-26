@@ -95,13 +95,20 @@ public class HeroBehavior : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D collider)
    {
-      if (shield.activeInHierarchy == true && collider.gameObject.layer == 9)
+      if (collider.gameObject.layer == 9)
       {
-         shield.SetActive(false);
-      }
-      else if (collider.gameObject.layer == 9)
-      {
-         loseHealth(collider.gameObject.GetComponent<LaserBehavior>().damageMultiplier);
+         if(shield.activeInHierarchy == true)
+            shield.SetActive(false);
+
+         LaserBehavior laser;
+         if(collider.gameObject.TryGetComponent<LaserBehavior>(out laser))
+         {
+            loseHealth(laser.damageMultiplier);
+         }
+         else
+         {
+            loseHealth(3);
+         }
       }
    }
 

@@ -448,11 +448,6 @@ MonoBehaviour:
   health: 0
   MaxHealth: 2000
   healthIncrement: 10
---- !u!95 &644353477 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 699441979, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
-  m_PrefabInstance: {fileID: 2023936811}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651032133
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +652,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -15, y: 0}
@@ -793,10 +788,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 499600684273203251, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
-      propertyPath: transitionAnim
-      value: 
-      objectReference: {fileID: 644353477}
+    - target: {fileID: 624954386, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 499600684273203252, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -975,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642382525}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.372328, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 266474247}

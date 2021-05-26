@@ -25,9 +25,12 @@ public class LaserBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D  collider)
-    {
-        GameObject effect = Instantiate(hitParticle, transform.position, Quaternion.identity);
-        Destroy(effect, 0.1f);
+    {   
+        if(hitParticle != null)
+        {
+            GameObject effect = Instantiate(hitParticle, transform.position, Quaternion.identity);
+            Destroy(effect, 0.1f);
+        }
         Destroy(gameObject);
     }
 }

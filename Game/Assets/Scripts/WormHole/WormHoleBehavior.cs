@@ -7,6 +7,7 @@ public class WormHoleBehavior : MonoBehaviour
    {
       if (collision.gameObject.name == "Hero")
       {
+         collision.gameObject.GetComponent<Animator>().SetTrigger("shrink");
          GetComponentInParent<WormholeController>().NextScene();
       }
    }
