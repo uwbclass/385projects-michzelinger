@@ -53,6 +53,17 @@ public class WormholeController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void PreviousScene(int sceneIndex) // How many scenes to go back
+    {
+        StartCoroutine(LoadPrevious(sceneIndex));
+    }
+    IEnumerator LoadPrevious(int sceneIndex) 
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - sceneIndex);
+    }
+
     GameObject[] FindGameObjectsInLayer(int layer)
     {
         var goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];

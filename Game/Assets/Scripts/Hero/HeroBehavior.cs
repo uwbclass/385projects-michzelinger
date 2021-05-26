@@ -4,22 +4,24 @@ using UnityEngine;
 public class HeroBehavior : MonoBehaviour
 {
    [Header("Player")]
-   [SerializeField] float moveSpeed = 5f;
+   public float moveSpeed = 5f;
    public Health myHealth;
    public HealthBar healthBar;
    public float invulnerableTime = 1f;
+
    SpriteRenderer spriteRenderer;
    public GameObject trailEffect;
    public GameObject smokeEffect;
-   [SerializeField] GameObject deathEffect;
+   public GameObject deathEffect;
    public Collider2D collider2d;
    public Rigidbody2D rb2d;
+   private bool canMove = true;
 
 
    [Header("Projectile")]
-   [SerializeField] GameObject laserPrefab;
-   [SerializeField] float projectileFiringPeriod = 0.5f;
-   [SerializeField] Transform firePoint;
+   public GameObject laserPrefab;
+   public float projectileFiringPeriod = 0.5f;
+   public Transform firePoint;
    float cooldown = 0;
    Coroutine firingCoroutine;
 
@@ -78,8 +80,11 @@ public class HeroBehavior : MonoBehaviour
 
    void FixedUpdate()
    {
-      Move();
-      Rotate();
+      if(canMove)
+      {
+         Move();
+         Rotate();
+      }
    }
 
    void Rotate()
@@ -95,7 +100,7 @@ public class HeroBehavior : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D collider)
    {
-      if (collider.gameObject.layer == 9)
+      if (collider.gameObject.layer == 9) // Enemy Laser
       {
          if(shield.activeInHierarchy == true)
             shield.SetActive(false);
@@ -110,11 +115,19 @@ public class HeroBehavior : MonoBehaviour
             loseHealth(3);
          }
       }
+      else if (collider.gameObject.layer == 10) // Wormhole
+      {
+         canMove = false;
+         collider2d.enabled = false;
+         rb2d.AddTorque(20f);
+         GetComponent<Animator>().SetTrigger("shrink");
+         StartCoroutine(FallIntoWormhole(collider.transform.position));
+      }
    }
 
    void OnCollisionEnter2D(Collision2D collision)
    {
-      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11)
+      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11) // Enemy, Asteroids
       {
          if (shield.activeInHierarchy == true)
          {
@@ -150,6 +163,19 @@ public class HeroBehavior : MonoBehaviour
       //         StartCoroutine(Invulnerable());
       //     }
       // }
+   }
+
+   IEnumerator FallIntoWormhole(Vector2 target)
+   {
+      float timeElapsed = 0f;
+      float endTime = 1f;
+      Vector2 originalPos = rb2d.position;
+      while(timeElapsed < endTime)
+      {
+         rb2d.MovePosition(Vector2.Lerp(originalPos, target, timeElapsed / endTime));
+         timeElapsed += Time.deltaTime;
+         yield return null;
+      }
    }
 
    private void Die()

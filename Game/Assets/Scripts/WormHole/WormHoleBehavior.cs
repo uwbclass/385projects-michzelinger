@@ -5,9 +5,8 @@ public class WormHoleBehavior : MonoBehaviour
 {
    void OnTriggerEnter2D(Collider2D collision)
    {
-      if (collision.gameObject.name == "Hero")
+      if (collision.gameObject.layer == 6)
       {
-         collision.gameObject.GetComponent<Animator>().SetTrigger("shrink");
          GetComponentInParent<WormholeController>().NextScene();
       }
    }
