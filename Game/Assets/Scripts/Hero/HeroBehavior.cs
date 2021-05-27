@@ -25,6 +25,8 @@ public class HeroBehavior : MonoBehaviour
    float cooldown = 0;
    Coroutine firingCoroutine;
 
+   public GameObject missilePrefab;
+
    [Header("UI")]
    Vector3 mouse;
    public GameObject shield;
@@ -75,6 +77,11 @@ public class HeroBehavior : MonoBehaviour
       else
       {
          cooldown = cooldown <= 0 ? 0 : cooldown - Time.deltaTime;
+      }
+
+      if (Input.GetKeyDown(KeyCode.Mouse1))
+      {
+         Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
       }
    }
 
