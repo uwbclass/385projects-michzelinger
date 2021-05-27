@@ -23,6 +23,7 @@ public class HeroBehavior : MonoBehaviour
    public float projectileFiringPeriod = 0.5f;
    public Transform firePoint;
    float cooldown = 0;
+   public int missileAmmo;
    Coroutine firingCoroutine;
 
    public GameObject missilePrefab;
@@ -79,9 +80,10 @@ public class HeroBehavior : MonoBehaviour
          cooldown = cooldown <= 0 ? 0 : cooldown - Time.deltaTime;
       }
 
-      if (Input.GetKeyDown(KeyCode.Mouse1))
+      if (Input.GetKeyDown(KeyCode.Mouse1) && missileAmmo > 0)
       {
-         Instantiate(missilePrefab, firePoint.position, Quaternion.identity);
+         Instantiate(missilePrefab, firePoint.position, transform.rotation);
+         --missileAmmo;
       }
    }
 

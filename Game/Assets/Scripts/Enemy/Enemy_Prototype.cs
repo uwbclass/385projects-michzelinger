@@ -35,9 +35,6 @@ public class Enemy_Prototype : MonoBehaviour
 
    //----------------powerup drops----------------
    protected bool isSpawn = true;
-   [SerializeField] GameObject Shield;
-   [SerializeField] GameObject Speed;
-   [SerializeField] GameObject Health;
 
    //----------------animation----------------
    [SerializeField] GameObject hitEffect;
@@ -145,37 +142,8 @@ public class Enemy_Prototype : MonoBehaviour
       GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
       Destroy(effect, 0.4f);
       if(isSpawn)
-         SpwanItem(); 
+         PowerUp.SpawnRandom(transform.position);
       Destroy(gameObject);
-   }
-
-   private void SpwanItem()
-   {
-      int whatItem;
-      int spawnOdds;
-      int randomOdds;
-
-      spawnOdds = 3;
-      randomOdds = Random.Range(1, 4);
-      whatItem = Random.Range(0, 3);
-
-      if (randomOdds == spawnOdds)
-      {
-         switch (whatItem)
-         {
-            case 0:
-               GameObject shield = Instantiate(Shield, transform.position, Quaternion.identity);
-               break;
-            case 1:
-               GameObject speed = Instantiate(Speed, transform.position, Quaternion.identity);
-               break;
-            case 2:
-               GameObject health = Instantiate(Health, transform.position, Quaternion.identity);
-               break;
-            default:
-               break;
-         }
-      }
    }
 
    protected virtual void OnCollisionEnter2D(Collision2D collision)

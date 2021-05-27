@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+   public static void SpawnRandom(Vector3 spawnPos)
+   {
+      // int randomOdds;
+
+      // int spawnOdds = 3;
+      // randomOdds = Random.Range(1, 4);
+
+      if(Random.Range(1, 4) == 3)
+      {
+         Object.Instantiate(Resources.Load("Prefabs/Powerups/Pup") as GameObject, spawnPos, Quaternion.identity);
+      }
+   }
+
    public enum powerUpType
    {
       shield,
       speed,
-      health
+      health,
+      missile
    }
-
-   public powerUpType type;
+   public Sprite[] spriteList;
+   private powerUpType type;
    public bool animPos = true;
    public Vector3 posAmplitude = Vector3.one;
    public Vector3 posSpeed = Vector3.one;
@@ -26,6 +40,11 @@ public class PowerUp : MonoBehaviour
     */
    void Awake()
    {
+      int whatType = Random.Range(0, 4);
+      type = (powerUpType) whatType;
+      GetComponent<SpriteRenderer>().sprite = spriteList[whatType];
+
+      
       origPos = transform.position;
       posAmplitude.y = 0.05f;
       posSpeed.y = 2f;
@@ -66,6 +85,9 @@ public class PowerUp : MonoBehaviour
             case powerUpType.health:
                player.myHealth.increaseHealth();
                player.healthBar.SetHealth(player.myHealth.health, player.myHealth.MaxHealth);
+               break;
+            case powerUpType.missile:
+               player.missileAmmo += 3;
                break;
             default:
                break;

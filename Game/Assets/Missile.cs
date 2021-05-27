@@ -15,8 +15,10 @@ public class Missile : MonoBehaviour
         enemies = FindObjectsOfType<Enemy_Prototype>();
         foreach(var e in enemies)
         {
-            if(Mathf.Abs(Vector2.Distance(e.transform.position, transform.position)) < closest)
+            float d = Mathf.Abs(Vector2.Distance(e.transform.position, transform.position));
+            if(d < closest)
             {
+                closest = d;
                 target = e;
             }
         }
