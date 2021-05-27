@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 624954388}
   - component: {fileID: 4920117154796537582}
   m_Layer: 6
-  m_Name: Canvas
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5807,6 +5807,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 8578718705816374981, guid: 3c40ce5651b847f4e8ebf4632306f90e, type: 3}
   projectileFiringPeriod: 0.1
   firePoint: {fileID: 499600683803204599}
+  missilePrefab: {fileID: 6151829955792888488, guid: 7a332dca07df4c74a80cf0aa4241f267, type: 3}
   shield: {fileID: 499600684699789356}
   speedIcon: {fileID: 4920117154796537582}
   isSpeed: 0
