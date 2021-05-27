@@ -19,10 +19,12 @@ public class VolumeControl : MonoBehaviour
     private void OnDisable()
     {
         PlayerPrefs.SetFloat(volumeParameter, slider.value);
+        //
     }
     private void HandleSliderValueChanged(float value)
     {
         mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
+        PlayerPrefs.Save();
     }
 
     void Start()

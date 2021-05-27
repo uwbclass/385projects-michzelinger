@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class OptionsControl : MonoBehaviour
 {
    [SerializeField] GameObject optionsMenu;
@@ -9,7 +9,6 @@ public class OptionsControl : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {
-
    }
 
    // Update is called once per frame
@@ -34,14 +33,21 @@ public class OptionsControl : MonoBehaviour
    public void ShowOptions()
    {
       Debug.Log("Option showed");
-      optionsMenu.SetActive(true);
+      optionsMenu.transform.localScale = new Vector3(0.8327084f, 0.8327084f, 1f);
+
       Time.timeScale = 0f;
    }
 
    public void HideOptions()
    {
       Debug.Log("Option hidden");
-      optionsMenu.SetActive(false);
+      optionsMenu.transform.localScale = new Vector3(0f, 0f, 0f);
+
       Time.timeScale = 1f;
+   }
+
+   public void QuitGame()
+   {
+      Application.Quit();
    }
 }
