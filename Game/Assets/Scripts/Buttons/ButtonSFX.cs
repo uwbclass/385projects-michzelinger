@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class ButtonSFX : MonoBehaviour
 {
-    private AudioSource myFX;
+   // private AudioSource myFX;
     public AudioClip hoverFX;
     public AudioClip clickFX;
 
-    void Awake()
-    {
-        myFX = AudioPlayer.instance.GetComponent<AudioSource>();
-    }
+    // 
 
     public void HoverSound()
     {
-        myFX.PlayOneShot(hoverFX);
+        AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(hoverFX);
     }
     public void ClickSound()
     {
-        myFX.PlayOneShot(clickFX);
+        AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(clickFX);
     }
     //
 }

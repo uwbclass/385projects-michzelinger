@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -5804,8 +5804,8 @@ MonoBehaviour:
   deathEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
   collider2d: {fileID: 499600684273203250}
   rb2d: {fileID: 499600684273203248}
+  energy: 100
   laserPrefab: {fileID: 8578718705816374981, guid: 3c40ce5651b847f4e8ebf4632306f90e, type: 3}
-  projectileFiringPeriod: 0.1
   firePoint: {fileID: 499600683803204599}
   missileAmmo: 0
   missilePrefab: {fileID: 6151829955792888488, guid: 7a332dca07df4c74a80cf0aa4241f267, type: 3}

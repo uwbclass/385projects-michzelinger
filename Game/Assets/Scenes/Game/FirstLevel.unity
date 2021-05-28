@@ -448,17 +448,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95aad5e42fc7f2f478a94ad8fbcd1ee1, type: 3}
---- !u!114 &742906029 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3956895118957619692, guid: 7614b1c417d13ca4d83ba6d26fa51acb, type: 3}
-  m_PrefabInstance: {fileID: 3956895118349693249}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70c53dc0446db140b0f5a960834ed37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &755169158 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6017320708686985740, guid: 31a034acf87f74649b2e2784af652787, type: 3}
@@ -906,14 +895,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 499600684273203251, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
-      propertyPath: energyBar
-      value: 
-      objectReference: {fileID: 742906029}
-    - target: {fileID: 499600684273203251, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
-      propertyPath: projectileFiringPeriod
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 499600684273203252, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
       propertyPath: m_Name
       value: Hero
