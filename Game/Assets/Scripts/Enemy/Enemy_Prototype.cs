@@ -159,7 +159,12 @@ public class Enemy_Prototype : MonoBehaviour
       if (collider.gameObject.layer == 7) // Player laser
       {
          // StartCoroutine(TurnWhiteWhenHit());
+         loseHealth(1);
+      }
+   }
 
+   public void loseHealth(int multiplier)
+   {
          if(state == EnemyState.patrolState)
          {
             timeAggroed = true;
@@ -167,12 +172,11 @@ public class Enemy_Prototype : MonoBehaviour
             deAggroTime = Time.time + aggroTime;
          }
 
-         myHealth.decreaseHealth(1);
+         myHealth.decreaseHealth(multiplier);
          if (myHealth.isDead())
          {
             Die();
          }
-      }
    }
 
    // IEnumerator TurnWhiteWhenHit()

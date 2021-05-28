@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    public GameObject circle;
     private Enemy_Prototype[] enemies;
     private Enemy_Prototype target;
 
     private float moveSpeed = 5f;
+    private float explosionRange = 1f;
+    private LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
+        circle.transform.localScale = new Vector3(explosionRange * 2, explosionRange * 2, 1);
+
+        layerMask = LayerMask.GetMask("Enemy");
+
         float closest = float.MaxValue;
         enemies = FindObjectsOfType<Enemy_Prototype>();
         foreach(var e in enemies)
@@ -41,6 +48,20 @@ public class Missile : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
+        GameObject c = Instantiate(circle, transform.position, Quaternion.identity);
+        c.SetActive(true);
+        Destroy(c, 0.1f);
+        Collider2D[] affected = Physics2D.OverlapCircleAll(transform.position, explosionRange, layerMask.value);
+        foreach(var a in affected)
+        {
+            Debug.Log(a.gameObject.transform.position);
+            a.gameObject.GetComponent<Enemy_Prototype>().loseHealth(5);
+        }
         Destroy(gameObject);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, explosionRange);
     }
 }

@@ -17,10 +17,13 @@ public class HeroBehavior : MonoBehaviour
    public Rigidbody2D rb2d;
    private bool canMove = true;
 
+   public const float MaxEnergy = 100f;
+   private float energy = MaxEnergy;
+
 
    [Header("Projectile")]
    public GameObject laserPrefab;
-   public float projectileFiringPeriod = 0.5f;
+   public float projectileFiringPeriod = 2f;
    public Transform firePoint;
    float cooldown = 0;
    public int missileAmmo;
@@ -35,14 +38,18 @@ public class HeroBehavior : MonoBehaviour
    public bool isSpeed;
    public float speedBoostDuration = 3f;
    public float speedBoostStopTime;
+   private EnergyBar energyBar;
 
    // Start is called before the first frame update
    void Start()
    {
+      energyBar = FindObjectOfType<EnergyBar>();
       myHealth = GetComponent<Health>();
       //healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
       isSpeed = false;
       spriteRenderer = GetComponent<SpriteRenderer>();
+
+      energyBar.UpdateMaxEnergy(MaxEnergy);
 
       StartCoroutine(Invulnerable());
    }
@@ -58,6 +65,8 @@ public class HeroBehavior : MonoBehaviour
          trailEffect.SetActive(false);
       }
       Fire();
+      energy += 10 * Time.deltaTime;
+      energyBar.UpdateEnergy(energy);
    }
    public void EnableSpeedBoost()
    {
@@ -70,20 +79,22 @@ public class HeroBehavior : MonoBehaviour
 
    void Fire()
    {
-      if (Time.timeScale != 0 && cooldown == 0 && Input.GetKey(KeyCode.Mouse0))
+      if (Time.timeScale != 0 && cooldown == 0 && energy >= 5f && Input.GetKey(KeyCode.Mouse0))
       {
          GameObject laser = Instantiate(laserPrefab, firePoint.position, transform.rotation);
          cooldown = projectileFiringPeriod;
+         energy -= 5f;
       }
       else
       {
          cooldown = cooldown <= 0 ? 0 : cooldown - Time.deltaTime;
       }
 
-      if (Input.GetKeyDown(KeyCode.Mouse1) && missileAmmo > 0)
+      if (Input.GetKeyDown(KeyCode.Mouse1) && missileAmmo > 0 && energy >= 30f)
       {
          Instantiate(missilePrefab, firePoint.position, transform.rotation);
          --missileAmmo;
+         energy -= 30f;
       }
    }
 
