@@ -5,11 +5,14 @@ using UnityEngine;
 public class LaserBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource myFX;
+    public AudioClip laserFX;
     public float laserSpeed;
     public GameObject hitParticle;
     public int damageMultiplier;
     void Start()
     {
+        FindObjectOfType<AudioSource>().PlayOneShot(laserFX);
         Destroy(gameObject, 5);
        // laserSpeed = 10f;
     }

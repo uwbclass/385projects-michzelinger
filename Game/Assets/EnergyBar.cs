@@ -7,23 +7,23 @@ public class EnergyBar : MonoBehaviour
 {
     public Slider bar;
     // Start is called before the first frame update
-    public void UpdateEnergy(float value)
+    private void UpdateEnergy()
     {
-        bar.value = value;
+        bar.value = HeroBehavior.instance.energy;
     }
 
-    public void UpdateMaxEnergy(float maxValue)
+    private void UpdateMaxEnergy()
     {
-        bar.maxValue = maxValue;
+        bar.maxValue = HeroBehavior.MaxEnergy;
     }
     void Start()
     {
-        
+        UpdateMaxEnergy();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateEnergy();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {   
     [Header("Camera Follow")]
-    public GameObject followObject;
+    private GameObject followObject;
     private float followOffset = 7.5f;
     public float speed = 3f;
     public GameObject cam;
@@ -24,7 +24,8 @@ public class CameraController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-
+        followObject = HeroBehavior.instance.gameObject;
+        
         Rect aspect = Camera.main.pixelRect;
         camOrthoWidth = Camera.main.orthographicSize * aspect.width / aspect.height;
         threshold = camOrthoWidth - followOffset;

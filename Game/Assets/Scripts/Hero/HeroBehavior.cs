@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class HeroBehavior : MonoBehaviour
 {
+   public static HeroBehavior instance;
+
    [Header("Player")]
    public float moveSpeed = 5f;
    public Health myHealth;
@@ -18,12 +20,12 @@ public class HeroBehavior : MonoBehaviour
    private bool canMove = true;
 
    public const float MaxEnergy = 100f;
-   private float energy = MaxEnergy;
+   public float energy = MaxEnergy;
 
 
    [Header("Projectile")]
    public GameObject laserPrefab;
-   public float projectileFiringPeriod = 2f;
+   private float projectileFiringPeriod = 0.2f;
    public Transform firePoint;
    float cooldown = 0;
    public int missileAmmo;
@@ -38,18 +40,27 @@ public class HeroBehavior : MonoBehaviour
    public bool isSpeed;
    public float speedBoostDuration = 3f;
    public float speedBoostStopTime;
-   private EnergyBar energyBar;
+
+   void Awake()
+   {
+      if(instance == null)
+      {
+         instance = this;
+         DontDestroyOnLoad(gameObject);
+      }
+      else
+      {
+         Destroy(gameObject);
+      }
+   }
 
    // Start is called before the first frame update
    void Start()
    {
-      energyBar = FindObjectOfType<EnergyBar>();
       myHealth = GetComponent<Health>();
       //healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
       isSpeed = false;
       spriteRenderer = GetComponent<SpriteRenderer>();
-
-      energyBar.UpdateMaxEnergy(MaxEnergy);
 
       StartCoroutine(Invulnerable());
    }
@@ -60,18 +71,21 @@ public class HeroBehavior : MonoBehaviour
       if (isSpeed && Time.time >= speedBoostStopTime)
       {
          moveSpeed = 3f;
+         projectileFiringPeriod = 0.2f;
+         laserPrefab.GetComponent<LaserBehavior>().laserSpeed = 4f;
          speedIcon.SpeedDisplay(false);
          isSpeed = false;
          trailEffect.SetActive(false);
       }
       Fire();
-      energy += 10 * Time.deltaTime;
-      energyBar.UpdateEnergy(energy);
+      energy += (isSpeed ? 50 : 10) * Time.deltaTime;
    }
    public void EnableSpeedBoost()
    {
       speedBoostStopTime = Time.time + speedBoostDuration;
       moveSpeed++;
+      projectileFiringPeriod = 0.1f;
+      laserPrefab.GetComponent<LaserBehavior>().laserSpeed = 6f;
       trailEffect.SetActive(true);
       speedIcon.SpeedDisplay(true);
       isSpeed = true;
@@ -155,6 +169,7 @@ public class HeroBehavior : MonoBehaviour
          }
          else
          {
+            StartCoroutine(Invulnerable());
             switch (collision.gameObject.tag)
             {
                case "RegularEnemy":
@@ -168,7 +183,6 @@ public class HeroBehavior : MonoBehaviour
                default:    // Handles asteroid
                   loseHealth(1); break;
             }
-            StartCoroutine(Invulnerable());
          }
       }
       // else if(collision.gameObject.layer == 11)
@@ -196,6 +210,10 @@ public class HeroBehavior : MonoBehaviour
          timeElapsed += Time.deltaTime;
          yield return null;
       }
+      // Reset at the beginning of the level
+      transform.position = new Vector3(-6.87f, 0f, 0f);
+      collider2d.enabled = true;
+      canMove = true;
    }
 
    private void Die()
@@ -207,7 +225,15 @@ public class HeroBehavior : MonoBehaviour
       gameObject.SetActive(false);
    }
 
-
+   public void gainHealth(int multiplier)
+   {
+      myHealth.increaseHealth(multiplier);
+      healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+      if ((float)myHealth.health / myHealth.MaxHealth > 0.3f)
+      {
+         smokeEffect.SetActive(false);
+      }
+   }
 
    public void loseHealth(int multiplier)
    {
@@ -218,10 +244,12 @@ public class HeroBehavior : MonoBehaviour
       }
       myHealth.decreaseHealth(multiplier);
       healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+      
       if (myHealth.isDead())
       {
          Die();
       }
+
    }
 
    IEnumerator Invulnerable()

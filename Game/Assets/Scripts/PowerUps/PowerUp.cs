@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour
       // int spawnOdds = 3;
       // randomOdds = Random.Range(1, 4);
 
-      if(Random.Range(1, 4) == 3)
+      if(Random.Range(1, 4) == 3 || true)
       {
          Object.Instantiate(Resources.Load("Prefabs/Powerups/Pup") as GameObject, spawnPos, Quaternion.identity);
       }
@@ -73,7 +73,7 @@ public class PowerUp : MonoBehaviour
    {
       if(collider.gameObject.layer == 6) // player layer
       {
-         HeroBehavior player = collider.GetComponent<HeroBehavior>();
+         HeroBehavior player = HeroBehavior.instance;
          switch(type)
          {
             case powerUpType.shield:
@@ -83,7 +83,7 @@ public class PowerUp : MonoBehaviour
                player.EnableSpeedBoost();
                break;
             case powerUpType.health:
-               player.myHealth.increaseHealth();
+               player.gainHealth(2);
                player.healthBar.SetHealth(player.myHealth.health, player.myHealth.MaxHealth);
                break;
             case powerUpType.missile:

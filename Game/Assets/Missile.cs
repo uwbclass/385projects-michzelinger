@@ -50,7 +50,7 @@ public class Missile : MonoBehaviour
     {
         GameObject c = Instantiate(circle, transform.position, Quaternion.identity);
         c.SetActive(true);
-        Destroy(c, 0.1f);
+        Destroy(c, 0.5f);
         Collider2D[] affected = Physics2D.OverlapCircleAll(transform.position, explosionRange, layerMask.value);
         foreach(var a in affected)
         {

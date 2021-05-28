@@ -110,7 +110,7 @@ public class Enemy_Prototype : MonoBehaviour
    {
       // Setting up state variables
       myHealth = GetComponent<Health>();
-      player = FindObjectOfType<HeroBehavior>();
+      player = HeroBehavior.instance;
       waypoints = new List<Transform>();
       rb2d = GetComponent<Rigidbody2D>();
       currPos = new Vector2();
