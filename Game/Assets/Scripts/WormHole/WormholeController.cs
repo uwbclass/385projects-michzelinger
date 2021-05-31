@@ -38,6 +38,7 @@ public class WormholeController : MonoBehaviour
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
+        Destroy(AudioPlayer.instance.gameObject);
         SceneManager.LoadScene("DeathScene");
     }
 

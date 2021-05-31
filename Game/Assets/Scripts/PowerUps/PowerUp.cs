@@ -84,7 +84,7 @@ public class PowerUp : MonoBehaviour
                break;
             case powerUpType.health:
                player.gainHealth(2);
-               player.healthBar.SetHealth(player.myHealth.health, player.myHealth.MaxHealth);
+               player.healthBar.SetHealth(player.health, player.MaxHealth);
                break;
             case powerUpType.missile:
                player.missileAmmo += 3;

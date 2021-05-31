@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-public class Enemy_Prototype : MonoBehaviour
+public class Enemy_Prototype : Health
 {
    //FSM commands
    protected enum EnemyState
@@ -31,7 +31,6 @@ public class Enemy_Prototype : MonoBehaviour
    protected const float aggroTime = 3.0f;
    protected float deAggroTime;
    protected bool timeAggroed = false;
-   protected Health myHealth;
 
    //----------------powerup drops----------------
    protected bool isSpawn = true;
@@ -106,10 +105,9 @@ public class Enemy_Prototype : MonoBehaviour
    }
 
    // Start is called before the first frame update
-   protected virtual void Start()
+   protected override void Start()
    {
       // Setting up state variables
-      myHealth = GetComponent<Health>();
       player = HeroBehavior.instance;
       waypoints = new List<Transform>();
       rb2d = GetComponent<Rigidbody2D>();
@@ -134,7 +132,7 @@ public class Enemy_Prototype : MonoBehaviour
    {
       UpdatePositions();
       UpdateFSM();
-      rb2d.angularVelocity = 0f;
+      //rb2d.angularVelocity = 0f;
    }
 
    private void Die()
@@ -172,8 +170,8 @@ public class Enemy_Prototype : MonoBehaviour
             deAggroTime = Time.time + aggroTime;
          }
 
-         myHealth.decreaseHealth(multiplier);
-         if (myHealth.isDead())
+         decreaseHealth(multiplier);
+         if (isDead())
          {
             Die();
          }

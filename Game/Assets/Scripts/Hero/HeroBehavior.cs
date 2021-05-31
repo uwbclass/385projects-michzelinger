@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class HeroBehavior : MonoBehaviour
+public class HeroBehavior : Health
 {
    public static HeroBehavior instance;
+   public static void Respawn()
+   {
+      Destroy(instance.gameObject);
+   }
 
    [Header("Player")]
    public float moveSpeed = 5f;
-   public Health myHealth;
    public HealthBar healthBar;
    public float invulnerableTime = 1f;
 
@@ -55,10 +58,11 @@ public class HeroBehavior : MonoBehaviour
    }
 
    // Start is called before the first frame update
-   void Start()
+   protected override void Start()
    {
-      myHealth = GetComponent<Health>();
-      //healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+      base.Start();
+
+      //healthBar.SetHealth(.health, .MaxHealth);
       isSpeed = false;
       spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -79,6 +83,7 @@ public class HeroBehavior : MonoBehaviour
       }
       Fire();
       energy += (isSpeed ? 50 : 10) * Time.deltaTime;
+      if(energy > MaxEnergy) { energy = MaxEnergy; }
    }
    public void EnableSpeedBoost()
    {
@@ -218,18 +223,19 @@ public class HeroBehavior : MonoBehaviour
 
    private void Die()
    {
-      collider2d.enabled = false;
+      //collider2d.enabled = false;
       GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
       Destroy(effect, 0.4f);
+
       FindObjectOfType<WormholeController>().GameOver();
       gameObject.SetActive(false);
    }
 
    public void gainHealth(int multiplier)
    {
-      myHealth.increaseHealth(multiplier);
-      healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
-      if ((float)myHealth.health / myHealth.MaxHealth > 0.3f)
+      increaseHealth(multiplier);
+      healthBar.SetHealth(health, MaxHealth);
+      if ((float) health / MaxHealth > 0.3f)
       {
          smokeEffect.SetActive(false);
       }
@@ -238,14 +244,14 @@ public class HeroBehavior : MonoBehaviour
    public void loseHealth(int multiplier)
    {
       Camera.main.gameObject.GetComponentInParent<CameraController>().CallShake();
-      if ((float)myHealth.health / myHealth.MaxHealth <= 0.3f)
+      if ((float) health / MaxHealth <= 0.3f)
       {
          smokeEffect.SetActive(true);
       }
-      myHealth.decreaseHealth(multiplier);
-      healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+      decreaseHealth(multiplier);
+      healthBar.SetHealth(health, MaxHealth);
       
-      if (myHealth.isDead())
+      if (isDead())
       {
          Die();
       }
@@ -268,4 +274,6 @@ public class HeroBehavior : MonoBehaviour
 
       collider2d.enabled = true;
    }
+
+
 }
