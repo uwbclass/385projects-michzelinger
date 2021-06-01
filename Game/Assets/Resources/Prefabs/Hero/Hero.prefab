@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slider: {fileID: 1346268407}
   Offset: {x: 0.07, y: 0.75, z: 0}
+  Low: {r: 1, g: 0, b: 0, a: 1}
+  High: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &4920117154796537582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,8 +166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -9.9, y: 0}
-  m_SizeDelta: {x: -19.799, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1332314048
 CanvasRenderer:
@@ -230,7 +232,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346268405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.47107, y: 0.47107, z: 0.47107}
   m_Children:
   - {fileID: 1332314046}
@@ -407,8 +409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.944, y: 0}
-  m_SizeDelta: {x: 0.112, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1755434162
 CanvasRenderer:
@@ -431,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.1308515, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5276,7 +5278,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884981272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1755434160}
@@ -5682,7 +5684,6 @@ GameObject:
   - component: {fileID: 499600684273203248}
   - component: {fileID: 499600684273203251}
   - component: {fileID: 499600684273203250}
-  - component: {fileID: 499600684273203253}
   - component: {fileID: 4830284117643588891}
   m_Layer: 6
   m_Name: Hero
@@ -5861,21 +5862,6 @@ PolygonCollider2D:
       - {x: 0.19, y: -0.325}
       - {x: 0.32, y: -0.355}
       - {x: 0.39, y: -0.36499998}
---- !u!114 &499600684273203253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499600684273203252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6463c94dd8d4bf44a7aeecf9897931c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  MaxHealth: 100
-  healthIncrement: 10
 --- !u!95 &4830284117643588891
 Animator:
   serializedVersion: 3

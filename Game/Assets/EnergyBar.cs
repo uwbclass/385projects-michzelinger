@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnergyBar : MonoBehaviour
 {
     public Slider bar;
+
     // Start is called before the first frame update
     private void UpdateEnergy()
     {

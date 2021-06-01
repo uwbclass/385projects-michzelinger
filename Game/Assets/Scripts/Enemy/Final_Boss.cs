@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Final_Boss : Enemy_Prototype
 {
+    public Transform firePt1;
+    public Transform firePt2;
     private float cooldown1;
-    // private float cooldown2;
+    private float cooldown2;
     // private float cooldownMiddle;
-    public float attack1 = 4.0f;
     // public float attack2 = 6.0f;
     // public float middle = 8.0f;
     // public GameObject middleLaser;
@@ -18,6 +19,8 @@ public class Final_Boss : Enemy_Prototype
     // [SerializeField] Transform laser1bot;
     // [SerializeField] Transform laser2top;
     // [SerializeField] Transform laser2bot;
+
+    public GameObject[] enemies;
     
     protected override void Start()
     {
@@ -34,33 +37,29 @@ public class Final_Boss : Enemy_Prototype
         if(Time.time >= cooldown1)
         {
             //Debug.Log("Bullet Time" + bulletTimeStamp);
+            Debug.Log(firePt1.position + " " + firePt2.position);
+            GameObject mine = Instantiate(Laser1, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
+            mine.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100f, 0f));
 
-            Instantiate(Laser1, transform.position, transform.rotation);
-            Instantiate(Laser1, transform.position, transform.rotation);
-
+            float attack1 = Random.Range(0.5f, 5f);
             cooldown1 = Time.time + attack1;
         }
-        // if(Time.time >= cooldown2)
-        // {
-        //     //Debug.Log("Bullet Time" + bulletTimeStamp);
-        // //    Instantiate(Laser2, laser2top.transform.position, transform.rotation);
-        //     Instantiate(Laser2, laser2top.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 30f));
-        //     Instantiate(Laser2, laser2top.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, -30f));
-        //     Instantiate(Laser2, laser2top.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, -10f));
-        //     Instantiate(Laser2, laser2top.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 10f));
-        //     // Instantiate(Laser2, laser2bot.transform.position, transform.rotation);
-        //     Instantiate(Laser2, laser2bot.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 30f));
-        //     Instantiate(Laser2, laser2bot.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, -30f));
-        //     Instantiate(Laser2, laser2bot.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, -10f));
-        //     Instantiate(Laser2, laser2bot.transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 10f));
+        if(Time.time >= cooldown2)
+        {
+            Summon();
 
-        //     cooldown2 = Time.time + attack2;
-        // }
+            cooldown2 = Time.time + Random.Range(1f, 10f);
+        }
         // if(Time.time >= cooldownMiddle)
         // {
         //     StartCoroutine(MainLaser());
         //     cooldownMiddle = Time.time + middle;
         // }
+    }
+
+    private void Summon()
+    {
+        Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
     }
 
     // IEnumerator MainLaser()

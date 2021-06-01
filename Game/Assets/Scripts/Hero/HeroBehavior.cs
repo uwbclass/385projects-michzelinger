@@ -82,7 +82,7 @@ public class HeroBehavior : Health
          trailEffect.SetActive(false);
       }
       Fire();
-      energy += (isSpeed ? 50 : 10) * Time.deltaTime;
+      energy += (isSpeed ? 50 : 15) * Time.deltaTime;
       if(energy > MaxEnergy) { energy = MaxEnergy; }
    }
    public void EnableSpeedBoost()
@@ -158,6 +158,7 @@ public class HeroBehavior : Health
       {
          canMove = false;
          collider2d.enabled = false;
+         rb2d.angularVelocity = 0f;
          rb2d.AddTorque(20f);
          GetComponent<Animator>().SetTrigger("shrink");
          StartCoroutine(FallIntoWormhole(collider.transform.position));
