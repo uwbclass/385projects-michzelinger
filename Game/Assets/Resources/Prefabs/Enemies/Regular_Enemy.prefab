@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8443775844355603799}
   - component: {fileID: 8443775844355603796}
   - component: {fileID: 8443775844355603797}
-  - component: {fileID: 1280380029}
   m_Layer: 8
   m_Name: Regular_Enemy
   m_TagString: RegularEnemy
@@ -142,18 +141,3 @@ MonoBehaviour:
   hitEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
   bulletRate: 0.5
   Laser: {fileID: 8578718705816374981, guid: 98f2a506dc33d6749ab2c0f2ec35a638, type: 3}
---- !u!114 &1280380029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443775844355603800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6463c94dd8d4bf44a7aeecf9897931c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  MaxHealth: 100
-  healthIncrement: 10

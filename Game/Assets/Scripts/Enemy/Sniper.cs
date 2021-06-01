@@ -14,6 +14,12 @@ public class Sniper : Enemy_Prototype
     LayerMask layerMask;
     bool started = false;
 
+    protected override void Update()
+    {
+        base.Update();
+        rb2d.angularVelocity = 0f;
+    }
+    
     protected override void Start()
     {
         base.Start();

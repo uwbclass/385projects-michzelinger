@@ -22,9 +22,9 @@ public class MidBoss_Enemy : Enemy_Prototype
     protected override void Start()
     {
         base.Start();
-        cooldown1 = attack1;
-        cooldown2 = attack2;
-        cooldownMiddle = middle;
+        cooldown1 = 0;
+        cooldown2 = 0;
+        cooldownMiddle = 0;
         isSpawn = false;
     }
     protected override void ServiceAttackState()
@@ -78,6 +78,9 @@ public class MidBoss_Enemy : Enemy_Prototype
         if(proximity(aggroDistance * 1.5f))
         {
             state = EnemyState.attackState;
+            cooldown1 = Time.time + attack1;
+            cooldown2 = Time.time + attack2;
+            cooldownMiddle = Time.time + middle;
             GetComponent<Collider2D>().enabled = true;
         }
     }
