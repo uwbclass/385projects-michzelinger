@@ -39,7 +39,7 @@ public class HeroBehavior : Health
    [Header("UI")]
    Vector3 mouse;
    public GameObject shield;
-   public PowerupDisplay speedIcon;
+   public PowerupDisplay iconsDisplayer;
    public bool isSpeed;
    public float speedBoostDuration = 3f;
    public float speedBoostStopTime;
@@ -77,7 +77,7 @@ public class HeroBehavior : Health
          moveSpeed = 3f;
          projectileFiringPeriod = 0.2f;
          laserPrefab.GetComponent<LaserBehavior>().laserSpeed = 4f;
-         speedIcon.SpeedDisplay(false);
+         iconsDisplayer.SpeedDisplay(false);
          isSpeed = false;
          trailEffect.SetActive(false);
       }
@@ -92,7 +92,7 @@ public class HeroBehavior : Health
       projectileFiringPeriod = 0.1f;
       laserPrefab.GetComponent<LaserBehavior>().laserSpeed = 6f;
       trailEffect.SetActive(true);
-      speedIcon.SpeedDisplay(true);
+      iconsDisplayer.SpeedDisplay(true);
       isSpeed = true;
    }
 
@@ -113,6 +113,14 @@ public class HeroBehavior : Health
       {
          Instantiate(missilePrefab, firePoint.position, transform.rotation);
          --missileAmmo;
+         if(missileAmmo != 0)
+         {
+            iconsDisplayer.BombDisplay(true, missileAmmo);
+         }
+         else
+         {
+            iconsDisplayer.BombDisplay(false, 0);
+         }
          energy -= 30f;
       }
    }
@@ -142,7 +150,10 @@ public class HeroBehavior : Health
       if (collider.gameObject.layer == 9) // Enemy Laser
       {
          if(shield.activeInHierarchy == true)
+         {
             shield.SetActive(false);
+            iconsDisplayer.ShieldDisplay(false);
+         }
 
          LaserBehavior laser;
          if(collider.gameObject.TryGetComponent<LaserBehavior>(out laser))
@@ -171,6 +182,7 @@ public class HeroBehavior : Health
          if (shield.activeInHierarchy == true)
          {
             shield.SetActive(false);
+            iconsDisplayer.ShieldDisplay(false);
          }
          else
          {

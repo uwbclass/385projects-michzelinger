@@ -78,6 +78,7 @@ public class PowerUp : MonoBehaviour
          {
             case powerUpType.shield:
                player.shield.SetActive(true);
+               player.iconsDisplayer.ShieldDisplay(true);
                break;
             case powerUpType.speed:
                player.EnableSpeedBoost();
@@ -88,6 +89,7 @@ public class PowerUp : MonoBehaviour
                break;
             case powerUpType.missile:
                player.missileAmmo += 3;
+               player.iconsDisplayer.BombDisplay(true, player.missileAmmo);
                break;
             default:
                break;
