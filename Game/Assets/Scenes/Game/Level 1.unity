@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1990495490999817837, guid: 22344846ac75bec409d2d3fb668b4885, type: 3}
       propertyPath: maxAsteroids
-      value: 17
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1990495490999817838, guid: 22344846ac75bec409d2d3fb668b4885, type: 3}
       propertyPath: m_Name

@@ -62,6 +62,10 @@ public class Enemy_Prototype : Health
    protected virtual void ServicePatrolState()
    {
       // Incomplete, need to implement state change logic in child class
+      if(waypoints.Count == 0)
+      {
+         rb2d.velocity = transform.up * 2f;
+      }
       if (waypointIndex < waypoints.Count)
       {
          var targetPosition = waypoints[waypointIndex].position;
@@ -117,14 +121,17 @@ public class Enemy_Prototype : Health
       // spriteRenderer = GetComponent<SpriteRenderer>();
       // cachedMaterial = spriteRenderer.material;
 
-      // Adding each waypoints into the list of destinations
-      foreach (Transform child in pathPrefab.transform)
+      if(pathPrefab != null)
       {
-         waypoints.Add(child);
-      }
+         // Adding each waypoints into the list of destinations
+         foreach (Transform child in pathPrefab.transform)
+         {
+            waypoints.Add(child);
+         }
 
-      // Start at initial waypoint
-      transform.position = waypoints[0].position;
+         // Start at initial waypoint
+         transform.position = waypoints[0].position;
+      }
    }
 
    // Update is called once per frame

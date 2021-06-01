@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class WormholeController : MonoBehaviour
 {
+    public static int checkPoint = 1;
+
     public GameObject[] wormholes;
     public GameObject[] enemies;
     public Animator transitionAnim;
@@ -51,6 +53,17 @@ public class WormholeController : MonoBehaviour
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
+
+        int curr = SceneManager.GetActiveScene().buildIndex;
+        switch(curr)
+        {
+            case 4:
+            case 6:
+                checkPoint = curr;
+                break;
+            default:
+                break;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
