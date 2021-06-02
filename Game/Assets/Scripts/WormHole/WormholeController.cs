@@ -54,12 +54,19 @@ public class WormholeController : MonoBehaviour
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
 
-        int curr = SceneManager.GetActiveScene().buildIndex;
-        switch(curr)
+        switch(SceneManager.GetActiveScene().buildIndex)
         {
             case 4:
-            case 6:
-                checkPoint = curr;
+                checkPoint = 4;
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
+            case 5:
+                checkPoint = 6;
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
+            case 8:
+                checkPoint = 8;
+                Destroy(AudioPlayer.instance.gameObject);
                 break;
             default:
                 break;

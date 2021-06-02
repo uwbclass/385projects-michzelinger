@@ -220,7 +220,7 @@ public class HeroBehavior : Health
    IEnumerator FallIntoWormhole(Vector2 target)
    {
       float timeElapsed = 0f;
-      float endTime = 1f;
+      float endTime = 1.5f;
       Vector2 originalPos = rb2d.position;
       while(timeElapsed < endTime)
       {
@@ -228,10 +228,14 @@ public class HeroBehavior : Health
          timeElapsed += Time.deltaTime;
          yield return null;
       }
+
       // Reset at the beginning of the level
       transform.position = new Vector3(-6.87f, 0f, 0f);
       collider2d.enabled = true;
+      rb2d.angularVelocity = 0;
       canMove = true;
+
+      StartCoroutine(Invulnerable());
    }
 
    private void Die()

@@ -20,6 +20,7 @@ public class Enemy_Prototype : Health
    protected float moveSpeed = 3.0f;
    protected Rigidbody2D rb2d;
 
+
    //----------------player tracking----------------
    protected HeroBehavior player;
    protected Vector2 currPos;
@@ -67,6 +68,7 @@ public class Enemy_Prototype : Health
          transform.up = Vector2.left;
          rb2d.MovePosition(rb2d.position + Vector2.left * Time.fixedDeltaTime * moveSpeed);
       }
+
       if (waypointIndex < waypoints.Count)
       {
          var targetPosition = waypoints[waypointIndex].position;
@@ -157,6 +159,11 @@ public class Enemy_Prototype : Health
       if (collision.gameObject.layer == 6) // Player
       {
          Die();
+      }
+
+      if (collision.gameObject.layer == 12 && waypoints.Count == 0) // Boundary
+      {
+         Destroy(gameObject);
       }
    }
 

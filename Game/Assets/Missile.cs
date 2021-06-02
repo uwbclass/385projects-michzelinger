@@ -54,7 +54,7 @@ public class Missile : MonoBehaviour
         Collider2D[] affected = Physics2D.OverlapCircleAll(transform.position, explosionRange, layerMask.value);
         foreach(var a in affected)
         {
-            Debug.Log(a.gameObject.transform.position);
+            //Debug.Log(a.gameObject.transform.position);
             a.gameObject.GetComponent<Enemy_Prototype>().loseHealth(5);
         }
         Destroy(gameObject);

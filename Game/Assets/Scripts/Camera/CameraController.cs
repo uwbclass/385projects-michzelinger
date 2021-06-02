@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
 
 
     [Header("Boss Level")]
-    public bool bossLevel = false;
+    private bool bossLevel = false;
     public float transitionTime = 2f;
     public GameObject boss;
     private bool following = true;
@@ -42,8 +42,11 @@ public class CameraController : MonoBehaviour
         camPosLimit = CalculateCamPosLimit();
 
         rb = followObject.GetComponent<Rigidbody2D>();
+
         if(boss != null)
         {
+            bossLevel = true;
+            //boss.gameObject.SetActive(false);
             originalPos = boss.transform.position;
             boss.transform.position = (boss.transform.position + new Vector3(5.0f, 0f, 0f));
         }

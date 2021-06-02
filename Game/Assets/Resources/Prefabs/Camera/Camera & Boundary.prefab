@@ -51,6 +51,8 @@ MonoBehaviour:
   magnitude: 0.1
   boundary: {fileID: 3696368539879519485}
   bossLevel: 0
+  transitionTime: 2
+  boss: {fileID: 0}
 --- !u!1 &7714963806953956088
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +143,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2984429209994416023}
     m_Modifications:
+    - target: {fileID: 2034587940160295952, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696368538991230997, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696368539336204335, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696368539824505536, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3696368540110581236, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -188,6 +206,14 @@ PrefabInstance:
     - target: {fileID: 3696368540110581239, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
       propertyPath: m_Name
       value: Boundary
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696368540110581239, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696368540540125827, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}

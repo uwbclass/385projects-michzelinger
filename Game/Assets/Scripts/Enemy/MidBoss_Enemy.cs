@@ -21,7 +21,19 @@ public class MidBoss_Enemy : Enemy_Prototype
     
     protected override void Start()
     {
-        base.Start();
+        // Base start
+        player = HeroBehavior.instance;
+        waypoints = new List<Transform>();
+        rb2d = GetComponent<Rigidbody2D>();
+        currPos = new Vector2();
+        playerPos = new Vector2();
+        cooldown1 = 0;
+        
+        foreach (Transform child in pathPrefab.transform)
+        {
+            waypoints.Add(child);
+        }
+        
         cooldown1 = 0;
         cooldown2 = 0;
         cooldownMiddle = 0;

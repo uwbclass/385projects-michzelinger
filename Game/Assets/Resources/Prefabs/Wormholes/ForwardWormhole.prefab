@@ -100,7 +100,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.875
+  m_Radius: 0.6
 --- !u!114 &8422609033760649453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6c56b53e74d3e4199c6e0e5e96b9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 0}
 --- !u!95 &796991587
 Animator:
   serializedVersion: 3

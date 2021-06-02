@@ -21,21 +21,22 @@ public class Final_Boss : Enemy_Prototype
     // [SerializeField] Transform laser2bot;
 
     public GameObject enemy;
-
-    private List<GameObject> objects;
     
-    private void FixedUpdate()
-    {
-        foreach(var obj in objects)
-        {
-            
-        }
-    }
     protected override void Start()
     {
-        base.Start();
-        objects = new List<GameObject>();
+        // Base start
+        player = HeroBehavior.instance;
+        waypoints = new List<Transform>();
+        rb2d = GetComponent<Rigidbody2D>();
+        currPos = new Vector2();
+        playerPos = new Vector2();
         cooldown1 = 0;
+        
+        foreach (Transform child in pathPrefab.transform)
+        {
+            waypoints.Add(child);
+        }
+
         // cooldown2 = 0;
         // cooldownMiddle = 0;
         isSpawn = false;
@@ -48,8 +49,7 @@ public class Final_Boss : Enemy_Prototype
         {
             //Debug.Log("Bullet Time" + bulletTimeStamp);
             // Debug.Log(firePt1.position + " " + firePt2.position);
-            GameObject mine = Instantiate(Laser1, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
-            objects.Add(mine);
+            Instantiate(Laser1, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
 
             float attack1 = Random.Range(0.5f, 5f);
             cooldown1 = Time.time + attack1;
@@ -58,7 +58,7 @@ public class Final_Boss : Enemy_Prototype
         {
             Summon();
 
-            cooldown2 = Time.time + Random.Range(1f, 10f);
+            cooldown2 = Time.time + Random.Range(8f, 10f);
         }
         // if(Time.time >= cooldownMiddle)
         // {
@@ -69,8 +69,7 @@ public class Final_Boss : Enemy_Prototype
 
     private void Summon()
     {
-        GameObject obj = Instantiate(enemy, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
-        objects.Add(obj);
+        Instantiate(enemy, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
     }
 
     // IEnumerator MainLaser()
