@@ -20,7 +20,7 @@ public class HeroBehavior : Health
    public GameObject deathEffect;
    public Collider2D collider2d;
    public Rigidbody2D rb2d;
-   private bool canMove = true;
+   public bool canMove = true;
 
    public const float MaxEnergy = 100f;
    public float energy = MaxEnergy;

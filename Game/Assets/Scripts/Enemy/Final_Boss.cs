@@ -20,11 +20,21 @@ public class Final_Boss : Enemy_Prototype
     // [SerializeField] Transform laser2top;
     // [SerializeField] Transform laser2bot;
 
-    public GameObject[] enemies;
+    public GameObject enemy;
+
+    private List<GameObject> objects;
     
+    private void FixedUpdate()
+    {
+        foreach(var obj in objects)
+        {
+            
+        }
+    }
     protected override void Start()
     {
         base.Start();
+        objects = new List<GameObject>();
         cooldown1 = 0;
         // cooldown2 = 0;
         // cooldownMiddle = 0;
@@ -37,9 +47,9 @@ public class Final_Boss : Enemy_Prototype
         if(Time.time >= cooldown1)
         {
             //Debug.Log("Bullet Time" + bulletTimeStamp);
-            Debug.Log(firePt1.position + " " + firePt2.position);
+            // Debug.Log(firePt1.position + " " + firePt2.position);
             GameObject mine = Instantiate(Laser1, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
-            mine.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100f, 0f));
+            objects.Add(mine);
 
             float attack1 = Random.Range(0.5f, 5f);
             cooldown1 = Time.time + attack1;
@@ -59,7 +69,8 @@ public class Final_Boss : Enemy_Prototype
 
     private void Summon()
     {
-        Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
+        GameObject obj = Instantiate(enemy, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
+        objects.Add(obj);
     }
 
     // IEnumerator MainLaser()

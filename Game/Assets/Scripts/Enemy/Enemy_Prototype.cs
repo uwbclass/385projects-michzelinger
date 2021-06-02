@@ -64,7 +64,8 @@ public class Enemy_Prototype : Health
       // Incomplete, need to implement state change logic in child class
       if(waypoints.Count == 0)
       {
-         rb2d.velocity = transform.up * 2f;
+         transform.up = Vector2.left;
+         rb2d.MovePosition(rb2d.position + Vector2.left * Time.fixedDeltaTime * moveSpeed);
       }
       if (waypointIndex < waypoints.Count)
       {

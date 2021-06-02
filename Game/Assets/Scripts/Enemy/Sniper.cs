@@ -59,6 +59,14 @@ public class Sniper : Enemy_Prototype
             return;
         }
 
+        if(!timeAggroed && !proximity(aggroDistance * 3f))
+        {
+            lineRenderer.enabled = false;
+            timer = 0;
+            state = EnemyState.patrolState;
+            return;
+        }
+
         if(proximity(escapeDistance))
         {
             StopAllCoroutines();
