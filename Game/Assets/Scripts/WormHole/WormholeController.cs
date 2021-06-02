@@ -68,6 +68,9 @@ public class WormholeController : MonoBehaviour
                 checkPoint = 8;
                 Destroy(AudioPlayer.instance.gameObject);
                 break;
+            case 9:
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
             default:
                 break;
         }
