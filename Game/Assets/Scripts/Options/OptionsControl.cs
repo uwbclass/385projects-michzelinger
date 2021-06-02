@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class OptionsControl : MonoBehaviour
 {
    [SerializeField] GameObject optionsMenu;
@@ -46,8 +48,11 @@ public class OptionsControl : MonoBehaviour
       Time.timeScale = 1f;
    }
 
-   public void QuitGame()
+   public void ReturnToMenu()
    {
-      Application.Quit();
+      SceneManager.LoadScene("MainMenu");
+      Destroy(HeroBehavior.instance.gameObject);
+      Destroy(AudioPlayer.instance.gameObject);
+      Time.timeScale = 1f;
    }
 }

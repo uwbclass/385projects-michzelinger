@@ -115,11 +115,11 @@ public class HeroBehavior : Health
          --missileAmmo;
          if(missileAmmo != 0)
          {
-            iconsDisplayer.BombDisplay(true, missileAmmo);
+            iconsDisplayer.UpdateBombNumber(missileAmmo);
          }
          else
          {
-            iconsDisplayer.BombDisplay(false, 0);
+            iconsDisplayer.BombHide();
          }
          energy -= 30f;
       }
@@ -154,15 +154,17 @@ public class HeroBehavior : Health
             shield.SetActive(false);
             iconsDisplayer.ShieldDisplay(false);
          }
-
-         LaserBehavior laser;
-         if(collider.gameObject.TryGetComponent<LaserBehavior>(out laser))
-         {
-            loseHealth(laser.damageMultiplier);
-         }
          else
          {
-            loseHealth(3);
+            LaserBehavior laser;
+            if(collider.gameObject.TryGetComponent<LaserBehavior>(out laser))
+            {
+               loseHealth(laser.damageMultiplier);
+            }
+            else
+            {
+               loseHealth(3);
+            }
          }
       }
       else if (collider.gameObject.layer == 10) // Wormhole
@@ -178,12 +180,13 @@ public class HeroBehavior : Health
 
    void OnCollisionEnter2D(Collision2D collision)
    {
-      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11) // Enemy, Asteroids
+      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11 || collision.gameObject.tag == "Mine") // Enemy, Asteroids
       {
          if (shield.activeInHierarchy == true)
          {
             shield.SetActive(false);
             iconsDisplayer.ShieldDisplay(false);
+            if(collision.gameObject.tag == "Mine") collision.gameObject.GetComponent<Mine>().HeroCollision();
          }
          else
          {
@@ -198,6 +201,8 @@ public class HeroBehavior : Health
                   loseHealth(2); break;
                case "MidBoss":
                   loseHealth(4); break;
+               case "Mine":
+                  collision.gameObject.GetComponent<Mine>().HeroCollision(); loseHealth(5); break;
                default:    // Handles asteroid
                   loseHealth(1); break;
             }

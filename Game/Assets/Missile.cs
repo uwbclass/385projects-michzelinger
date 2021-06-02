@@ -9,6 +9,7 @@ public class Missile : MonoBehaviour
     private Enemy_Prototype target;
 
     private float moveSpeed = 5f;
+    private float rotateSpeed = 60f;
     private float explosionRange = 1f;
     private LayerMask layerMask;
     // Start is called before the first frame update
@@ -36,14 +37,27 @@ public class Missile : MonoBehaviour
     {
         if(target != null)
         {
-            transform.up = (target.transform.position - transform.position).normalized;
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+            // transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+            // moveSpeed += 2 * Time.deltaTime;
+
+            transform.position += transform.up * moveSpeed * Time.deltaTime;
             moveSpeed += 2 * Time.deltaTime;
+
+            // Rotate
+            Vector2 lookDirection = (Vector2) (target.transform.position - transform.position);
+            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+            Quaternion qTo = Quaternion.Euler(new Vector3(0, 0, angle));
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, rotateSpeed * Time.deltaTime);
         }
         else
         {
             transform.Translate(transform.up * moveSpeed * Time.deltaTime, Space.World);
         }
+    }
+    
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D()
@@ -55,7 +69,9 @@ public class Missile : MonoBehaviour
         foreach(var a in affected)
         {
             //Debug.Log(a.gameObject.transform.position);
-            a.gameObject.GetComponent<Enemy_Prototype>().loseHealth(5);
+           // if(a.gameObject.tag == "Mine") Destroy (a.gameObject);
+            if(a.gameObject.tag != "Mine")
+                a.gameObject.GetComponent<Enemy_Prototype>().loseHealth(5);
         }
         Destroy(gameObject);
     }

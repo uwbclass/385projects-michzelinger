@@ -110,7 +110,12 @@ public class Sniper : Enemy_Prototype
         {
             if(hitInfo.transform.gameObject.layer == 6)
             {
-                HeroBehavior.instance.loseHealth(2);
+                if(HeroBehavior.instance.shield.activeInHierarchy)
+                {
+                    HeroBehavior.instance.shield.SetActive(false);
+                }
+                else
+                    HeroBehavior.instance.loseHealth(2);
             }
             lineRenderer.SetPosition(1, hitInfo.point);
         }

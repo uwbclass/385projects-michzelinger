@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Level 3.unity
     guid: 71d6845fbdaa0774796912807d266991
   - enabled: 1
-    path: Assets/Scenes/Game/ChkPoint 1.unity
+    path: Assets/Scenes/Game/Boss CheckPoint.unity
     guid: c528662d60a2deb4da09d20d7f0a8f14
   - enabled: 1
     path: Assets/Scenes/Game/Level 4.unity
@@ -30,12 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Level 6.unity
     guid: 075902b5ac4675d439efbb2f4b2a4e64
   - enabled: 1
-    path: Assets/Scenes/Game/ChkPoint 2.unity
+    path: Assets/Scenes/Game/Final Boss CheckPoint.unity
     guid: 5cf61c5ac2cde7141bc2df1266b53e37
   - enabled: 1
     path: Assets/Scenes/Game/Level 7.unity
     guid: 9d780ff1b125af24481afea2ea1b18d3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game/TemporaryEndingScene.unity
     guid: 9fceb3ae43da03c4eb9930465f1e20fa
   - enabled: 1

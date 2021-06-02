@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5185465001611826540}
   - component: {fileID: 5185465001611826541}
   - component: {fileID: 6152349374671146978}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185465001611826536}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8485159673029994760}
   - component: {fileID: 7719653931213295576}
   - component: {fileID: 7632077130226124266}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

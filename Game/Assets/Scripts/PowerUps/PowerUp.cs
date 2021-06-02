@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+   public static bool displayMissileKey = false;
    public static void SpawnRandom(Vector3 spawnPos)
    {
       // int randomOdds;
@@ -22,10 +23,12 @@ public class PowerUp : MonoBehaviour
       shield,
       speed,
       health,
-      missile
+      missile,
+      random
    }
    public Sprite[] spriteList;
-   private powerUpType type;
+   public powerUpType type;
+
    public bool animPos = true;
    public Vector3 posAmplitude = Vector3.one;
    public Vector3 posSpeed = Vector3.one;
@@ -40,9 +43,13 @@ public class PowerUp : MonoBehaviour
     */
    void Awake()
    {
-      int whatType = Random.Range(0, 4);
-      type = (powerUpType) whatType;
-      GetComponent<SpriteRenderer>().sprite = spriteList[whatType];
+      if(type == powerUpType.random)
+      {
+         int whatType = Random.Range(0, 4);
+         type = (powerUpType) whatType;
+         
+      }
+      GetComponent<SpriteRenderer>().sprite = spriteList[(int)type];
 
       
       origPos = transform.position;
@@ -88,8 +95,13 @@ public class PowerUp : MonoBehaviour
                player.healthBar.SetHealth(player.health, player.MaxHealth);
                break;
             case powerUpType.missile:
+               if(displayMissileKey == false)
+               {
+                  FindObjectOfType<LevelDisplay>().DisplayMissileKey();
+                  displayMissileKey = true;
+               }
                player.missileAmmo += 3;
-               player.iconsDisplayer.BombDisplay(true, player.missileAmmo);
+               player.iconsDisplayer.BombDisplay(player.missileAmmo);
                break;
             default:
                break;

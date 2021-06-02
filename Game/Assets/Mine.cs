@@ -41,13 +41,26 @@ public class Mine : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D()
+    // void OnTriggerEnter2D()
+    // {
+    //     GameObject c = Instantiate(circle, transform.position, Quaternion.identity);
+    //     c.SetActive(true);
+    //     Destroy(c, 0.5f);
+    //     Collider2D affected = Physics2D.OverlapCircle(transform.position, explosionRange, layerMask.value);
+    //     if(affected != null) affected.GetComponent<HeroBehavior>().loseHealth(5);
+    //     Destroy(gameObject);
+    // }
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+    public void HeroCollision()
     {
         GameObject c = Instantiate(circle, transform.position, Quaternion.identity);
         c.SetActive(true);
         Destroy(c, 0.5f);
-        Collider2D affected = Physics2D.OverlapCircle(transform.position, explosionRange, layerMask.value);
-        if(affected != null) affected.GetComponent<HeroBehavior>().loseHealth(5);
+        // Collider2D affected = Physics2D.OverlapCircle(transform.position, explosionRange, layerMask.value);
+        // if(affected != null) affected.GetComponent<HeroBehavior>().loseHealth(5);
         Destroy(gameObject);
     }
 

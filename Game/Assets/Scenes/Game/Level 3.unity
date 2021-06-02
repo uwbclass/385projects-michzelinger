@@ -672,6 +672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarField
       objectReference: {fileID: 0}
+    - target: {fileID: 5589991686915832164, guid: 95aad5e42fc7f2f478a94ad8fbcd1ee1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5589991686915832169, guid: 95aad5e42fc7f2f478a94ad8fbcd1ee1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -925,6 +929,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 499600684273203251, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+      propertyPath: iconsDisplayer
+      value: 
+      objectReference: {fileID: 1017069924}
+    - target: {fileID: 499600684273203251, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
       propertyPath: transitionAnim
       value: 
       objectReference: {fileID: 1499368297}
@@ -986,6 +994,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+--- !u!114 &1017069924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3081301563259337859, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+  m_PrefabInstance: {fileID: 1017069923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4c0d51fe0cc5f4cbf6ba9850a3ce9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1042387877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1268,6 +1287,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 247959604, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 870628945375538362, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 910.0566
@@ -1350,7 +1373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5712766551231729671, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 8.9
       objectReference: {fileID: 0}
     - target: {fileID: 5712766551231729671, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: m_LocalPosition.y

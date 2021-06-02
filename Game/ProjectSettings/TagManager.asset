@@ -10,6 +10,8 @@ TagManager:
   - SuicideBomber
   - Sniper
   - MidBoss
+  - Mine
+  - Asteroid
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - Boundary
   - Powerup
   - Missile
-  - 
+  - Mine
   - 
   - 
   - 

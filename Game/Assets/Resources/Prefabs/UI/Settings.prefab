@@ -997,7 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac494ebbfe64b2408c55512bbc93499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFX: {fileID: 0}
   hoverFX: {fileID: 8300000, guid: 058cec70ae2e7504bbd0d8cb5e8d3c3d, type: 3}
   clickFX: {fileID: 8300000, guid: be70c3c1feacd6945816c108de266e58, type: 3}
 --- !u!1 &8032962946648597041
@@ -1492,8 +1491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102, y: -201}
-  m_SizeDelta: {x: 150.1427, y: 72.4078}
+  m_AnchoredPosition: {x: 115.05, y: -201}
+  m_SizeDelta: {x: 176.25, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8032962946982554147
 CanvasRenderer:
@@ -1579,7 +1578,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8032962946426855646}
         m_TargetAssemblyTypeName: OptionsControl, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1646,7 +1645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac494ebbfe64b2408c55512bbc93499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFX: {fileID: 0}
   hoverFX: {fileID: 8300000, guid: 058cec70ae2e7504bbd0d8cb5e8d3c3d, type: 3}
   clickFX: {fileID: 8300000, guid: be70c3c1feacd6945816c108de266e58, type: 3}
 --- !u!1 &8032962947138723221
@@ -2361,7 +2359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: quit
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70ec505259a182541b4361830e118b1e, type: 2}
   m_sharedMaterial: {fileID: -2327534824925753137, guid: 70ec505259a182541b4361830e118b1e, type: 2}

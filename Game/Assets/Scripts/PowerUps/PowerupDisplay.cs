@@ -20,9 +20,19 @@ public class PowerupDisplay : MonoBehaviour
         shieldPowerup.gameObject.SetActive(flag);
     }
 
-    public void BombDisplay(bool flag, int bombNumber)
+    public void BombDisplay(int bombNumber)
     {
-        bombPowerup.gameObject.SetActive(flag);
+        bombPowerup.gameObject.SetActive(true);
         m_bombText.text = "X " + bombNumber;
+    }
+
+    public void UpdateBombNumber(int bombNumber)
+    {
+        m_bombText.text = "X " + bombNumber;
+    }
+
+    public void BombHide()
+    {
+        bombPowerup.gameObject.SetActive(false);
     }
 }

@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0966741b0232c92429a48cb171c8c648, type: 3}
   - {fileID: 21300000, guid: c7cccf0dc85eb94418b5224a3a4db5fb, type: 3}
   - {fileID: 21300000, guid: d7fca94bea5245940aef8760ddd33f5f, type: 3}
+  type: 4
   animPos: 1
   posAmplitude: {x: 1, y: 1, z: 1}
   posSpeed: {x: 1, y: 1, z: 1}

@@ -8,17 +8,18 @@ public class Final_Boss : Enemy_Prototype
     public Transform firePt2;
     private float cooldown1;
     private float cooldown2;
-    // private float cooldownMiddle;
-    // public float attack2 = 6.0f;
+    private float cooldown3;
+    public float laserRate = 4.0f;
     // public float middle = 8.0f;
     // public GameObject middleLaser;
     // public GameObject aimer;
-    public GameObject Laser1;
-    // public GameObject Laser2;
-    // [SerializeField] Transform laser1top;
-    // [SerializeField] Transform laser1bot;
-    // [SerializeField] Transform laser2top;
-    // [SerializeField] Transform laser2bot;
+    public GameObject Mines;
+    public GameObject Laser;
+    private List<Transform> laserArray;
+    [SerializeField] Transform laserTop1;
+    [SerializeField] Transform laserTop2;
+    [SerializeField] Transform laserBot1;
+    [SerializeField] Transform laserBot2;
 
     public GameObject enemy;
     
@@ -37,6 +38,12 @@ public class Final_Boss : Enemy_Prototype
             waypoints.Add(child);
         }
 
+        laserArray = new List<Transform>();
+        laserArray.Add(laserTop1);
+        laserArray.Add(laserTop2);
+        laserArray.Add(laserBot1);
+        laserArray.Add(laserBot2);
+
         // cooldown2 = 0;
         // cooldownMiddle = 0;
         isSpawn = false;
@@ -49,8 +56,8 @@ public class Final_Boss : Enemy_Prototype
         {
             //Debug.Log("Bullet Time" + bulletTimeStamp);
             // Debug.Log(firePt1.position + " " + firePt2.position);
-            Instantiate(Laser1, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
-
+            GameObject m = Instantiate(Mines, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
+            m.GetComponent<Rigidbody2D>().velocity = new Vector2(-3f, 0f);
             float attack1 = Random.Range(0.5f, 5f);
             cooldown1 = Time.time + attack1;
         }
@@ -59,6 +66,17 @@ public class Final_Boss : Enemy_Prototype
             Summon();
 
             cooldown2 = Time.time + Random.Range(8f, 10f);
+        }
+        if(Time.time >= cooldown3)
+        {
+            Transform temp = laserArray[Random.Range(0, laserArray.Count)];
+            Instantiate(Laser, temp.position, transform.rotation);
+            // Instantiate(Laser, laserTop1.transform.position, transform.rotation);
+            // Instantiate(Laser, laserTop2.transform.position, transform.rotation);
+            // Instantiate(Laser, laserBot1.transform.position, transform.rotation);
+            // Instantiate(Laser, laserBot2.transform.position, transform.rotation);
+            laserRate = Random.Range(0.5f,2f);
+            cooldown3 = Time.time + laserRate;
         }
         // if(Time.time >= cooldownMiddle)
         // {
