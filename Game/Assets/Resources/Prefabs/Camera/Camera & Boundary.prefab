@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2984429209994416023}
   - component: {fileID: 1982472863254761647}
   m_Layer: 0
-  m_Name: Main Camera Follow
+  m_Name: Camera & Boundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c93f13a4efca843a60a33af33ebfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObject: {fileID: 0}
   speed: 3
   cam: {fileID: 7714963806953956088}
   duration: 0.1
   magnitude: 0.1
   boundary: {fileID: 3696368539879519485}
+  bossLevel: 0
 --- !u!1 &7714963806953956088
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,10 +141,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2984429209994416023}
     m_Modifications:
-    - target: {fileID: 1823514774, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
-      propertyPath: boundarySize.x
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3696368540110581236, guid: 361217eb3a522554eabbfdd60ed447e3, type: 3}
       propertyPath: m_RootOrder
       value: 1
