@@ -42,9 +42,11 @@ public class CameraController : MonoBehaviour
         camPosLimit = CalculateCamPosLimit();
 
         rb = followObject.GetComponent<Rigidbody2D>();
-
-        originalPos = boss.transform.position;
-        boss.transform.position = (boss.transform.position + new Vector3(5.0f, 0f, 0f));
+        if(boss != null)
+        {
+            originalPos = boss.transform.position;
+            boss.transform.position = (boss.transform.position + new Vector3(5.0f, 0f, 0f));
+        }
     }
 
     // Update is called once per frame
