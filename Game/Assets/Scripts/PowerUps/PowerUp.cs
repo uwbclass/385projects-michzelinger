@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour
       // int spawnOdds = 3;
       // randomOdds = Random.Range(1, 4);
 
-      if(Random.Range(1, 4) == 3 || true)
+      if(Random.Range(1, 4) == 3)
       {
          Object.Instantiate(Resources.Load("Prefabs/Powerups/Pup") as GameObject, spawnPos, Quaternion.identity);
       }
