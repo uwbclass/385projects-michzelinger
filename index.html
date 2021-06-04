@@ -2,10 +2,6 @@
 <html>
   <head>
 <title>GalacticWolves | CSS385</title>
-    <script src="https://michzelinger.github.io/GalacticWolves/index.html"></script>
-    <script>
-    var unityInstance = UnityLoader.instantiate("unityContainer", "https://michzelinger.github.io/GalacticWolves/index.html");
-    </script>  
   </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -228,8 +224,18 @@ Completed Bomber Enemy
   
 <!-- End page content -->
 </div>
-<!--
-<center>
+
+ 
+ 
+<!-- <div>  
+<iframe src="https://michzelinger.github.io/GalacticWolves/index.html" 
+        style="border:0px #000000 none;" name="Game name" scrolling="no" frameborder="1" marginheight="px" marginwidth="320px" height="700px" width="1000px"></iframe>
+  </div>
+  -->
+  <center>
+  <div style="height:700px; width: 1000px; background: green;" onclick="unityInstance.SetFullscreen(1)"><b>Click here to make it full screen.</b></div>
+    <div id="unityContainer" style="width: 1000px; height: 700px; margin: auto">
+  
 <iframe 
     src="https://michzelinger.github.io/GalacticWolves/index.html" 
     style="border:0px #000000 none;" 
@@ -241,16 +247,9 @@ Completed Bomber Enemy
     height="700px" 
     width="1000px">
 </iframe>
-</center>  
-  -->
-<!-- <div>  
-<iframe src="https://michzelinger.github.io/GalacticWolves/index.html" 
-        style="border:0px #000000 none;" name="Game name" scrolling="no" frameborder="1" marginheight="px" marginwidth="320px" height="700px" width="1000px"></iframe>
+ 
   </div>
-  -->
-  
-  <div style="height:700px; width: 1000px; background: green;" onclick="unityInstance.SetFullscreen(1)"><b>Click here to make it full screen.</b></div>
-    <div id="unityContainer" style="width: 1000px; height: 700px; margin: auto"></div>
+  </center>
   </body>
 
   
@@ -329,7 +328,7 @@ document.getElementById("myLink").click();
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
-            console.log("Hello, someone clicked the full screen button");
+            console.log("Hellooooo, someone clicked the full screen button");
             unityInstance.SetFullscreen(1);
           };
         }).catch((message) => {
