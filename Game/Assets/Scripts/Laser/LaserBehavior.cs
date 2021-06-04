@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LaserBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public AudioClip laserFX;
     public float laserSpeed;
     public GameObject hitParticle;
     public int damageMultiplier;
     void Start()
     {
+        AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(laserFX);
         Destroy(gameObject, 5);
        // laserSpeed = 10f;
     }
@@ -26,11 +27,14 @@ public class LaserBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D  collider)
     {   
-        if(hitParticle != null)
+        if(collider.gameObject.tag != "Mine")
         {
-            GameObject effect = Instantiate(hitParticle, transform.position, Quaternion.identity);
-            Destroy(effect, 0.1f);
+            if(hitParticle != null)
+            {
+                GameObject effect = Instantiate(hitParticle, transform.position, Quaternion.identity);
+                Destroy(effect, 0.1f);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

@@ -11,7 +11,9 @@ public class RetryQuitButtons : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(1);
+        Destroy(AudioPlayer.instance.gameObject);
+        SceneManager.LoadScene(WormholeController.checkPoint);
+        HeroBehavior.Respawn();
     }
 
     public void ReturnToMainMenu()

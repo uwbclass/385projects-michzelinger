@@ -14,6 +14,12 @@ public class Sniper : Enemy_Prototype
     LayerMask layerMask;
     bool started = false;
 
+    protected override void Update()
+    {
+        base.Update();
+        rb2d.angularVelocity = 0f;
+    }
+    
     protected override void Start()
     {
         base.Start();
@@ -47,6 +53,14 @@ public class Sniper : Enemy_Prototype
         if(timeAggroed && Time.time > deAggroTime)
         {
             timeAggroed = false;
+            lineRenderer.enabled = false;
+            timer = 0;
+            state = EnemyState.patrolState;
+            return;
+        }
+
+        if(!timeAggroed && !proximity(aggroDistance * 3f))
+        {
             lineRenderer.enabled = false;
             timer = 0;
             state = EnemyState.patrolState;
@@ -96,7 +110,12 @@ public class Sniper : Enemy_Prototype
         {
             if(hitInfo.transform.gameObject.layer == 6)
             {
-                hitInfo.transform.gameObject.GetComponent<HeroBehavior>().loseHealth(2);
+                if(HeroBehavior.instance.shield.activeInHierarchy)
+                {
+                    HeroBehavior.instance.shield.SetActive(false);
+                }
+                else
+                    HeroBehavior.instance.loseHealth(2);
             }
             lineRenderer.SetPosition(1, hitInfo.point);
         }

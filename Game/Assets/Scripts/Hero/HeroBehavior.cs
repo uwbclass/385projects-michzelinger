@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class HeroBehavior : MonoBehaviour
+public class HeroBehavior : Health
 {
+   public static HeroBehavior instance;
+   public static void Respawn()
+   {
+      Destroy(instance.gameObject);
+   }
+
    [Header("Player")]
    public float moveSpeed = 5f;
-   public Health myHealth;
    public HealthBar healthBar;
    public float invulnerableTime = 1f;
 
@@ -15,12 +20,15 @@ public class HeroBehavior : MonoBehaviour
    public GameObject deathEffect;
    public Collider2D collider2d;
    public Rigidbody2D rb2d;
-   private bool canMove = true;
+   public bool canMove = true;
+
+   public const float MaxEnergy = 100f;
+   public float energy = MaxEnergy;
 
 
    [Header("Projectile")]
    public GameObject laserPrefab;
-   public float projectileFiringPeriod = 0.5f;
+   private float projectileFiringPeriod = 0.2f;
    public Transform firePoint;
    float cooldown = 0;
    public int missileAmmo;
@@ -31,16 +39,30 @@ public class HeroBehavior : MonoBehaviour
    [Header("UI")]
    Vector3 mouse;
    public GameObject shield;
-   public PowerupDisplay speedIcon;
+   public PowerupDisplay iconsDisplayer;
    public bool isSpeed;
    public float speedBoostDuration = 3f;
    public float speedBoostStopTime;
 
-   // Start is called before the first frame update
-   void Start()
+   void Awake()
    {
-      myHealth = GetComponent<Health>();
-      //healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
+      if(instance == null)
+      {
+         instance = this;
+         DontDestroyOnLoad(gameObject);
+      }
+      else
+      {
+         Destroy(gameObject);
+      }
+   }
+
+   // Start is called before the first frame update
+   protected override void Start()
+   {
+      base.Start();
+
+      //healthBar.SetHealth(.health, .MaxHealth);
       isSpeed = false;
       spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -53,37 +75,53 @@ public class HeroBehavior : MonoBehaviour
       if (isSpeed && Time.time >= speedBoostStopTime)
       {
          moveSpeed = 3f;
-         speedIcon.SpeedDisplay(false);
+         projectileFiringPeriod = 0.2f;
+         laserPrefab.GetComponent<LaserBehavior>().laserSpeed = 4f;
+         iconsDisplayer.SpeedDisplay(false);
          isSpeed = false;
          trailEffect.SetActive(false);
       }
       Fire();
+      energy += (isSpeed ? 50 : 15) * Time.deltaTime;
+      if(energy > MaxEnergy) { energy = MaxEnergy; }
    }
    public void EnableSpeedBoost()
    {
       speedBoostStopTime = Time.time + speedBoostDuration;
       moveSpeed++;
+      projectileFiringPeriod = 0.1f;
+      laserPrefab.GetComponent<LaserBehavior>().laserSpeed = 6f;
       trailEffect.SetActive(true);
-      speedIcon.SpeedDisplay(true);
+      iconsDisplayer.SpeedDisplay(true);
       isSpeed = true;
    }
 
    void Fire()
    {
-      if (Time.timeScale != 0 && cooldown == 0 && Input.GetKey(KeyCode.Mouse0))
+      if (Time.timeScale != 0 && cooldown == 0 && energy >= 5f && Input.GetKey(KeyCode.Mouse0))
       {
          GameObject laser = Instantiate(laserPrefab, firePoint.position, transform.rotation);
          cooldown = projectileFiringPeriod;
+         energy -= 5f;
       }
       else
       {
          cooldown = cooldown <= 0 ? 0 : cooldown - Time.deltaTime;
       }
 
-      if (Input.GetKeyDown(KeyCode.Mouse1) && missileAmmo > 0)
+      if (Input.GetKeyDown(KeyCode.Mouse1) && missileAmmo > 0 && energy >= 30f)
       {
          Instantiate(missilePrefab, firePoint.position, transform.rotation);
          --missileAmmo;
+         if(missileAmmo != 0)
+         {
+            iconsDisplayer.UpdateBombNumber(missileAmmo);
+         }
+         else
+         {
+            iconsDisplayer.BombHide();
+         }
+         energy -= 30f;
       }
    }
 
@@ -112,22 +150,28 @@ public class HeroBehavior : MonoBehaviour
       if (collider.gameObject.layer == 9) // Enemy Laser
       {
          if(shield.activeInHierarchy == true)
-            shield.SetActive(false);
-
-         LaserBehavior laser;
-         if(collider.gameObject.TryGetComponent<LaserBehavior>(out laser))
          {
-            loseHealth(laser.damageMultiplier);
+            shield.SetActive(false);
+            iconsDisplayer.ShieldDisplay(false);
          }
          else
          {
-            loseHealth(3);
+            LaserBehavior laser;
+            if(collider.gameObject.TryGetComponent<LaserBehavior>(out laser))
+            {
+               loseHealth(laser.damageMultiplier);
+            }
+            else
+            {
+               loseHealth(3);
+            }
          }
       }
       else if (collider.gameObject.layer == 10) // Wormhole
       {
          canMove = false;
          collider2d.enabled = false;
+         rb2d.angularVelocity = 0f;
          rb2d.AddTorque(20f);
          GetComponent<Animator>().SetTrigger("shrink");
          StartCoroutine(FallIntoWormhole(collider.transform.position));
@@ -136,14 +180,17 @@ public class HeroBehavior : MonoBehaviour
 
    void OnCollisionEnter2D(Collision2D collision)
    {
-      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11) // Enemy, Asteroids
+      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11 || collision.gameObject.tag == "Mine") // Enemy, Asteroids
       {
          if (shield.activeInHierarchy == true)
          {
             shield.SetActive(false);
+            iconsDisplayer.ShieldDisplay(false);
+            if(collision.gameObject.tag == "Mine") collision.gameObject.GetComponent<Mine>().HeroCollision();
          }
          else
          {
+            StartCoroutine(Invulnerable());
             switch (collision.gameObject.tag)
             {
                case "RegularEnemy":
@@ -154,10 +201,11 @@ public class HeroBehavior : MonoBehaviour
                   loseHealth(2); break;
                case "MidBoss":
                   loseHealth(4); break;
+               case "Mine":
+                  collision.gameObject.GetComponent<Mine>().HeroCollision(); loseHealth(5); break;
                default:    // Handles asteroid
                   loseHealth(1); break;
             }
-            StartCoroutine(Invulnerable());
          }
       }
       // else if(collision.gameObject.layer == 11)
@@ -177,7 +225,7 @@ public class HeroBehavior : MonoBehaviour
    IEnumerator FallIntoWormhole(Vector2 target)
    {
       float timeElapsed = 0f;
-      float endTime = 1f;
+      float endTime = 1.5f;
       Vector2 originalPos = rb2d.position;
       while(timeElapsed < endTime)
       {
@@ -185,32 +233,51 @@ public class HeroBehavior : MonoBehaviour
          timeElapsed += Time.deltaTime;
          yield return null;
       }
+
+      // Reset at the beginning of the level
+      transform.position = new Vector3(-6.87f, 0f, 0f);
+      collider2d.enabled = true;
+      rb2d.angularVelocity = 0;
+      canMove = true;
+
+      StartCoroutine(Invulnerable());
    }
 
    private void Die()
    {
-      collider2d.enabled = false;
+      //collider2d.enabled = false;
       GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
       Destroy(effect, 0.4f);
+
       FindObjectOfType<WormholeController>().GameOver();
       gameObject.SetActive(false);
    }
 
-
+   public void gainHealth(int multiplier)
+   {
+      increaseHealth(multiplier);
+      healthBar.SetHealth(health, MaxHealth);
+      if ((float) health / MaxHealth > 0.3f)
+      {
+         smokeEffect.SetActive(false);
+      }
+   }
 
    public void loseHealth(int multiplier)
    {
       Camera.main.gameObject.GetComponentInParent<CameraController>().CallShake();
-      if ((float)myHealth.health / myHealth.MaxHealth <= 0.3f)
+      if ((float) health / MaxHealth <= 0.3f)
       {
          smokeEffect.SetActive(true);
       }
-      myHealth.decreaseHealth(multiplier);
-      healthBar.SetHealth(myHealth.health, myHealth.MaxHealth);
-      if (myHealth.isDead())
+      decreaseHealth(multiplier);
+      healthBar.SetHealth(health, MaxHealth);
+      
+      if (isDead())
       {
          Die();
       }
+
    }
 
    IEnumerator Invulnerable()
@@ -229,4 +296,6 @@ public class HeroBehavior : MonoBehaviour
 
       collider2d.enabled = true;
    }
+
+
 }

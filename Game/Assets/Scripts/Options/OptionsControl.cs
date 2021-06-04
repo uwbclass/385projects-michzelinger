@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class OptionsControl : MonoBehaviour
 {
    [SerializeField] GameObject optionsMenu;
@@ -9,6 +11,7 @@ public class OptionsControl : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {
+      optionsMenu.SetActive(false);
    }
 
    // Update is called once per frame
@@ -27,27 +30,30 @@ public class OptionsControl : MonoBehaviour
             ShowOptions();
             OptionsEnabled = true;
          }
-         Debug.Log("esc pressed");
+         //Debug.Log("esc pressed");
       }
    }
    public void ShowOptions()
    {
-      Debug.Log("Option showed");
+      //Debug.Log("Option showed");
       optionsMenu.transform.localScale = new Vector3(0.8327084f, 0.8327084f, 1f);
-
+      optionsMenu.SetActive(true);
       Time.timeScale = 0f;
    }
 
    public void HideOptions()
    {
-      Debug.Log("Option hidden");
-      optionsMenu.transform.localScale = new Vector3(0f, 0f, 0f);
-
+      //Debug.Log("Option hidden");
+      //optionsMenu.transform.localScale = new Vector3(0f, 0f, 0f);
+      optionsMenu.SetActive(false);
       Time.timeScale = 1f;
    }
 
-   public void QuitGame()
+   public void ReturnToMenu()
    {
-      Application.Quit();
+      SceneManager.LoadScene("MainMenu");
+      Destroy(HeroBehavior.instance.gameObject);
+      Destroy(AudioPlayer.instance.gameObject);
+      Time.timeScale = 1f;
    }
 }

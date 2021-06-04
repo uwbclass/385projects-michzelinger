@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [Header("Health")]
     public int health;
     public int MaxHealth = 100;
     public int healthIncrement = 10;
     
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         health = MaxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SetHealth(int health)
@@ -25,15 +20,15 @@ public class Health : MonoBehaviour
         this.health = health < 0 ? 0 : (health > MaxHealth ? MaxHealth : health);
     }
 
-    public void increaseHealth()
+    public void increaseHealth(int multiplier)
     {
-        if(this.health + (healthIncrement * 2) > MaxHealth)
+        if(this.health + (healthIncrement * multiplier) > MaxHealth)
         {
             this.health = MaxHealth;
         }
         else
         {
-            this.health += healthIncrement * 2;
+            this.health += healthIncrement * multiplier;
         }
     }
 

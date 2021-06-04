@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class WormholeController : MonoBehaviour
 {
+    public static int checkPoint = 1;
+
     public GameObject[] wormholes;
     public GameObject[] enemies;
     public Animator transitionAnim;
@@ -38,6 +40,7 @@ public class WormholeController : MonoBehaviour
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
+        Destroy(AudioPlayer.instance.gameObject);
         SceneManager.LoadScene("DeathScene");
     }
 
@@ -50,6 +53,27 @@ public class WormholeController : MonoBehaviour
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
+
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            case 4:
+                checkPoint = 4;
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
+            case 5:
+                checkPoint = 6;
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
+            case 8:
+                checkPoint = 8;
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
+            case 9:
+                Destroy(AudioPlayer.instance.gameObject);
+                break;
+            default:
+                break;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

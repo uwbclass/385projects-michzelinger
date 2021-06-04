@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-public class Enemy_Prototype : MonoBehaviour
+public class Enemy_Prototype : Health
 {
    //FSM commands
    protected enum EnemyState
@@ -20,6 +20,7 @@ public class Enemy_Prototype : MonoBehaviour
    protected float moveSpeed = 3.0f;
    protected Rigidbody2D rb2d;
 
+
    //----------------player tracking----------------
    protected HeroBehavior player;
    protected Vector2 currPos;
@@ -31,7 +32,6 @@ public class Enemy_Prototype : MonoBehaviour
    protected const float aggroTime = 3.0f;
    protected float deAggroTime;
    protected bool timeAggroed = false;
-   protected Health myHealth;
 
    //----------------powerup drops----------------
    protected bool isSpawn = true;
@@ -63,6 +63,12 @@ public class Enemy_Prototype : MonoBehaviour
    protected virtual void ServicePatrolState()
    {
       // Incomplete, need to implement state change logic in child class
+      if(waypoints.Count == 0)
+      {
+         transform.up = Vector2.left;
+         rb2d.MovePosition(rb2d.position + Vector2.left * Time.fixedDeltaTime * moveSpeed);
+      }
+
       if (waypointIndex < waypoints.Count)
       {
          var targetPosition = waypoints[waypointIndex].position;
@@ -106,11 +112,10 @@ public class Enemy_Prototype : MonoBehaviour
    }
 
    // Start is called before the first frame update
-   protected virtual void Start()
+   protected override void Start()
    {
       // Setting up state variables
-      myHealth = GetComponent<Health>();
-      player = FindObjectOfType<HeroBehavior>();
+      player = HeroBehavior.instance;
       waypoints = new List<Transform>();
       rb2d = GetComponent<Rigidbody2D>();
       currPos = new Vector2();
@@ -119,14 +124,17 @@ public class Enemy_Prototype : MonoBehaviour
       // spriteRenderer = GetComponent<SpriteRenderer>();
       // cachedMaterial = spriteRenderer.material;
 
-      // Adding each waypoints into the list of destinations
-      foreach (Transform child in pathPrefab.transform)
+      if(pathPrefab != null)
       {
-         waypoints.Add(child);
-      }
+         // Adding each waypoints into the list of destinations
+         foreach (Transform child in pathPrefab.transform)
+         {
+            waypoints.Add(child);
+         }
 
-      // Start at initial waypoint
-      transform.position = waypoints[0].position;
+         // Start at initial waypoint
+         transform.position = waypoints[0].position;
+      }
    }
 
    // Update is called once per frame
@@ -134,7 +142,7 @@ public class Enemy_Prototype : MonoBehaviour
    {
       UpdatePositions();
       UpdateFSM();
-      rb2d.angularVelocity = 0f;
+      //rb2d.angularVelocity = 0f;
    }
 
    private void Die()
@@ -152,6 +160,11 @@ public class Enemy_Prototype : MonoBehaviour
       {
          Die();
       }
+
+      if (collision.gameObject.layer == 12 && waypoints.Count == 0) // Boundary
+      {
+         Destroy(gameObject);
+      }
    }
 
    protected virtual void OnTriggerEnter2D(Collider2D collider)
@@ -159,7 +172,12 @@ public class Enemy_Prototype : MonoBehaviour
       if (collider.gameObject.layer == 7) // Player laser
       {
          // StartCoroutine(TurnWhiteWhenHit());
+         loseHealth(1);
+      }
+   }
 
+   public void loseHealth(int multiplier)
+   {
          if(state == EnemyState.patrolState)
          {
             timeAggroed = true;
@@ -167,12 +185,11 @@ public class Enemy_Prototype : MonoBehaviour
             deAggroTime = Time.time + aggroTime;
          }
 
-         myHealth.decreaseHealth(1);
-         if (myHealth.isDead())
+         decreaseHealth(multiplier);
+         if (isDead())
          {
             Die();
          }
-      }
    }
 
    // IEnumerator TurnWhiteWhenHit()

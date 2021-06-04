@@ -21,10 +21,22 @@ public class MidBoss_Enemy : Enemy_Prototype
     
     protected override void Start()
     {
-        base.Start();
-        cooldown1 = attack1;
-        cooldown2 = attack2;
-        cooldownMiddle = middle;
+        // Base start
+        player = HeroBehavior.instance;
+        waypoints = new List<Transform>();
+        rb2d = GetComponent<Rigidbody2D>();
+        currPos = new Vector2();
+        playerPos = new Vector2();
+        cooldown1 = 0;
+        
+        foreach (Transform child in pathPrefab.transform)
+        {
+            waypoints.Add(child);
+        }
+        
+        cooldown1 = 0;
+        cooldown2 = 0;
+        cooldownMiddle = 0;
         isSpawn = false;
     }
     protected override void ServiceAttackState()
@@ -78,6 +90,9 @@ public class MidBoss_Enemy : Enemy_Prototype
         if(proximity(aggroDistance * 1.5f))
         {
             state = EnemyState.attackState;
+            cooldown1 = Time.time + attack1;
+            cooldown2 = Time.time + attack2;
+            cooldownMiddle = Time.time + middle;
             GetComponent<Collider2D>().enabled = true;
         }
     }
