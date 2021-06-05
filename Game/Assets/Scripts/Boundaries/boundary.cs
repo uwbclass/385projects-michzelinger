@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour
 {
+    //Comment
     public Vector2 boundarySize;
     public GameObject top;
     public GameObject bottom;
