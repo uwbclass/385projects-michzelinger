@@ -26,7 +26,6 @@ public class LevelDisplay : MonoBehaviour
             StartCoroutine(showControl(displayKeys));
             controlDisplay = true;
         }
-            
     }
 
     public void DisplayMissileKey()

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class WormholeController : MonoBehaviour
 {
+    public GameObject checkPointText;
     public static int checkPoint = 1;
-
     public GameObject[] wormholes;
     public GameObject[] enemies;
     public Animator transitionAnim;
@@ -15,6 +15,28 @@ public class WormholeController : MonoBehaviour
     void Start()
     {
         enemies = FindGameObjectsInLayer(8);
+
+        int i = SceneManager.GetActiveScene().buildIndex;
+        switch(i)
+        {
+            case 4:
+            case 6:
+            case 8:
+                if(checkPoint < i)
+                {
+                    StartCoroutine(CheckPoint());
+                    checkPoint = i;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    IEnumerator CheckPoint()
+    {
+        checkPointText.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        checkPointText.SetActive(false);
     }
     void Update()
     {
@@ -57,17 +79,8 @@ public class WormholeController : MonoBehaviour
         switch(SceneManager.GetActiveScene().buildIndex)
         {
             case 4:
-                checkPoint = 4;
-                Destroy(AudioPlayer.instance.gameObject);
-                break;
             case 5:
-                checkPoint = 6;
-                Destroy(AudioPlayer.instance.gameObject);
-                break;
             case 8:
-                checkPoint = 8;
-                Destroy(AudioPlayer.instance.gameObject);
-                break;
             case 9:
                 Destroy(AudioPlayer.instance.gameObject);
                 break;

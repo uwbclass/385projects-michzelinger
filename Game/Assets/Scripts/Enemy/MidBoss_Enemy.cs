@@ -10,6 +10,8 @@ public class MidBoss_Enemy : Enemy_Prototype
     public float attack1 = 4.0f;
     public float attack2 = 6.0f;
     public float middle = 8.0f;
+    public AudioClip laserChargeSound;
+    public AudioClip laserSound;
     public GameObject middleLaser;
     public GameObject aimer;
     public GameObject Laser1;
@@ -78,23 +80,25 @@ public class MidBoss_Enemy : Enemy_Prototype
     IEnumerator MainLaser()
     {
         aimer.SetActive(true);
+        AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(laserChargeSound);
         yield return new WaitForSeconds(2f);
         middleLaser.SetActive(true);
         aimer.SetActive(false);
+        AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(laserSound);
         yield return new WaitForSeconds(2f);
         middleLaser.SetActive(false);    
     }
 
     protected override void ServicePatrolState()
     {
-        if(proximity(aggroDistance * 1.5f))
-        {
-            state = EnemyState.attackState;
-            cooldown1 = Time.time + attack1;
-            cooldown2 = Time.time + attack2;
-            cooldownMiddle = Time.time + middle;
-            GetComponent<Collider2D>().enabled = true;
-        }
+        // if(proximity(aggroDistance * 1.5f))
+        // {
+        //     state = EnemyState.attackState;
+        //     cooldown1 = Time.time + attack1;
+        //     cooldown2 = Time.time + attack2;
+        //     cooldownMiddle = Time.time + middle;
+        //     GetComponent<Collider2D>().enabled = true;
+        // }
     }
     
     protected override void OnCollisionEnter2D(Collision2D collision)
@@ -118,6 +122,15 @@ public class MidBoss_Enemy : Enemy_Prototype
         {
             waypointIndex = 0;
         }
+    }
+
+    public void temp()
+    {
+        state = EnemyState.attackState;
+        cooldown1 = Time.time + 1f;
+        cooldown2 = Time.time + 1f;
+        cooldownMiddle = Time.time + 1f;
+        GetComponent<Collider2D>().enabled = true;
     }
 }
 

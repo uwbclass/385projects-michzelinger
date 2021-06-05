@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+   public AudioClip pickupSound;
    public static bool displayMissileKey = false;
    public static void SpawnRandom(Vector3 spawnPos)
    {
@@ -81,6 +82,7 @@ public class PowerUp : MonoBehaviour
       if(collider.gameObject.layer == 6) // player layer
       {
          HeroBehavior player = HeroBehavior.instance;
+         AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(pickupSound);
          switch(type)
          {
             case powerUpType.shield:

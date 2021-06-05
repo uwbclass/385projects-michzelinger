@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class Enemy_Prototype : Health
 {
+   public AudioClip explosionSound;
    //FSM commands
    protected enum EnemyState
    {
@@ -148,6 +149,7 @@ public class Enemy_Prototype : Health
    private void Die()
    {
       GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+      AudioPlayer.instance.GetComponent<AudioSource>().PlayOneShot(explosionSound);
       Destroy(effect, 0.4f);
       if(isSpawn)
          PowerUp.SpawnRandom(transform.position);

@@ -84,7 +84,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!50 &9052980586814546607
 Rigidbody2D:
@@ -138,6 +138,7 @@ MonoBehaviour:
   health: 80
   MaxHealth: 80
   healthIncrement: 10
+  explosionSound: {fileID: 8300000, guid: c245dbe7fdda1a84c85343cf13162254, type: 3}
   pathPrefab: {fileID: 0}
   hitEffect: {fileID: 5648341761331748557, guid: d601145651af787419caf8284d19e4ba, type: 3}
   lineRenderer: {fileID: 9052980586995222831}

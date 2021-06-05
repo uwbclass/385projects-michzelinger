@@ -82,7 +82,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!70 &7543315582802628643
 CapsuleCollider2D:
@@ -112,5 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11362e5d669ddbf4b905a73a08d6cc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserFX: {fileID: 0}
   laserSpeed: 8
   hitParticle: {fileID: 1645132671843687249, guid: e1b66b5f60945c34d9acf1cd67649189, type: 3}
+  damageMultiplier: 0

@@ -57,15 +57,14 @@ public class Final_Boss : Enemy_Prototype
             //Debug.Log("Bullet Time" + bulletTimeStamp);
             // Debug.Log(firePt1.position + " " + firePt2.position);
             GameObject m = Instantiate(Mines, new Vector3(firePt1.position.x, Random.Range(firePt2.position.y, firePt1.position.y), 1f), transform.rotation);
-            m.GetComponent<Rigidbody2D>().velocity = new Vector2(-3f, 0f);
-            float attack1 = Random.Range(0.5f, 5f);
-            cooldown1 = Time.time + attack1;
+            m.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3f, -5f), 0f);
+            cooldown1 = Time.time + Random.Range(0.5f, 1f); //0.5, 1
         }
         if(Time.time >= cooldown2)
         {
             Summon();
 
-            cooldown2 = Time.time + Random.Range(8f, 10f);
+            cooldown2 = Time.time + Random.Range(6f, 8f); //8, 10
         }
         if(Time.time >= cooldown3)
         {
@@ -75,8 +74,7 @@ public class Final_Boss : Enemy_Prototype
             // Instantiate(Laser, laserTop2.transform.position, transform.rotation);
             // Instantiate(Laser, laserBot1.transform.position, transform.rotation);
             // Instantiate(Laser, laserBot2.transform.position, transform.rotation);
-            laserRate = Random.Range(0.5f,2f);
-            cooldown3 = Time.time + laserRate;
+            cooldown3 = Time.time + Random.Range(0.5f,1.5f); //0.5, 2
         }
         // if(Time.time >= cooldownMiddle)
         // {
@@ -102,14 +100,20 @@ public class Final_Boss : Enemy_Prototype
 
     protected override void ServicePatrolState()
     {
-        if(proximity(aggroDistance * 1.5f))
-        {
-            state = EnemyState.attackState;
-            // cooldown1 = Time.time + attack1;
-            // cooldown2 = Time.time + attack2;
-            // cooldownMiddle = Time.time + middle;
-            GetComponent<Collider2D>().enabled = true;
-        }
+        // if(proximity(aggroDistance * 1.5f))
+        // {
+            
+        // }
+        // StartCoroutine(temp());
+    }
+
+    public void temp()
+    {
+        state = EnemyState.attackState;
+        cooldown1 = Time.time + 1f;
+        cooldown2 = Time.time + 1f;
+        cooldown3 = Time.time + 1f;
+        GetComponent<Collider2D>().enabled = true;
     }
     
     protected override void OnCollisionEnter2D(Collision2D collision)
@@ -123,7 +127,7 @@ public class Final_Boss : Enemy_Prototype
         {
             var targetPosition = waypoints[waypointIndex].position;
 
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             if (transform.position == targetPosition)
             {
                 waypointIndex++;

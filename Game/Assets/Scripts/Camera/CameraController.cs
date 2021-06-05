@@ -142,6 +142,12 @@ public class CameraController : MonoBehaviour
             boss.transform.position = Vector3.Lerp(originalPos + Vector3.right * 5, originalPos, timeElapsed / transitionTime);
             yield return null;
         }
+        Final_Boss temp;
+        MidBoss_Enemy temp1;
+        boss.TryGetComponent<Final_Boss>(out temp);
+        boss.TryGetComponent<MidBoss_Enemy>(out temp1);
+        if(temp != null) temp.temp();
+        if(temp1 != null) temp1.temp();
         boss.transform.position = originalPos;
 
 

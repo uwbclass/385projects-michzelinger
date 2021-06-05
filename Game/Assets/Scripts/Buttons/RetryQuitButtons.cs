@@ -22,4 +22,5 @@ public class RetryQuitButtons : MonoBehaviour
         SceneManager.LoadScene(0);
         HeroBehavior.Respawn();
     }
+
 }
