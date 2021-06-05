@@ -1301,7 +1301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859496728091693402, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: sceneIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3866438722495466184, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: wormholes.Array.size
@@ -1381,7 +1381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7276747856669748711, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}
       propertyPath: sceneIndex
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3395766a96b4c6645a6a17f8839543d4, type: 3}

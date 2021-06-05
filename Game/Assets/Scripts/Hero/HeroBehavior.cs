@@ -180,7 +180,7 @@ public class HeroBehavior : Health
 
    void OnCollisionEnter2D(Collision2D collision)
    {
-      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11 || collision.gameObject.tag == "Mine") // Enemy, Asteroids
+      if (collision.gameObject.layer == 8 || collision.gameObject.layer == 11 || collision.gameObject.layer == 15) // Enemy, Asteroids
       {
          if (shield.activeInHierarchy == true)
          {

@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 297604206}
   - component: {fileID: 297604212}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +221,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 157.9483, y: -58.058033}
-  m_SizeDelta: {x: 258.6182, y: 116.1161}
+  m_SizeDelta: {x: 258.6182, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &297604206
 MonoBehaviour:
@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 297604212}
         m_TargetAssemblyTypeName: RetryQuitButtons, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70ec505259a182541b4361830e118b1e, type: 2}
   m_sharedMaterial: {fileID: -2327534824925753137, guid: 70ec505259a182541b4361830e118b1e, type: 2}

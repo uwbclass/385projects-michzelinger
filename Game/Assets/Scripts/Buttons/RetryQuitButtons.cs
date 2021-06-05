@@ -18,6 +18,8 @@ public class RetryQuitButtons : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Destroy(AudioPlayer.instance.gameObject);
         SceneManager.LoadScene(0);
+        HeroBehavior.Respawn();
     }
 }

@@ -21,7 +21,6 @@ public class OptionsControl : MonoBehaviour
       {
          if (OptionsEnabled)
          {
-            
             HideOptions();
             OptionsEnabled = false;
          }

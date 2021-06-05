@@ -85,7 +85,7 @@ public class WormholeController : MonoBehaviour
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - sceneIndex);
+        SceneManager.LoadScene(sceneIndex);
     }
 
     GameObject[] FindGameObjectsInLayer(int layer)
