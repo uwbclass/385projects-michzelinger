@@ -238,6 +238,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4986851222419516146}
     - target: {fileID: 8032962946426855646, guid: f2d94933e6185744d809ca9c15f633db, type: 3}
+      propertyPath: textCanvas
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032962946426855646, guid: f2d94933e6185744d809ca9c15f633db, type: 3}
       propertyPath: missileKeysText
       value: 
       objectReference: {fileID: 923248741698748109, guid: 4fac2d252c48cfd4aa6d852327909e7b, type: 3}

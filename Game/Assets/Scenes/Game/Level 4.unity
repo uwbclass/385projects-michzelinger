@@ -658,6 +658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2d00a467c3a1644b701531ad3b0ccd, type: 3}
+--- !u!225 &1169256408 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1459519152, guid: 6d2d00a467c3a1644b701531ad3b0ccd, type: 3}
+  m_PrefabInstance: {fileID: 1169256407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1171855366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1081,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: HeroCanvas
+      value: 
+      objectReference: {fileID: 1589883081}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: TextCanvas
+      value: 
+      objectReference: {fileID: 1169256408}
     - target: {fileID: 2542488556002188357, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1453,6 +1466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4c0d51fe0cc5f4cbf6ba9850a3ce9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1589883081 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 151191599, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+  m_PrefabInstance: {fileID: 1589883078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1642382525
 GameObject:
   m_ObjectHideFlags: 0

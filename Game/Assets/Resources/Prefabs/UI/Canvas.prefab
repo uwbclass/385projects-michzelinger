@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8001642133031359538}
   - component: {fileID: 8001642133031359533}
   - component: {fileID: 8001642133031359532}
+  - component: {fileID: 1459519152}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -118,6 +119,18 @@ MonoBehaviour:
   levelText: {fileID: 8001642134599339678}
   displayKeys: {fileID: 143021503}
   displayMissile: {fileID: 1604010236}
+--- !u!225 &1459519152
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8001642133031359535}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8001642134599339672
 GameObject:
   m_ObjectHideFlags: 0

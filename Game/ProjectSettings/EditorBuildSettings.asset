@@ -36,12 +36,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Level 7.unity
     guid: 9d780ff1b125af24481afea2ea1b18d3
   - enabled: 1
-    path: Assets/Scenes/Game/EarthScene.unity
+    path: Assets/Scenes/Game/Earth.unity
     guid: c7f73d5414093d248b118617737088d4
   - enabled: 1
     path: Assets/Scenes/Game/Ending Scene.unity
     guid: 01b5903d8c1ced446877e3d9f5e32e26
   - enabled: 1
-    path: Assets/Scenes/Game/DeathScene.unity
+    path: Assets/Scenes/Game/Death.unity
     guid: 91f0dfc1570340740ae59d474251fb26
   m_configObjects: {}

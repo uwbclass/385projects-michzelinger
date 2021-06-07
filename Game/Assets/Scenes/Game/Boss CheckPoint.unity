@@ -195,6 +195,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: HeroCanvas
+      value: 
+      objectReference: {fileID: 1989955047}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: TextCanvas
+      value: 
+      objectReference: {fileID: 1300824152}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
       propertyPath: heroCanvas
       value: 
       objectReference: {fileID: 509350216}
@@ -889,6 +897,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2d00a467c3a1644b701531ad3b0ccd, type: 3}
+--- !u!225 &1300824152 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1459519152, guid: 6d2d00a467c3a1644b701531ad3b0ccd, type: 3}
+  m_PrefabInstance: {fileID: 1300824151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1777584726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1083,6 +1096,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4c0d51fe0cc5f4cbf6ba9850a3ce9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1989955047 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 151191599, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+  m_PrefabInstance: {fileID: 1989955045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2084184746
 PrefabInstance:
   m_ObjectHideFlags: 0

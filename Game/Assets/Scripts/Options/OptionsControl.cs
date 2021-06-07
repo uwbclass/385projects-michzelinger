@@ -6,15 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class OptionsControl : MonoBehaviour
 {
-   [SerializeField] GameObject keysText;
-   [SerializeField] GameObject missileKeysText;
+   // [SerializeField] CanvasGroup TextCanvas;
+   // [SerializeField] CanvasGroup HeroCanvas;
+
   // [SerializeField] GameObject heroCanvas;
+   public static CanvasGroup heroCanvas;
+
+   public GameObject textCanvas;
    [SerializeField] GameObject optionsMenu;
    [SerializeField] GameObject spriteMask;
    private static bool OptionsEnabled = false;
    // Start is called before the first frame update
    void Start()
    {
+      heroCanvas = GameObject.FindObjectOfType<CanvasGroup>();
+      textCanvas = GameObject.Find("Canvas");
       optionsMenu.SetActive(false);
    }
 
@@ -38,11 +44,11 @@ public class OptionsControl : MonoBehaviour
    }
    public void ShowOptions()
    {
-      //Debug.Log("Option showed");
       spriteMask.SetActive(true);
-      //heroCanvas.SetActive(false);
-      keysText.transform.localScale = new Vector3(0f,0f,0f);
-      missileKeysText.transform.localScale = new Vector3(0f,0f,0f);
+      textCanvas.GetComponent<CanvasGroup>().blocksRaycasts = false;
+      heroCanvas.blocksRaycasts = false;
+      textCanvas.GetComponent<CanvasGroup>().alpha = 0f;
+      heroCanvas.alpha = 0f;
       optionsMenu.transform.localScale = new Vector3(0.8327084f, 0.8327084f, 1f);
       optionsMenu.SetActive(true);
       Time.timeScale = 0f;
@@ -50,11 +56,10 @@ public class OptionsControl : MonoBehaviour
 
    public void HideOptions()
    {
-      //Debug.Log("Option hidden");
-      //optionsMenu.transform.localScale = new Vector3(0f, 0f, 0f);
-     // heroCanvas.SetActive(true);
-      keysText.transform.localScale = new Vector3(1f,1f,1f);
-      missileKeysText.transform.localScale = new Vector3(1f,1f,1f);
+      textCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
+      heroCanvas.blocksRaycasts = true;
+      textCanvas.GetComponent<CanvasGroup>().alpha = 1f;
+      heroCanvas.alpha = 1f;
       spriteMask.SetActive(false);
       optionsMenu.SetActive(false);
       Time.timeScale = 1f;

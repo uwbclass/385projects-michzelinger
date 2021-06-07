@@ -1310,6 +1310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b715744e3d39bfc4f919ad2fbc648396, type: 3}
+--- !u!225 &1169577123 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1459519152, guid: 6d2d00a467c3a1644b701531ad3b0ccd, type: 3}
+  m_PrefabInstance: {fileID: 590980893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1170283538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1686,6 +1691,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: HeroCanvas
+      value: 
+      objectReference: {fileID: 1538829138}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: TextCanvas
+      value: 
+      objectReference: {fileID: 1169577123}
+    - target: {fileID: 2542488556000603193, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+      propertyPath: textCanvas
+      value: 
+      objectReference: {fileID: 1169577123}
     - target: {fileID: 2542488556002188357, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1740,6 +1757,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc1c149789d2f7743a8a0600b35b1199, type: 3}
+--- !u!225 &1538829138 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 151191599, guid: c33f9851b78f2b140a1a835831eabc6f, type: 3}
+  m_PrefabInstance: {fileID: 1017069923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1565154719
 PrefabInstance:
   m_ObjectHideFlags: 0
