@@ -10,17 +10,19 @@ public class OptionsControl : MonoBehaviour
    // [SerializeField] CanvasGroup HeroCanvas;
 
   // [SerializeField] GameObject heroCanvas;
-   public static CanvasGroup heroCanvas;
+   public static GameObject heroCanvas;
 
    public GameObject textCanvas;
+   public GameObject checkpointCanvas;
    [SerializeField] GameObject optionsMenu;
    [SerializeField] GameObject spriteMask;
    private static bool OptionsEnabled = false;
    // Start is called before the first frame update
    void Start()
    {
-      heroCanvas = GameObject.FindObjectOfType<CanvasGroup>();
+      heroCanvas = GameObject.Find("Canvas(Health)");
       textCanvas = GameObject.Find("Canvas");
+      checkpointCanvas = GameObject.Find("CheckPoint");
       optionsMenu.SetActive(false);
    }
 
@@ -45,10 +47,12 @@ public class OptionsControl : MonoBehaviour
    public void ShowOptions()
    {
       spriteMask.SetActive(true);
+      checkpointCanvas.GetComponent<CanvasGroup>().blocksRaycasts = false;
+      checkpointCanvas.GetComponent<CanvasGroup>().alpha = 0f;
       textCanvas.GetComponent<CanvasGroup>().blocksRaycasts = false;
-      heroCanvas.blocksRaycasts = false;
+      heroCanvas.GetComponent<CanvasGroup>().blocksRaycasts = false;
       textCanvas.GetComponent<CanvasGroup>().alpha = 0f;
-      heroCanvas.alpha = 0f;
+      heroCanvas.GetComponent<CanvasGroup>().alpha = 0f;
       optionsMenu.transform.localScale = new Vector3(0.8327084f, 0.8327084f, 1f);
       optionsMenu.SetActive(true);
       Time.timeScale = 0f;
@@ -56,10 +60,12 @@ public class OptionsControl : MonoBehaviour
 
    public void HideOptions()
    {
+      checkpointCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
+      checkpointCanvas.GetComponent<CanvasGroup>().alpha = 1f;
       textCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
-      heroCanvas.blocksRaycasts = true;
+      heroCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
       textCanvas.GetComponent<CanvasGroup>().alpha = 1f;
-      heroCanvas.alpha = 1f;
+      heroCanvas.GetComponent<CanvasGroup>().alpha = 1f;
       spriteMask.SetActive(false);
       optionsMenu.SetActive(false);
       Time.timeScale = 1f;

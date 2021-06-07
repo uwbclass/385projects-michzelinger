@@ -261,8 +261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75a09befae807c49b87ad56d1261a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkPointText: {fileID: 0}
   wormholes:
   - {fileID: 4704933136784418143}
+  - {fileID: 870628945375538364}
   enemies: []
   transitionAnim: {fileID: 699441979}
 --- !u!95 &1049479423
